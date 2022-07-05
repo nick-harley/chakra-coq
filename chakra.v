@@ -1,313 +1,226 @@
 (** * Introduction
-    CHAKRA is a framework for hierarchical knowledge representation. This file contains the formal specification of CHAKRA's hierarchical data model, heirarchical data description language, and data processing and query language. 
- *)
 
-(** ** Built in types *)
+CHAKRA (Common Hierarchical Abstract Knowledge Representation for Anything) is a general-purpose framework for hierarchical knowledge representation. This file contains the formal specification of CHAKRA's core elements:
 
-(** CHAKRA uses several inductively defined concrete data types: [bool], [option] and [list]. [option] and [list] are polymorphic. Generic operations for working with these polymorhic types are taken from the coq standard library. For this we import the following: *)
+- Functional signature for a hierarchcial data model
+- Syntax and semantics for a hierarchical data description language
+- Syntax and semantics for a hierarchical data manipulation language
+
+The hierarchical data model is specified as a collection of abstract types and operations. The types capture the componenets of the model and the operations capture their interactions. The behaviour of the operations is specified by a collection of equational axioms over the operations.
+
+The DDL is defined in terms of Coq's underlying logic, [Prop]. The DML is defined in terms of the core CHARKA operations. The syntax of expressions in these languages is defined as formal grammars and represented as a mutually inductive types in Coq. The semantics of expressions is defined as a mappings from syntactic expressions to Coq terms. 
+
+*) 
+
+(* begin hide *)
+Add LoadPath "/Users/nick/Dropbox/chakracoq/" as CH.
+Require Export Utf8_core.
+(* end hide *)
 
 Require Import Coq.Init.Datatypes.
-Require Import Coq.Lists.List. 
+Require Import Coq.Lists.List.
+Require Import prechakra.
 
-(** ** Functors and Monads
-    For convenience, we define two type classes, [Functor] and [Monad], which capture common patterns of compositionality when working with polymorphic types. The operations [fmap], [unit] and [join] can be implemented for different type constructors and used generically, leaving it to the compiler to work out which concrete implementation to use via class inference.
+(** * Abstract Types
+
+The CHAKRA data model defines four abstract types and 1 
+
+- [ID]: Identifiers
+- [C]: Constituents
+- [H]: Hierarchies
+- [A]: Attributes
+- [P]: Properties 
+
+[ID] is the type of constituent identifiers. Elements of the type [x:ID] are symbolic names which uniquely identifiy constituents.
+
+[C] is the type of constituent objects. Elements of the type [c:C] are data structures which hold the represented entities particles, attribtues and properties.
+
+[H] is the type of constituent hierarchies. Elements of the type [s:H] are data structures which map identifiers to constituents.
+
+[A] is the type of attribtues. Elements of the type [a:A] are attribute names, or keys, which represent some intrinsic quality of a constituent. The type family [aty] associates with each attribtue [a] the type of its values [aty a]. Attribute key-value pairs are represented by the dependent sum type #&Sigma;#[a:A, aty a].
+
+[P] is the type of constituent properties. Elements of the type [p:P] are labels which represent different kinds of extensional categories with which constituents can be identified. CHAKRA defines three properties of constituents: XXX. The type family [pty] maps each property to the type of its values. 
 *)
 
-Class Functor (F:Type -> Type) :=
-  { fmap {A B}: (A -> B) -> F A -> F B }.
+Parameter ID : Set.
+Parameter C : Set.
+Parameter H : Set.
+Parameter A : Set.
+Inductive P : Set := MOD | LEV | DEF .
 
-Class Monad (F: Type -> Type) `{Functor F} :=
-  { unit {A} : A -> F A;
-    join {A} : F (F A) -> F A }.
+Parameter aty : A -> Set.
+Parameter pty : P -> Set.
 
-(** These classes capture generic patterns which are common to both [list] and [option] types, as well as the [Read] and [State] types defined below. Using the basic [Funtor] and [Monad] operations we define [ret], [bind] and [fish]: *)
-
-Definition ret {F:Type->Type} `{Monad F} {A} : A -> F A :=
-  unit.
-
-Definition bind {F:Type->Type} `{Monad F} {A B} : F A -> (A -> F B) -> F B :=
-  fun oa f => join (fmap f oa).
-
-Definition fish {F:Type->Type} `{Monad F} {A B C} : (A -> F B) -> (B -> F C) -> A -> F C :=
-  fun f g a => bind (f a) g.
-
-(** ** [list] and [option]
-
-Instances of [Functor] and [Monad] are used to define [fmap], [unit] and [join] for the [list] and [option] types. *)
-
-Instance list_funtor : Functor list :=
-  { fmap := map }.
-
-Instance list_monad : Monad list :=
-  { unit {A} := fun a => cons a nil;
-    join {A} := fix JOIN (lla:list (list A)) := match lla with
-                                                | nil => nil
-                                                | cons la lla' => app la (JOIN lla')
-                                                end }.
-
-Instance op_functor : Functor option :=
-  { fmap {A B}:= fun f oa => match oa with
-                             | None => None
-                             | Some a => Some (f a)
-                             end }.
-
-Instance op_monad : Monad option :=
-  { unit {A} := Some;
-    join {A} := fun ooa => match ooa with
-                           | None => None
-                           | Some oa => oa
-                           end }.
-
-
-(** ** [Read] and [State] Monads
-
-    In addition to [list] and [option], two other monadic type constructors are used in the specification of CHAKRA: [Read] and [State]. The type [Read D A := D -> option A] captures computations which attempt to read values of type [A] from data structures of type [D]. The type [State D A := D -> prod D (option A)] captures computations which return a value of type [A] but also modify the data structure in the process. Both [Read] and [State] are monadic in their second argument, the return type. *)
-
-Definition Read (D A:Type) := D -> option A.
-
-Definition State (D A:Type) := D -> prod D (option A).
-
-Instance read_functor {D} : Functor (Read D) :=
-  { fmap {A B} := fun f ra s => fmap f (ra s) }.
-
-Instance read_monad {D} : Monad (Read D) :=
-  { unit {A} := fun a s => ret a;
-    join {A} := fun rra s => match rra s with
-               | None => None
-               | Some f => f s
-               end }.
-
-
-Instance state_functor {D} : Functor (State D) :=
-  { fmap {A B} := fun f sa s => match sa s with
-                                | (s', None) => (s', None)
-                                | (s', Some a) => (s', Some (f a))
-                                end }.
-
-Instance state_monad {D} : Monad (State D) :=
-  { unit {A} := fun a s => (s,Some a);
-    join {A} := fun ssa s => match ssa s with
-                             | (s', None) => (s', None)
-                             | (s', Some sa) => sa s'
-                             end }.
-
-(** ** Logic
-Type classes are used to define common kinds of logical operations (connectives) which can be applied to a variety of different types. [LIFT] takes an expression of a logic [A] and embedds it in a new kind of logical expression [B]. [EVAL] expresses the fact that some computation in [A] evaluates to a value in [B] in a logic [C]. [CONJ] is the binary conjunction connetive for a logic [A]. [EX] is this existential quantifier for a logic [B] which binds a variable of type [A]. *)
-
-Class LIFT A B := lift : A -> B.
-Class EVAL A B C := eval : A -> B -> C.
-Class CONJ A := conj : A -> A -> A.
-Class EX A B := ex : (A -> B) -> B.
-
-Definition Decision (P:Prop) := {P}+{~P}.
-Class Decidable (P:Prop) := dec : Decision P.
-
-(** *** Prop
- [Prop] is the type of coq propositions. Class instances for [CONJ] [EX] and [EVAL (option A) A] can be defined using coqs underlying definitions of conjunction, existential quantification and equality.*)
+Class TYP T := ty : T -> Set.
 
 #[global]
-Instance pconj : CONJ Prop :=
-  fun P Q => prod P Q.
+Instance ATTRTYP : TYP A := aty.
 
 #[global]
-Instance pex {T} : EX T Prop :=
-  fun P => exists t, P t.
+Instance PROPTYP : TYP P := pty.
 
-#[global]
-Instance pevaloption {A} : EVAL (option A) A Prop :=
-  fun c a => eq c (Some a).
+(** * Core
 
+- [agg] takes a list of identifiers and returns a constituent whos particles are those ids.
+- [pts] takes a constituent and returns its list of particles.
+- [geta] and [seta] get and set the attributes of an object.
+- [getp] and [setp] get and set the properties of an object.
+- [emp] is the empty hierarchy.
+- [ins] binds a constituent to an identifier in a given structure.
+- [fnd] looks up an indentifier in a given structure. 
+- [dom] returns the list of all identifiers bound in a hierarchy. 
 
-(** ** Notation *)
+*)
 
-Notation "x <- e1 ; e2" := (bind e1 (fun x => e2))
-                             (right associativity, at level 60).
+Parameter agg : list ID -> C.
+Parameter pts : C -> list ID.
 
-Notation " e1 ;; e2 " := (fish e1 e2)
-                           (right associativity, at level 60).
+Parameter geta : forall a:A, C -> option (ty a).
+Parameter seta : forall a:A, ty a -> C -> C.
 
-Notation " x ~ y " := (eval x y) (at level 55).
+Parameter getp : forall p:P, C -> option (ty p).
+Parameter setp : forall p:P, ty p -> C -> C.
 
-Notation " [ P ] " := (lift P) (at level 55).
+Parameter emp : H.
+Parameter ins : ID -> C -> H -> H.
+Parameter fnd : ID -> H -> option C.
+Parameter dom : H -> list ID.
 
-Notation " A /\ B " := (conj A B) : type_scope.
+(** * Axioms
 
-Notation "'Exists' x .. y , p" := (ex (fun x => .. (ex (fun y => p)) ..))
-  (at level 200, x binder, right associativity,
-   format "'[' 'Exists' '/ ' x .. y , '/ ' p ']'")
-  : type_scope.
+- [id_eq_dec] ensures equality between identifiers is decidable
+- [a_eq_dec] ensures equality between identifiers is decidable
+- [pts_agg] ensures that the 
 
-(** * CHAKRA Data Model
+*)
 
-The CHAKRA data model consists of eight abstract types, one abstract type family, and 14 abstract operations. These are explained in the following sections. In addition, we define the axioms which the operations must satisfy. 
-
-** Types
-
-    The conceptual structure of CHAKRA's heirarchcial data model are captured by eight abstract types: [U], [C], [H], [A], [L], [D], [I] and [E]. *)
-
-Axiom U : Set.
-Axiom C : Set.
-Axiom H : Set.
-Axiom A : Set.
-Axiom typ : A -> Set.
-Axiom L : Set.
-Axiom D : Set.
-Axiom E : Set.
-Axiom I : Set.
-
-(** *** Identifiers
- [U] is the type of universal constituent identifiers. Elements of this type [x:U] are symbolic names which uniquely identify the constituents of a knowledge base.*)
-
-(** *** Constituent Objects
- [C] is the type of constituent objectcs. Elements of this type [o:C] are data structures which contain information about the entity represented by the constituent.*)
-
-
-(** *** Hierarchical Knowledge Structures
-[H] is the type of Hierarchical Knowledge structures. Elements of the type [h:H] are data strutures which associate constituent objects with unique identifiers. *)
-
-(** *** Attribtues
- [A] is the type of Attribtues. Each attribtue [a:A] is associated with a type [typ a] which is the type of the values of that attribtue. *)
-
-
-(** *** Properties
- Four additional types capture the different kinds of property with which constituent objects can be associated: *)
-
-(** [L] is the type of hierarchical levels. Elements of this type [s:L] indicate the level of detail being represented by a constituent. [D] is the type of domains. Elements of this type represent the ontological domain to which a constituent belongs. [E] is the type of extrinsic definitions. Elements of this type represent extrinsic categories which constituents can belong to by fiat of the user. [I] is the type of intrinsic properties of constituents. Elements of this type represent properties which derivably true of a constituent. *)
-
-(** ** Operations
- The CHAKRA interface consists of 14 abstract operations, 6 constructor operations and 8 destructor operations: *)
-
-Axiom delimit : list U -> C.
-Axiom setAtt : forall a, typ a -> C -> C.
-Axiom setInt : I -> C -> C.
-Axiom setExt : E -> C -> C.
-Axiom setLvl : L -> C -> C.
-Axiom setDom : D -> C -> C.
-Axiom emp : H.
-Axiom ins : U -> C -> H -> H.
-Axiom getParts : C -> list U.
-Axiom getAtt : forall a:A, C -> option (typ a).
-Axiom getExt : C -> option E.
-Axiom getInt : C -> option I.
-Axiom getLvl : C -> option L.
-Axiom getDom : C -> option D.
-Axiom fnd : U -> H -> option C.
-Axiom dom : H -> list U.
-
-(** ** Axioms
-The abstract operations must satisfy a number of axioms. These are expressed as equations between terms which must hold for any implementation of the interface. 
- *)
-
-Axiom u_eq_dec : forall (x y:U), Decision (x=y).
+Axiom id_eq_dec : forall (x y:ID), Decision (x=y).
 Axiom a_eq_dec : forall (a b:A), Decision (a=b).
-(* begin hide *)
-Notation "'rw' H 'in' H'" := (eq_rect _ _ H' _ H)
-    (at level 10, H' at level 10,
-     format "'[' 'rw' H in '/' H' ']'").
-(* end hide *)
-Axiom parts_delim : forall ps, getParts (delimit ps) = ps.
-Axiom parts_set : forall a v c, getParts (setAtt a v c) = getParts c.
-Axiom get_delim : forall a ps, getAtt a (delimit ps) = None.
-Axiom get_set_same : forall a a' v c (e:a = a'), getAtt a' (setAtt a v c) = Some (rw e in v). 
-Axiom get_set_other : forall a a' v c, a <> a' -> getAtt a' (setAtt a v c) = getAtt a' c.
+Notation "'rw' H 'in' H'" := (eq_rect _ _ H' _ H)(at level 10, H' at level 10, format "'[' 'rw' H in '/' H' ']'").
+Axiom pts_agg : forall ps, pts (agg ps) = ps.
+Axiom pts_seta : forall a v c, pts (seta a v c) = pts c.
+Axiom pts_setp : forall p v c, pts (setp p v c) = pts c.
+Axiom geta_agg : forall a ps, geta a (agg ps) = None.
+Axiom getp_agg : forall p ps, getp p (agg ps) = None.
+Axiom geta_seta_same : forall a a' v c (e:a = a'), geta a' (seta a v c) = Some (rw e in v). 
+Axiom getp_setp_same : forall p p' v c (e:p = p'), getp p' (setp p v c) = Some (rw e in v). 
+Axiom geta_seta_other : forall a a' v c, a <> a' -> geta a' (seta a v c) = geta a' c.
+Axiom getp_setp_other : forall p p' v c, p <> p' -> getp p' (setp p v c) = getp p' c.
 Axiom fnd_emp : forall x, fnd x emp = None.
 Axiom fnd_ins_same : forall x x' c s, x = x' -> fnd x (ins x' c s) = Some c.
 Axiom fnd_ins_other : forall x x' c s, x <> x' -> fnd x (ins x' c s) = fnd x s.
 Axiom dom_fnd : forall x s, In x (dom s) <-> fnd x s <> None. 
 
-(** ** Derived Operations
- Additional operations for accessing and manipulating constituents and hierarchical structures can be defined from the basic operations in the types [Read H] and [State H] *)
+(** * Prelude *)
 
-Definition get_att (a:A) : U -> Read H (typ a) :=
-  fun x => (fnd x) ;; (getAtt a).
+Definition get_att (a:A) : ID -> Read H (ty a) :=
+  fun x => (fnd x) ;; (geta a).
 
-Definition get_parts : U -> Read H (list U) :=
-  fun x s => o <- fnd x s ; ret (getParts o).
+Definition get_prp (p:P) : ID -> Read H (ty p) :=
+  fun x => (fnd x) ;; (getp p).
 
-Definition get_ext : U -> Read H E :=
-  fun x => fnd x ;; getExt.
+Definition get_parts : ID -> Read H (list ID) :=
+  fun x s => o <- fnd x s ; ret (pts o).
 
-Definition get_int : U -> Read H I :=
-  fun x => fnd x ;; getInt.
-
-Definition get_lvl : U -> Read H L :=
-  fun x => fnd x ;; getLvl.
-
-Definition get_dom : U -> Read H D :=
-  fun x => fnd x ;; getDom.
-
-Definition domain : Read H (list U) :=
+Definition domain : Read H (list ID) :=
   fun s => ret (dom s).
 
 (** * Hierarchcial Data Description Language
+
 CHAKRA includes a language for specifying precise logical properties of constituents and structures within hierarchies. The language consists of 5 kinds of expression, each of which can ultimately be interpreted in coq's underlying logic of [Prop]. *)
 
 Definition HProp := H -> Prop.
-Definition CProp := U -> HProp.
-Definition LProp := list U -> HProp.
-Definition CRel := U -> U -> HProp.
-Definition LRel := list U -> list U -> HProp.
+Definition CProp := ID -> HProp.
+Definition LProp := list ID -> HProp.
+Definition CRel := ID -> ID -> HProp.
+Definition LRel := list ID -> list ID -> HProp.
 
 (** ** [HProp]
- HProp is the type of unary predicates over constituent hierarchies. Applying an [p:HProp] to a structure [s:H] yields a proposition [H s] in coq's underlying logic. Definitions for basic [HProp]s are given as instances of the logical operational type classes [LIFT], [EVAL], [CONJ] and [EX]. An additional [HProp] constructor [hspec] is defined by applying an [LProp] (defined) below to the domain of a structure. *)
+
+HProp is the type of unary predicates over constituent hierarchies. Applying an [p:HProp] to a structure [s:H] yields a proposition [H s] in coq's underlying logic. Definitions for basic [HProp]s are given as instances of the logical operational type classes [LIFT], [EVAL], [CONJ] and [EX]. An additional [HProp] constructor [hspec] is defined by applying an [LProp] (defined) below to the domain of a structure. *)
+
+Definition HLift (P:Prop) : HProp :=
+  fun _ => P.
+
+Definition HEvalOption {T} (o:option T) (v:T) : HProp :=
+  fun _ => o ~ v.
+
+Definition HEvalRead {T} (op:Read H T) (v:T) : HProp :=
+  fun s => op s ~ v.
+
+Definition HEvalState {T} (op:State H T) (v:T) : HProp :=
+  fun s => snd (op s) ~ v.
+
+Definition HConj (h1 h2:HProp) : HProp :=
+  fun s => h1 s /\ h2 s.
+
+Definition HExists {T} (p:T->HProp) : HProp :=
+  fun s => Exists t, p t s.
 
 #[global]
-Instance hliftp : LIFT Prop HProp :=
-  fun P _ => P.
+Instance hliftp : LIFT Prop HProp := HLift.
+
 #[global]
-Instance hevalread {T} : EVAL (Read H T) T HProp :=
-  fun c t s => c s ~ t.
+Instance hevaloption {T} : EVAL (option T) T HProp := HEvalOption.
+
 #[global]
-Instance hevalstate {T} : EVAL (State H T) T HProp :=
-  fun c t s => snd (c s) ~ t.
+Instance hevalread {T} : EVAL (Read H T) T HProp := HEvalRead.
+
 #[global]
-Instance hevaloption {T} : EVAL (option T) T HProp :=
-  fun c v s => c ~ v.
+Instance hevalstate {T} : EVAL (State H T) T HProp := HEvalState.
+
 #[global]
-Instance hconj : CONJ HProp :=
-  fun h1 h2 s => (h1 s) /\ (h2 s).
+Instance hconj : CONJ HProp := HConj.
+
 #[global]
-Instance hex {T} : EX T HProp :=
-  fun p s => Exists t, p t s. 
-#[global]
-Definition hspec : LProp -> HProp :=
-  fun p => Exists l, domain ~ l /\ p l.
+Instance hexists {T} : EX T HProp := HExists.
+
+Definition HSpec (p:LProp) : HProp := Exists l, domain ~ l /\ p l.
+
 
 (** ** [CProp]
-[CProp] is the type of [HProp]-valued predicates over constituents. In other words, [CProp] is the type of relations between constituent identifiers [x:U] and structures [s:H]. The basic [CProp] constructors are defined in terms of the values of attribtues, properties and particles a constituent can have. *)
 
-Definition HasAtt (a:A) (v:typ a) : CProp :=
+[CProp] is the type of [HProp]-valued predicates over constituents. In other words, [CProp] is the type of relations between constituent identifiers [x:ID] and structures [s:H]. The basic [CProp] constructors are defined in terms of the values of attribtues, properties and particles a constituent can have. *)
+
+Definition HasAtt (a:A) (v:ty a) : CProp :=
   fun x => (get_att a x) ~ v.
 
-Definition HasParts (l: list U) : CProp :=
+Definition HasPrp (p:P) (v:ty p) : CProp :=
+  fun x => (get_prp p x) ~ v.
+                                         
+Definition HasParts (l: list ID) : CProp :=
   fun x => (get_parts x) ~ l.
 
-Definition AtLevel (l:L) : CProp :=
-  fun x => (get_lvl x) ~ l.
+Definition CLiftP (P:Prop) : CProp :=
+  fun _ => [P]. 
 
-Definition InDomain (d:D) : CProp :=
-  fun x => (get_dom x) ~ d.
+Definition CLiftH (H:HProp) : CProp :=
+  fun _ => H.
 
-Definition HasExt (e:E) : CProp :=
-  fun x => (get_ext x) ~ e.
+Definition CConj (c1 c2 : CProp) : CProp :=
+  fun x => c1 x /\ c2 x.
+
+Definition CExists {T} (p:T->CProp) : CProp :=
+  fun x => Exists t, p t x.
 
 #[global]
-Instance cliftp : LIFT Prop CProp :=
-  fun P _ => [P].
+Instance cliftp : LIFT Prop CProp := CLiftP.
+
 #[global]
-Instance clifth : LIFT HProp CProp :=
-  fun h _ => h.  
+Instance clifth : LIFT HProp CProp := CLiftH. 
+
 #[global]
-Instance cconj : CONJ CProp :=
-  fun Q R x => (Q x) /\ (R x).
+Instance cconj : CONJ CProp := CConj.
+
 #[global]
-Instance cex {T} : EX T CProp :=
-  fun p x => Exists t , p t x.
+Instance cexists {T} : EX T CProp := CExists.
 
 (** ** [LProp]
- [LProp] is the type of unary [HProp]-valued predicates over lists of identifiers. [LProp]s are used to define classes of configurations within a hierarchy. The CHAKRA HDDL includes 5 [LProp] constructors:
+
+[LProp] is the type of unary [HProp]-valued predicates over lists of identifiers. [LProp]s are used to define classes of configurations within a hierarchy. The CHAKRA HDDL includes 5 [LProp] constructors:
+
 - [LNil l] represents the proposition that the list [l] is empty.
-- [LCons x c p l] means that the head of [l] is equal to [x:U] and satifies [c:CProp], and that the tail of the list satifies [p:LProp].
+- [LCons x c p l] means that the head of [l] is equal to [x:ID] and satifies [c:CProp], and that the tail of the list satifies [p:LProp].
 - [LAll c l] means that all elements of [l] satisfy [c:CProp].
 - [LSome c l] means that at least one element of [l] satisfies [c:CProp].
 - [LAllOrdPairs r l] means that at every pair [(x,y)] of elements of [l] such that [x] comes before [y] in [l], satisfy the relation [r:CRel]. This construct can be used to ascribe semantics to the ordering of lists in CHAKRA structures.
@@ -316,7 +229,7 @@ Instance cex {T} : EX T CProp :=
 Definition LNil : LProp :=
   fun l => [l = nil].
 
-Definition LCons : U -> CProp -> LProp -> LProp :=
+Definition LCons : ID -> CProp -> LProp -> LProp :=
   fun x c p l => (hd_error l) ~ x /\ c x /\  p (tl l).
 
 Inductive LAll : CProp -> LProp :=
@@ -331,21 +244,29 @@ Inductive LAllOrdPairs : CRel -> LProp :=
 | all_op_nil : forall (r:CRel) s, LAllOrdPairs r nil s
 | all_op_cons : forall (r:CRel) x l s, LAll (r x) l s -> LAllOrdPairs r l s -> LAllOrdPairs r (cons x l) s.
 
-#[global]
-Instance lliftp : LIFT Prop LProp :=
-  fun P _ => [P].
+Definition LLiftP (P:Prop) : LProp :=
+  fun _ => [P].
+
+Definition LLiftH (H:HProp) : LProp :=
+  fun _ => H.
+
+Definition LConj (s1 s2:LProp) : LProp :=
+  fun l => s1 l /\ s2 l.                                               
+
+Definition LExists {T} (s:T->LProp) : LProp :=
+  fun l => Exists t, s t l.
 
 #[global]
-Instance llifth : LIFT HProp LProp :=
-  fun h _ => h.
+Instance lliftp : LIFT Prop LProp := LLiftP.
 
 #[global]
-Instance lconj : CONJ LProp :=
-  fun p q l => p l /\ q l.
+Instance llifth : LIFT HProp LProp := LLiftH.
 
 #[global]
-Instance lex {T} : EX T LProp :=
-  fun p l => Exists t, p t l.
+Instance lconj : CONJ LProp := LConj.
+
+#[global]
+Instance lexists {T} : EX T LProp := LExists.
 
 (** ** [CRel]
  [CRel] is the type of [HProp]-valued relations over constituents. In other words, [CProp] is the type of ternary relations between two constituent identifiers and a structure. The CHAKRA HDDL includes two ways of constructing [CRel]s:
@@ -353,30 +274,39 @@ Instance lex {T} : EX T LProp :=
 - [PartRel m x y] means that the particles of [x] and [y] are related by [m:LRel].
  *)
 
-Definition AttRel (a1 a2:A) (p:typ a1 -> typ a2 -> Prop) : CRel :=
+Definition AttRel (a1 a2:A) (p:ty a1 -> ty a2 -> Prop) : CRel :=
   fun x y => Exists v1, HasAtt a1 v1 x /\ Exists v2, HasAtt a2 v2 y /\ [p v1 v2].
 
 Definition PartRel : LRel -> CRel :=
   fun m x y => Exists l1, HasParts l1 x /\ Exists l2, HasParts l2 y /\ m l1 l2.
 
-#[global]
-Instance crliftp : LIFT Prop CRel :=
-  fun P _ _ => [P].
+Definition CRLiftP (P:Prop) : CRel :=
+  fun _ _ => [P].
+
+Definition CRLiftH (H:HProp) : CRel :=
+  fun _ _ => H.
+
+Definition CRConj (r1 r2:CRel) : CRel :=
+  fun x y => r1 x y /\ r2 x y.
+
+Definition CRExists {T} (p:T->CRel) : CRel :=
+  fun x y => Exists t, p t x y. 
 
 #[global]
-Instance crlifth : LIFT HProp CRel :=
-  fun h _ _ => h.
+Instance crliftp : LIFT Prop CRel := CRLiftP.
 
 #[global]
-Instance crconj : CONJ CRel :=
-  fun r1 r2 x y => r1 x y /\ r2 x y.
+Instance crlifth : LIFT HProp CRel := CRLiftH.
 
 #[global]
-Instance crex {T} : EX T CRel :=
-  fun p x y => Exists t, p t x y.
+Instance crconj : CONJ CRel := CRConj.
+
+#[global]
+Instance crexists {T} : EX T CRel := CRExists.
 
 (** ** [LRel]
- [LRel] is the type of binary [HProp]-valued predicates over lists of constituent identifiers. [LRel] is used to express structural relationships beteen configurations of constituents in a hierarchy.
+
+[LRel] is the type of binary [HProp]-valued predicates over lists of constituent identifiers. [LRel] is used to express structural relationships beteen configurations of constituents in a hierarchy.
 - [Pairwise c l1 l2] means that elements of [l1] and [l2] are pairwise relatd by [c:CRel].
  *)
 
@@ -384,21 +314,29 @@ Inductive Pairwise : CRel -> LRel :=
 | pw_nil : forall r s, Pairwise r nil nil s
 | pw_cons : forall (r:CRel) x l y l' s, r x y s -> Pairwise r l l' s -> Pairwise r (cons x l) (cons y l') s.
 
-#[global]
-Instance lrliftp : LIFT Prop LRel :=
-  fun P _ _ => [P].
+Definition LRLiftP (P:Prop) : LRel :=
+  fun _ _ => [P].
+
+Definition LRLiftH (H:HProp) : LRel :=
+  fun _ _ => H.
+
+Definition LRConj (r1 r2:LRel) : LRel :=
+  fun l1 l2 => r1 l1 l2 /\ r2 l1 l2.
+
+Definition LRExists {T} (p:T -> LRel) : LRel :=
+  fun l1 l2 => Exists t, p t l1 l2.
 
 #[global]
-Instance lrlifth : LIFT HProp LRel :=
-  fun h _ _ => h.
+Instance lrliftp : LIFT Prop LRel := LRLiftP.
 
 #[global]
-Instance lrconj : CONJ LRel :=
-  fun r1 r2 l1 l2 => r1 l1 l2 /\ r2 l1 l2.
+Instance lrlifth : LIFT HProp LRel := LRLiftH.
 
 #[global]
-Instance lrex {T} : EX T LRel :=
-  fun p l1 l2 => Exists t, p t l1 l2.
+Instance lrconj : CONJ LRel := LRConj.
+
+#[global]
+Instance lrexists {T} : EX T LRel := LRExists.
 
 (** ** A Syntax for the HDDL
  The abstract syntax of the logical language comprising the constructs defined above can reified as a mutually inductive definition: *)
@@ -409,25 +347,25 @@ Inductive HPROP :=
 | HCONJ : HPROP -> HPROP -> HPROP
 | HEXISTS {T} : (T -> HPROP) -> HPROP
 | HSPEC : LPROP -> HPROP
-| CAPP : CPROP -> U -> HPROP
-| CRAPP : CREL -> U -> U -> HPROP
-| LAPP : LPROP -> list U -> HPROP
-| LRAPP : LREL -> list U -> list U -> HPROP 
+| CAPP : CPROP -> ID -> HPROP
+| CRAPP : CREL -> ID -> ID -> HPROP
+| LAPP : LPROP -> list ID -> HPROP
+| LRAPP : LREL -> list ID -> list ID -> HPROP 
 with CPROP :=
 | CLIFTP : Prop -> CPROP
 | CLIFTH : HPROP -> CPROP
 | CCONJ : CPROP -> CPROP -> CPROP
 | CEXISTS {T} : (T -> CPROP) -> CPROP
-| ATT : forall a, typ a -> (typ a -> Prop) -> CPROP
-| PRT : list U -> LPROP -> CPROP
+| ATT : forall a, ty a -> (ty a -> Prop) -> CPROP
+| PRT : list ID -> LPROP -> CPROP
 with LPROP :=
 | NIL : LPROP
-| CONS : U -> CPROP -> LPROP -> LPROP
+| CONS : ID -> CPROP -> LPROP -> LPROP
 | ALL : CPROP -> LPROP
 | SOME : CPROP -> LPROP
 | ALLOP : CREL -> LPROP
 with CREL :=
-| ATTREL : forall a1 a2:A, (typ a1 -> typ a2 -> Prop) -> CREL
+| ATTREL : forall a1 a2:A, (ty a1 -> ty a2 -> Prop) -> CREL
 | PRTREL : LREL -> CREL
 with LREL :=
 | PAIRWISE : CREL -> LREL
@@ -435,11 +373,10 @@ with OP : Type -> Type :=
 | READOP {A} : READ A -> OP A
 | OPTIONOP {A} : OPTION A -> OP A
 with READ : Type -> Type :=
-| GETATT : forall a, U -> READ (typ a)
-| GETPS : U -> READ (list U)
+| GETATT : forall a, ID -> READ (ty a)
+| GETPS : ID -> READ (list ID)
 with OPTION : Type -> Type := 
 | SIMPLEOPTION {A} : option A -> OPTION A.
-
 
 
 (** ** Decidability *)
@@ -447,8 +384,8 @@ with OPTION : Type -> Type :=
 (** For each kind of expression we define what it means for an expression to be decidable. *)
 
 Class HDecidable (h:HProp) := hdec: forall s:H, Decidable (h s).
-Class CDecidable (c:CProp) := cdec: forall x:U, HDecidable (c x).
-Class LDecidable (r:LProp) := ldec: forall l:list U, HDecidable (r l).
+Class CDecidable (c:CProp) := cdec: forall x:ID, HDecidable (c x).
+Class LDecidable (r:LProp) := ldec: forall l:list ID, HDecidable (r l).
 Class RDecidable (r:CRel) := rdec: forall x y, HDecidable (r x y).
 Class MDecidable (m:LRel) := mdec: forall l1 l2, HDecidable (m l1 l2).
 
@@ -459,29 +396,41 @@ Instance hconj_dec {H1 H2} `{HDecidable H1} `{HDecidable H2} : HDecidable (H1 /\
 firstorder.
 Defined.
 
+Hint Unfold HDecidable.
+Hint Unfold Decidable.
+Hint Unfold Decision.
+Hint Unfold hevaloption.
+Hint Unfold hevalread.
+Hint Unfold hevalstate.
+Hint Unfold HEvalState. 
+Hint Unfold HEvalRead.
+Hint Unfold HEvalOption.
+Hint Unfold eval.
+Hint Unfold evaloption.
+
 Instance hevaloption_dec A {eqd:forall (x y:A),Decidable(x=y)} : forall c a, HDecidable (@hevaloption A c a).
-unfold HDecidable. unfold Decidable. unfold hevaloption. unfold eval. unfold pevaloption. intros.
+autounfold in *. intros.
 induction c.
 - induction (eqd a a0).
 -- rewrite -> a1. firstorder. 
--- right. unfold not in *. intros. inversion H0. firstorder.
-- right. autounfold in *. intros. inversion H0.
+-- right. intros. inversion H0. auto.
+- right. intros. inversion H0.
 Defined. 
 
 Instance hevalread_dec A {eqd:forall (x y:A),Decidable(x=y)} : forall c a, HDecidable (@hevalread A c a).
-unfold HDecidable, Decidable, hevalread in *. intros.
+autounfold in *. intros.
 induction (c s).
 - induction (eqd a a0).
--- rewrite -> a1. firstorder. 
--- right. unfold not in *. unfold eval, pevaloption. intros. inversion H0. firstorder.
-- right. autounfold in *. unfold eval, pevaloption in *. intros. inversion H0.
+-- rewrite -> a1. auto.  
+-- right. intros. inversion H0. auto.
+- right. intros. inversion H0.
 Defined. 
 
 Instance hevalstate_dec A {eqd:forall (x y:A),Decidable(x=y)} : forall c a, HDecidable (@hevalstate A c a).
-unfold HDecidable, Decidable, hevalstate in *. intros.
+autounfold in *. intros.
 induction (snd (c s)).
 - induction (eqd a a0).
--- rewrite -> a1. firstorder. 
--- right. unfold not in *. unfold eval, pevaloption. intros. inversion H0. firstorder.
-- right. autounfold in *. unfold eval, pevaloption in *. intros. inversion H0.
+-- rewrite -> a1. auto.
+-- right. intros. inversion H0. auto.
+- right. intros. inversion H0.
 Defined. 

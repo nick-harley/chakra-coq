@@ -1,1555 +1,1349 @@
-DIGEST 37422f6ce051332cc03666d106a063fa
+DIGEST 46bef6b10368544d15efdca90f66799d
 Fchakra
-R565:582 Coq.Init.Datatypes <> <> lib
-R600:613 Coq.Lists.List <> <> lib
-rec 1025:1031 <> Functor
-proj 1057:1060 <> fmap
-R1040:1043 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-binder 1034:1034 <> F:1
-binder 1063:1063 <> A:3
-binder 1065:1065 <> B:4
-R1069:1069 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1076:1080 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1071:1074 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1070:1070 chakra <> A:3 var
-R1075:1075 chakra <> B:4 var
-R1084:1087 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1081:1081 chakra <> F:1 var
-R1083:1083 chakra <> A:3 var
-R1088:1088 chakra <> F:1 var
-R1090:1090 chakra <> B:4 var
-rec 1102:1106 <> Monad
-proj 1146:1149 <> unit
-proj 1171:1174 <> join
-R1116:1119 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-binder 1109:1109 <> F:6
-R1128:1134 chakra <> Functor class
-R1136:1136 chakra <> F:6 var
-binder 1128:1136 <> H:7
-binder 1152:1152 <> A:9
-R1158:1161 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1157:1157 chakra <> A:9 var
-R1162:1162 chakra <> F:6 var
-R1164:1164 chakra <> A:9 var
-binder 1177:1177 <> A:11
-R1189:1192 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1182:1182 chakra <> F:6 var
-R1185:1185 chakra <> F:6 var
-R1187:1187 chakra <> A:11 var
-R1193:1193 chakra <> F:6 var
-R1195:1195 chakra <> A:11 var
-def 1450:1452 <> ret
-R1461:1462 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-binder 1455:1455 <> F:13
-R1471:1475 chakra <> Monad class
-R1477:1477 chakra <> F:13 var
-binder 1471:1477 <> H0:15
-binder 1481:1481 <> A:16
-R1487:1490 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1486:1486 chakra <> A:16 var
-R1491:1491 chakra <> F:13 var
-R1493:1493 chakra <> A:16 var
-R1500:1503 chakra <> unit meth
-def 1518:1521 <> bind
-R1530:1531 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-binder 1524:1524 <> F:17
-R1540:1544 chakra <> Monad class
-R1546:1546 chakra <> F:17 var
-binder 1540:1546 <> H0:19
-binder 1550:1550 <> A:20
-binder 1552:1552 <> B:21
-R1560:1563 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1557:1557 chakra <> F:17 var
-R1559:1559 chakra <> A:20 var
-R1564:1564 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1573:1577 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1566:1569 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1565:1565 chakra <> A:20 var
-R1570:1570 chakra <> F:17 var
-R1572:1572 chakra <> B:21 var
-R1578:1578 chakra <> F:17 var
-R1580:1580 chakra <> B:21 var
-binder 1591:1592 <> oa:22
-binder 1594:1594 <> f:23
-R1599:1602 chakra <> join meth
-R1605:1608 chakra <> fmap meth
-R1612:1613 chakra <> oa:22 var
-R1610:1610 chakra <> f:23 var
-def 1629:1632 <> fish
-R1641:1642 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-binder 1635:1635 <> F:24
-R1651:1655 chakra <> Monad class
-R1657:1657 chakra <> F:24 var
-binder 1651:1657 <> H0:26
-binder 1661:1661 <> A:27
-binder 1663:1663 <> B:28
-binder 1665:1665 <> C:29
-R1670:1670 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1679:1683 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1672:1675 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1671:1671 chakra <> A:27 var
-R1676:1676 chakra <> F:24 var
-R1678:1678 chakra <> B:28 var
-R1684:1684 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1693:1697 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1686:1689 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1685:1685 chakra <> B:28 var
-R1690:1690 chakra <> F:24 var
-R1692:1692 chakra <> C:29 var
-R1699:1702 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1698:1698 chakra <> A:27 var
-R1703:1703 chakra <> F:24 var
-R1705:1705 chakra <> C:29 var
-binder 1716:1716 <> f:30
-binder 1718:1718 <> g:31
-binder 1720:1720 <> a:32
-R1725:1728 chakra <> bind def
-R1736:1736 chakra <> g:31 var
-R1731:1731 chakra <> f:30 var
-R1733:1733 chakra <> a:32 var
-inst 1896:1906 <> list_funtor
-R1910:1916 chakra <> Functor class
-R1918:1921 Coq.Init.Datatypes <> list ind
-R1930:1933 chakra <> fmap meth
-R1938:1940 Coq.Lists.List <> map def
-inst 1955:1964 <> list_monad
-R1968:1972 chakra <> Monad class
-R1974:1977 Coq.Init.Datatypes <> list ind
-R2023:2026 chakra <> join meth
-R1986:1989 chakra <> unit meth
-binder 1992:1992 <> A:33
-binder 2002:2002 <> a:34
-R2007:2010 Coq.Init.Datatypes <> cons constr
-R2014:2016 Coq.Init.Datatypes <> nil constr
-R2012:2012 chakra <> a:34 var
-binder 2029:2029 <> A:35
-R2049:2052 Coq.Init.Datatypes <> list ind
-R2055:2058 Coq.Init.Datatypes <> list ind
-R2060:2060 chakra <> A:35 var
-binder 2045:2047 <> lla:36
-R2073:2075 chakra <> lla:36 var
-R2132:2134 Coq.Init.Datatypes <> nil constr
-R2139:2141 Coq.Init.Datatypes <> nil constr
-R2193:2196 Coq.Init.Datatypes <> cons constr
-R2209:2211 Coq.Init.Datatypes <> app def
-R2217:2220 chakra <> JOIN:37 var
-inst 2293:2302 <> op_functor
-R2306:2312 chakra <> Functor class
-R2314:2319 Coq.Init.Datatypes <> option ind
-R2328:2331 chakra <> fmap meth
-binder 2334:2334 <> A:39
-binder 2336:2336 <> B:40
-binder 2345:2345 <> f:41
-binder 2347:2348 <> oa:42
-R2359:2360 chakra <> oa:42 var
-R2398:2401 Coq.Init.Datatypes <> None constr
-R2406:2409 Coq.Init.Datatypes <> None constr
-R2442:2445 Coq.Init.Datatypes <> Some constr
-R2452:2455 Coq.Init.Datatypes <> Some constr
-R2458:2458 chakra <> f:41 var
-inst 2509:2516 <> op_monad
-R2520:2524 chakra <> Monad class
-R2526:2531 Coq.Init.Datatypes <> option ind
-R2562:2565 chakra <> join meth
-R2540:2543 chakra <> unit meth
-binder 2546:2546 <> A:44
-R2552:2555 Coq.Init.Datatypes <> Some constr
-binder 2568:2568 <> A:45
-binder 2578:2580 <> ooa:46
-R2591:2593 chakra <> ooa:46 var
-R2629:2632 Coq.Init.Datatypes <> None constr
-R2637:2640 Coq.Init.Datatypes <> None constr
-R2671:2674 Coq.Init.Datatypes <> Some constr
-def 3273:3276 <> Read
-binder 3279:3279 <> D:48
-binder 3281:3281 <> A:49
-R3293:3296 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R3292:3292 chakra <> D:48 var
-R3297:3302 Coq.Init.Datatypes <> option ind
-R3304:3304 chakra <> A:49 var
-def 3319:3323 <> State
-binder 3326:3326 <> D:50
-binder 3328:3328 <> A:51
-R3340:3343 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R3339:3339 chakra <> D:50 var
-R3344:3347 Coq.Init.Datatypes <> prod ind
-R3352:3357 Coq.Init.Datatypes <> option ind
-R3359:3359 chakra <> A:51 var
-R3349:3349 chakra <> D:50 var
-inst 3373:3384 <> read_functor
-binder 3387:3387 <> D:52
-R3392:3398 chakra <> Functor class
-R3401:3404 chakra <> Read def
-R3406:3406 chakra <> D:52 var
-R3416:3419 chakra <> fmap meth
-binder 3422:3422 <> A:53
-binder 3424:3424 <> B:54
-binder 3434:3434 <> f:55
-binder 3436:3437 <> ra:56
-binder 3439:3439 <> s:57
-R3444:3447 chakra <> fmap meth
-R3452:3453 chakra <> ra:56 var
-R3455:3455 chakra <> s:57 var
-R3449:3449 chakra <> f:55 var
-inst 3471:3480 <> read_monad
-binder 3483:3483 <> D:58
-R3488:3492 chakra <> Monad class
-R3495:3498 chakra <> Read def
-R3500:3500 chakra <> D:58 var
-R3544:3547 chakra <> join meth
-R3510:3513 chakra <> unit meth
-binder 3516:3516 <> A:59
-binder 3526:3526 <> a:60
-binder 3528:3528 <> s:61
-R3533:3535 chakra <> ret def
-R3537:3537 chakra <> a:60 var
-binder 3550:3550 <> A:62
-binder 3560:3562 <> rra:63
-binder 3564:3564 <> s:64
-R3575:3577 chakra <> rra:63 var
-R3579:3579 chakra <> s:64 var
-R3603:3606 Coq.Init.Datatypes <> None constr
-R3611:3614 Coq.Init.Datatypes <> None constr
-R3633:3636 Coq.Init.Datatypes <> Some constr
-R3645:3645 chakra <> s:64 var
-inst 3680:3692 <> state_functor
-binder 3695:3695 <> D:65
-R3700:3706 chakra <> Functor class
-R3709:3713 chakra <> State def
-R3715:3715 chakra <> D:65 var
-R3725:3728 chakra <> fmap meth
-binder 3731:3731 <> A:66
-binder 3733:3733 <> B:67
-binder 3743:3743 <> f:68
-binder 3745:3746 <> sa:69
-binder 3748:3748 <> s:70
-R3759:3760 chakra <> sa:69 var
-R3762:3762 chakra <> s:70 var
-R3803:3803 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R3806:3807 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R3812:3812 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R3808:3811 Coq.Init.Datatypes <> None constr
-R3817:3817 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R3820:3821 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R3826:3826 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R3822:3825 Coq.Init.Datatypes <> None constr
-R3862:3862 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R3865:3866 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R3873:3873 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R3867:3870 Coq.Init.Datatypes <> Some constr
-R3878:3878 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R3881:3882 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R3893:3893 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R3883:3886 Coq.Init.Datatypes <> Some constr
-R3889:3889 chakra <> f:68 var
-inst 3944:3954 <> state_monad
-binder 3957:3957 <> D:71
-R3962:3966 chakra <> Monad class
-R3969:3973 chakra <> State def
-R3975:3975 chakra <> D:71 var
-R4024:4027 chakra <> join meth
-R3985:3988 chakra <> unit meth
-binder 3991:3991 <> A:72
-binder 4001:4001 <> a:73
-binder 4003:4003 <> s:74
-R4008:4008 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R4010:4010 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R4017:4017 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R4009:4009 chakra <> s:74 var
-R4011:4014 Coq.Init.Datatypes <> Some constr
-R4016:4016 chakra <> a:73 var
-binder 4030:4030 <> A:75
-binder 4040:4042 <> ssa:76
-binder 4044:4044 <> s:77
-R4055:4057 chakra <> ssa:76 var
-R4059:4059 chakra <> s:77 var
-R4097:4097 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R4100:4101 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R4106:4106 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R4102:4105 Coq.Init.Datatypes <> None constr
-R4111:4111 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R4114:4115 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R4120:4120 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R4116:4119 Coq.Init.Datatypes <> None constr
-R4153:4153 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R4156:4157 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R4165:4165 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
-R4158:4161 Coq.Init.Datatypes <> Some constr
-ind 4716:4719 <> LIFT
-constr 4728:4731 <> lift
-rec 4716:4719 <> LIFT
-proj 4728:4731 <> lift
-binder 4721:4721 <> A:78
-binder 4723:4723 <> B:79
-R4736:4739 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R4735:4735 chakra <> A:78 var
-R4740:4740 chakra <> B:79 var
-ind 4749:4752 <> EVAL
-constr 4763:4766 <> eval
-rec 4749:4752 <> EVAL
-proj 4763:4766 <> eval
-binder 4754:4754 <> A:82
-binder 4756:4756 <> B:83
-binder 4758:4758 <> C:84
-R4771:4774 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R4770:4770 chakra <> A:82 var
-R4776:4779 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R4775:4775 chakra <> B:83 var
-R4780:4780 chakra <> C:84 var
-ind 4789:4792 <> CONJ
-constr 4799:4802 <> conj
-rec 4789:4792 <> CONJ
-proj 4799:4802 <> conj
-binder 4794:4794 <> A:87
-R4807:4810 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R4806:4806 chakra <> A:87 var
-R4812:4815 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R4811:4811 chakra <> A:87 var
-R4816:4816 chakra <> A:87 var
-ind 4825:4826 <> EX
-constr 4835:4836 <> ex
-rec 4825:4826 <> EX
-proj 4835:4836 <> ex
-binder 4828:4828 <> A:90
-binder 4830:4830 <> B:91
-R4840:4840 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R4847:4851 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R4842:4845 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R4841:4841 chakra <> A:90 var
-R4846:4846 chakra <> B:91 var
-R4852:4852 chakra <> B:91 var
-def 4867:4874 <> Decision
-binder 4877:4877 <> P:94
-R4888:4888 Coq.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
-R4890:4892 Coq.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
-R4895:4895 Coq.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
-R4889:4889 chakra <> P:94 var
-R4893:4893 Coq.Init.Logic <> ::type_scope:'~'_x not
-R4894:4894 chakra <> P:94 var
-ind 4904:4912 <> Decidable
-constr 4926:4928 <> dec
-rec 4904:4912 <> Decidable
-proj 4926:4928 <> dec
-binder 4915:4915 <> P:95
-R4932:4939 chakra <> Decision def
-R4941:4941 chakra <> P:95 var
-inst 5183:5187 <> pconj
-R5191:5194 chakra <> CONJ class
-binder 5210:5210 <> P:98
-binder 5212:5212 <> Q:99
-R5217:5220 Coq.Init.Datatypes <> prod ind
-R5224:5224 chakra <> Q:99 var
-R5222:5222 chakra <> P:98 var
-inst 5247:5249 <> pex
-binder 5252:5252 <> T:100
-R5257:5258 chakra <> EX class
-R5260:5260 chakra <> T:100 var
-binder 5276:5276 <> P:101
-R5281:5287 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
-R5289:5290 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
-binder 5288:5288 <> t:102
-R5291:5291 chakra <> P:101 var
-R5293:5293 chakra <> t:102 var
-inst 5316:5326 <> pevaloption
-binder 5329:5329 <> A:103
-R5334:5337 chakra <> EVAL class
-R5350:5350 chakra <> A:103 var
-R5340:5345 Coq.Init.Datatypes <> option ind
-R5347:5347 chakra <> A:103 var
-binder 5366:5366 <> c:104
-binder 5368:5368 <> a:105
-R5373:5374 Coq.Init.Logic <> eq ind
-R5379:5382 Coq.Init.Datatypes <> Some constr
-R5384:5384 chakra <> a:105 var
-R5376:5376 chakra <> c:104 var
-R5438:5441 chakra <> bind def
-binder 5451:5451 <> x:106
-not 5419:5419 <> :::x_'<-'_x_';'_x
-R5553:5556 chakra <> fish def
-not 5536:5536 <> :::x_';;'_x
-R5652:5655 chakra <> eval def
-not 5638:5638 <> :::x_'~'_x
-R5701:5704 chakra <> lift def
-not 5687:5687 <> :::'['_x_']'
-R5749:5752 chakra <> conj def
-not 5734:5734 <> ::type_scope:x_'/\'_x
-R5809:5810 chakra <> ex def
-binder 5817:5817 <> x:107
-R5826:5827 chakra <> ex def
-binder 5834:5834 <> y:108
-not 5783:5783 <> ::type_scope:'Exists'_x_'..'_x_','_x
-ax 6383:6383 <> U
-ax 6398:6398 <> C
-ax 6413:6413 <> H
-ax 6428:6428 <> A
-ax 6443:6445 <> typ
-R6450:6453 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R6449:6449 chakra <> A prfax
-ax 6465:6465 <> L
-ax 6480:6480 <> D
-ax 6495:6495 <> E
-ax 6510:6510 <> I
-ax 8093:8099 <> delimit
-R8109:8112 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8103:8106 Coq.Init.Datatypes <> list ind
-R8108:8108 chakra <> U prfax
-R8113:8113 chakra <> C prfax
-ax 8122:8127 <> setAtt
-binder 8138:8138 <> a:119
-R8146:8149 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8141:8143 chakra <> typ prfax
-R8145:8145 chakra <> a:119 var
-R8151:8154 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8150:8150 chakra <> C prfax
-R8155:8155 chakra <> C prfax
-ax 8164:8169 <> setInt
-R8174:8177 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8173:8173 chakra <> I prfax
-R8179:8182 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8178:8178 chakra <> C prfax
-R8183:8183 chakra <> C prfax
-ax 8192:8197 <> setExt
-R8202:8205 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8201:8201 chakra <> E prfax
-R8207:8210 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8206:8206 chakra <> C prfax
-R8211:8211 chakra <> C prfax
-ax 8220:8225 <> setLvl
-R8230:8233 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8229:8229 chakra <> L prfax
-R8235:8238 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8234:8234 chakra <> C prfax
-R8239:8239 chakra <> C prfax
-ax 8248:8253 <> setDom
-R8258:8261 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8257:8257 chakra <> D prfax
-R8263:8266 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8262:8262 chakra <> C prfax
-R8267:8267 chakra <> C prfax
-ax 8276:8278 <> emp
-R8282:8282 chakra <> H prfax
-ax 8291:8293 <> ins
-R8298:8301 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8297:8297 chakra <> U prfax
-R8303:8306 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8302:8302 chakra <> C prfax
-R8308:8311 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8307:8307 chakra <> H prfax
-R8312:8312 chakra <> H prfax
-ax 8321:8328 <> getParts
-R8333:8336 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8332:8332 chakra <> C prfax
-R8337:8340 Coq.Init.Datatypes <> list ind
-R8342:8342 chakra <> U prfax
-ax 8351:8356 <> getAtt
-R8369:8369 chakra <> A prfax
-binder 8367:8367 <> a:128
-R8373:8376 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8372:8372 chakra <> C prfax
-R8377:8382 Coq.Init.Datatypes <> option ind
-R8385:8387 chakra <> typ prfax
-R8389:8389 chakra <> a:128 var
-ax 8399:8404 <> getExt
-R8409:8412 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8408:8408 chakra <> C prfax
-R8413:8418 Coq.Init.Datatypes <> option ind
-R8420:8420 chakra <> E prfax
-ax 8429:8434 <> getInt
-R8439:8442 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8438:8438 chakra <> C prfax
-R8443:8448 Coq.Init.Datatypes <> option ind
-R8450:8450 chakra <> I prfax
-ax 8459:8464 <> getLvl
-R8469:8472 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8468:8468 chakra <> C prfax
-R8473:8478 Coq.Init.Datatypes <> option ind
-R8480:8480 chakra <> L prfax
-ax 8489:8494 <> getDom
-R8499:8502 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8498:8498 chakra <> C prfax
-R8503:8508 Coq.Init.Datatypes <> option ind
-R8510:8510 chakra <> D prfax
-ax 8519:8521 <> fnd
-R8526:8529 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8525:8525 chakra <> U prfax
-R8531:8534 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8530:8530 chakra <> H prfax
-R8535:8540 Coq.Init.Datatypes <> option ind
-R8542:8542 chakra <> C prfax
-ax 8551:8553 <> dom
-R8558:8561 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8557:8557 chakra <> H prfax
-R8562:8565 Coq.Init.Datatypes <> list ind
-R8567:8567 chakra <> U prfax
-ax 8758:8765 <> u_eq_dec
-R8781:8781 chakra <> U prfax
-binder 8777:8777 <> x:136
-binder 8779:8779 <> y:137
-R8785:8792 chakra <> Decision def
-R8796:8796 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R8795:8795 chakra <> x:136 var
-R8797:8797 chakra <> y:137 var
-ax 8807:8814 <> a_eq_dec
-R8830:8830 chakra <> A prfax
-binder 8826:8826 <> a:139
-binder 8828:8828 <> b:140
-R8834:8841 chakra <> Decision def
-R8845:8845 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R8844:8844 chakra <> a:139 var
-R8846:8846 chakra <> b:140 var
-R8897:8903 Coq.Init.Logic <> eq_rect scheme
-not 8876:8876 <> :::'rw'_x_'in'_x
-ax 9013:9023 <> parts_delim
-binder 9034:9035 <> ps:142
-R9059:9061 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9038:9045 chakra <> getParts prfax
-R9048:9054 chakra <> delimit prfax
-R9056:9057 chakra <> ps:142 var
-R9062:9063 chakra <> ps:142 var
-ax 9072:9080 <> parts_set
-binder 9091:9091 <> a:144
-binder 9093:9093 <> v:145
-binder 9095:9095 <> c:146
-R9121:9123 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9098:9105 chakra <> getParts prfax
-R9108:9113 chakra <> setAtt prfax
-R9115:9115 chakra <> a:144 var
-R9117:9117 chakra <> v:145 var
-R9119:9119 chakra <> c:146 var
-R9124:9131 chakra <> getParts prfax
-R9133:9133 chakra <> c:146 var
-ax 9142:9150 <> get_delim
-binder 9161:9161 <> a:148
-binder 9163:9164 <> ps:149
-R9188:9190 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9167:9172 chakra <> getAtt prfax
-R9174:9174 chakra <> a:148 var
-R9177:9183 chakra <> delimit prfax
-R9185:9186 chakra <> ps:149 var
-R9191:9194 Coq.Init.Datatypes <> None constr
-ax 9203:9214 <> get_set_same
-binder 9225:9225 <> a:151
-binder 9227:9228 <> a':152
-binder 9230:9230 <> v:153
-binder 9232:9232 <> c:154
-R9238:9240 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9237:9237 chakra <> a:151 var
-R9241:9242 chakra <> a':152 var
-binder 9235:9235 <> e:155
-R9270:9272 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9246:9251 chakra <> getAtt prfax
-R9253:9254 chakra <> a':152 var
-R9257:9262 chakra <> setAtt prfax
-R9264:9264 chakra <> a:151 var
-R9266:9266 chakra <> v:153 var
-R9268:9268 chakra <> c:154 var
-R9273:9276 Coq.Init.Datatypes <> Some constr
-R9279:9281 chakra <> :::'rw'_x_'in'_x not
-R9283:9286 chakra <> :::'rw'_x_'in'_x not
-R9287:9287 chakra <> v:153 var
-R9282:9282 chakra <> e:155 var
-ax 9298:9310 <> get_set_other
-binder 9321:9321 <> a:157
-binder 9323:9324 <> a':158
-binder 9326:9326 <> v:159
-binder 9328:9328 <> c:160
-R9338:9341 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R9332:9335 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
-R9331:9331 chakra <> a:157 var
-R9336:9337 chakra <> a':158 var
-R9366:9368 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9342:9347 chakra <> getAtt prfax
-R9349:9350 chakra <> a':158 var
-R9353:9358 chakra <> setAtt prfax
-R9360:9360 chakra <> a:157 var
-R9362:9362 chakra <> v:159 var
-R9364:9364 chakra <> c:160 var
-R9369:9374 chakra <> getAtt prfax
-R9376:9377 chakra <> a':158 var
-R9379:9379 chakra <> c:160 var
-ax 9388:9394 <> fnd_emp
-binder 9405:9405 <> x:162
-R9417:9419 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9408:9410 chakra <> fnd prfax
-R9412:9412 chakra <> x:162 var
-R9414:9416 chakra <> emp prfax
-R9420:9423 Coq.Init.Datatypes <> None constr
-ax 9432:9443 <> fnd_ins_same
-binder 9454:9454 <> x:164
-binder 9456:9457 <> x':165
-binder 9459:9459 <> c:166
-binder 9461:9461 <> s:167
-R9470:9473 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R9465:9467 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9464:9464 chakra <> x:164 var
-R9468:9469 chakra <> x':165 var
-R9492:9494 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9474:9476 chakra <> fnd prfax
-R9478:9478 chakra <> x:164 var
-R9481:9483 chakra <> ins prfax
-R9485:9486 chakra <> x':165 var
-R9488:9488 chakra <> c:166 var
-R9490:9490 chakra <> s:167 var
-R9495:9498 Coq.Init.Datatypes <> Some constr
-R9500:9500 chakra <> c:166 var
-ax 9509:9521 <> fnd_ins_other
-binder 9532:9532 <> x:169
-binder 9534:9535 <> x':170
-binder 9537:9537 <> c:171
-binder 9539:9539 <> s:172
-R9549:9552 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R9543:9546 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
-R9542:9542 chakra <> x:169 var
-R9547:9548 chakra <> x':170 var
-R9571:9573 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9553:9555 chakra <> fnd prfax
-R9557:9557 chakra <> x:169 var
-R9560:9562 chakra <> ins prfax
-R9564:9565 chakra <> x':170 var
-R9567:9567 chakra <> c:171 var
-R9569:9569 chakra <> s:172 var
-R9574:9576 chakra <> fnd prfax
-R9578:9578 chakra <> x:169 var
-R9580:9580 chakra <> s:172 var
-ax 9589:9595 <> dom_fnd
-binder 9606:9606 <> x:174
-binder 9608:9608 <> s:175
-R9623:9627 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
-R9611:9612 Coq.Lists.List <> In def
-R9617:9619 chakra <> dom prfax
-R9621:9621 chakra <> s:175 var
-R9614:9614 chakra <> x:174 var
-R9635:9638 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
-R9628:9630 chakra <> fnd prfax
-R9632:9632 chakra <> x:174 var
-R9634:9634 chakra <> s:175 var
-R9639:9642 Coq.Init.Datatypes <> None constr
-def 9860:9866 <> get_att
-R9871:9871 chakra <> A prfax
-binder 9869:9869 <> a:177
-R9877:9880 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R9876:9876 chakra <> U prfax
-R9881:9884 chakra <> Read def
-R9886:9886 chakra <> H prfax
-R9889:9891 chakra <> typ prfax
-R9893:9893 chakra <> a:177 var
-binder 9905:9905 <> x:178
-R9910:9910 chakra <> :::x_';;'_x not
-R9916:9921 chakra <> :::x_';;'_x not
-R9930:9930 chakra <> :::x_';;'_x not
-R9911:9913 chakra <> fnd prfax
-R9915:9915 chakra <> x:178 var
-R9922:9927 chakra <> getAtt prfax
-R9929:9929 chakra <> a:177 var
-def 9945:9953 <> get_parts
-R9958:9961 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R9957:9957 chakra <> U prfax
-R9962:9965 chakra <> Read def
-R9967:9967 chakra <> H prfax
-R9970:9973 Coq.Init.Datatypes <> list ind
-R9975:9975 chakra <> U prfax
-binder 9987:9987 <> x:179
-binder 9989:9989 <> s:180
-R9995:9998 chakra <> :::x_'<-'_x_';'_x not
-R10006:10008 chakra <> :::x_'<-'_x_';'_x not
-R9999:10001 chakra <> fnd prfax
-R10003:10003 chakra <> x:179 var
-R10005:10005 chakra <> s:180 var
-binder 9994:9994 <> o:181
-R10009:10011 chakra <> ret def
-R10014:10021 chakra <> getParts prfax
-R10023:10023 chakra <> o:181 var
-def 10039:10045 <> get_ext
-R10050:10053 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10049:10049 chakra <> U prfax
-R10054:10057 chakra <> Read def
-R10059:10059 chakra <> H prfax
-R10061:10061 chakra <> E prfax
-binder 10072:10072 <> x:182
-R10082:10085 chakra <> :::x_';;'_x not
-R10077:10079 chakra <> fnd prfax
-R10081:10081 chakra <> x:182 var
-R10086:10091 chakra <> getExt prfax
-def 10106:10112 <> get_int
-R10117:10120 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10116:10116 chakra <> U prfax
-R10121:10124 chakra <> Read def
-R10126:10126 chakra <> H prfax
-R10128:10128 chakra <> I prfax
-binder 10139:10139 <> x:183
-R10149:10152 chakra <> :::x_';;'_x not
-R10144:10146 chakra <> fnd prfax
-R10148:10148 chakra <> x:183 var
-R10153:10158 chakra <> getInt prfax
-def 10173:10179 <> get_lvl
-R10184:10187 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10183:10183 chakra <> U prfax
-R10188:10191 chakra <> Read def
-R10193:10193 chakra <> H prfax
-R10195:10195 chakra <> L prfax
-binder 10206:10206 <> x:184
-R10216:10219 chakra <> :::x_';;'_x not
-R10211:10213 chakra <> fnd prfax
-R10215:10215 chakra <> x:184 var
-R10220:10225 chakra <> getLvl prfax
-def 10240:10246 <> get_dom
-R10251:10254 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10250:10250 chakra <> U prfax
-R10255:10258 chakra <> Read def
-R10260:10260 chakra <> H prfax
-R10262:10262 chakra <> D prfax
-binder 10273:10273 <> x:185
-R10283:10286 chakra <> :::x_';;'_x not
-R10278:10280 chakra <> fnd prfax
-R10282:10282 chakra <> x:185 var
-R10287:10292 chakra <> getDom prfax
-def 10307:10312 <> domain
-R10316:10319 chakra <> Read def
-R10321:10321 chakra <> H prfax
-R10324:10327 Coq.Init.Datatypes <> list ind
-R10329:10329 chakra <> U prfax
-binder 10341:10341 <> s:186
-R10346:10348 chakra <> ret def
-R10351:10353 chakra <> dom prfax
-R10355:10355 chakra <> s:186 var
-def 10669:10673 <> HProp
-R10679:10682 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10678:10678 chakra <> H prfax
-def 10700:10704 <> CProp
-R10710:10713 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10709:10709 chakra <> U prfax
-R10714:10718 chakra <> HProp def
-def 10732:10736 <> LProp
-R10747:10750 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10741:10744 Coq.Init.Datatypes <> list ind
-R10746:10746 chakra <> U prfax
-R10751:10755 chakra <> HProp def
-def 10769:10772 <> CRel
-R10778:10781 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10777:10777 chakra <> U prfax
-R10783:10786 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10782:10782 chakra <> U prfax
-R10787:10791 chakra <> HProp def
-def 10805:10808 <> LRel
-R10819:10822 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10813:10816 Coq.Init.Datatypes <> list ind
-R10818:10818 chakra <> U prfax
-R10829:10832 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10823:10826 Coq.Init.Datatypes <> list ind
-R10828:10828 chakra <> U prfax
-R10833:10837 chakra <> HProp def
-inst 11294:11299 <> hliftp
-R11303:11306 chakra <> LIFT class
+R1160:1168 Coq.Unicode.Utf8_core <> <> lib
+R1202:1219 Coq.Init.Datatypes <> <> lib
+R1237:1250 Coq.Lists.List <> <> lib
+R1268:1276 prechakra <> <> lib
+ax 2527:2528 <> ID
+ax 2547:2547 <> C
+ax 2566:2566 <> H
+ax 2585:2585 <> A
+ind 2604:2604 <> P
+constr 2615:2617 <> MOD
+constr 2621:2623 <> LEV
+constr 2627:2629 <> DEF
+ax 2644:2646 <> aty
+R2651:2654 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2650:2650 chakra <> A defax
+ax 2670:2672 <> pty
+R2677:2680 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2676:2676 chakra <> P ind
+ind 2693:2695 <> TYP
+constr 2702:2703 <> ty
+rec 2693:2695 <> TYP
+proj 2702:2703 <> ty
+binder 2697:2697 <> T:9
+R2708:2711 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2707:2707 chakra <> T:9 var
+inst 2737:2743 <> ATTRTYP
+R2747:2749 chakra <> TYP class
+R2751:2751 chakra <> A defax
+R2756:2758 chakra <> aty defax
+inst 2781:2787 <> PROPTYP
+R2791:2793 chakra <> TYP class
+R2795:2795 chakra <> P ind
+R2800:2802 chakra <> pty defax
+ax 3331:3333 <> agg
+R3344:3347 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3337:3340 Coq.Init.Datatypes <> list ind
+R3342:3343 chakra <> ID defax
+R3348:3348 chakra <> C defax
+ax 3361:3363 <> pts
+R3368:3371 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3367:3367 chakra <> C defax
+R3372:3375 Coq.Init.Datatypes <> list ind
+R3377:3378 chakra <> ID defax
+ax 3392:3395 <> geta
+R3408:3408 chakra <> A defax
+binder 3406:3406 <> a:14
+R3412:3415 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3411:3411 chakra <> C defax
+R3416:3421 Coq.Init.Datatypes <> option ind
+R3424:3425 chakra <> ty def
+R3427:3427 chakra <> a:14 var
+ax 3441:3444 <> seta
+R3457:3457 chakra <> A defax
+binder 3455:3455 <> a:16
+R3464:3467 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3460:3461 chakra <> ty def
+R3463:3463 chakra <> a:16 var
+R3469:3472 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3468:3468 chakra <> C defax
+R3473:3473 chakra <> C defax
+ax 3487:3490 <> getp
+R3503:3503 chakra <> P ind
+binder 3501:3501 <> p:18
+R3507:3510 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3506:3506 chakra <> C defax
+R3511:3516 Coq.Init.Datatypes <> option ind
+R3519:3520 chakra <> ty def
+R3522:3522 chakra <> p:18 var
+ax 3536:3539 <> setp
+R3552:3552 chakra <> P ind
+binder 3550:3550 <> p:20
+R3559:3562 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3555:3556 chakra <> ty def
+R3558:3558 chakra <> p:20 var
+R3564:3567 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3563:3563 chakra <> C defax
+R3568:3568 chakra <> C defax
+ax 3582:3584 <> emp
+R3588:3588 chakra <> H defax
+ax 3601:3603 <> ins
+R3609:3612 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3607:3608 chakra <> ID defax
+R3614:3617 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3613:3613 chakra <> C defax
+R3619:3622 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3618:3618 chakra <> H defax
+R3623:3623 chakra <> H defax
+ax 3636:3638 <> fnd
+R3644:3647 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3642:3643 chakra <> ID defax
+R3649:3652 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3648:3648 chakra <> H defax
+R3653:3658 Coq.Init.Datatypes <> option ind
+R3660:3660 chakra <> C defax
+ax 3673:3675 <> dom
+R3680:3683 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3679:3679 chakra <> H defax
+R3684:3687 Coq.Init.Datatypes <> list ind
+R3689:3690 chakra <> ID defax
+ax 3876:3884 <> id_eq_dec
+R3900:3901 chakra <> ID defax
+binder 3896:3896 <> x:26
+binder 3898:3898 <> y:27
+R3905:3912 prechakra <> Decision def
+R3916:3916 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3915:3915 chakra <> x:26 var
+R3917:3917 chakra <> y:27 var
+ax 3927:3934 <> a_eq_dec
+R3950:3950 chakra <> A defax
+binder 3946:3946 <> a:29
+binder 3948:3948 <> b:30
+R3954:3961 prechakra <> Decision def
+R3965:3965 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3964:3964 chakra <> a:29 var
+R3966:3966 chakra <> b:30 var
+R4000:4006 Coq.Init.Logic <> eq_rect scheme
+not 3979:3979 <> :::'rw'_x_'in'_x
+ax 4091:4097 <> pts_agg
+binder 4108:4109 <> ps:32
+R4124:4126 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4112:4114 chakra <> pts defax
+R4117:4119 chakra <> agg defax
+R4121:4122 chakra <> ps:32 var
+R4127:4128 chakra <> ps:32 var
+ax 4137:4144 <> pts_seta
+binder 4155:4155 <> a:34
+binder 4157:4157 <> v:35
+binder 4159:4159 <> c:36
+R4178:4180 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4162:4164 chakra <> pts defax
+R4167:4170 chakra <> seta defax
+R4172:4172 chakra <> a:34 var
+R4174:4174 chakra <> v:35 var
+R4176:4176 chakra <> c:36 var
+R4181:4183 chakra <> pts defax
+R4185:4185 chakra <> c:36 var
+ax 4194:4201 <> pts_setp
+binder 4212:4212 <> p:38
+binder 4214:4214 <> v:39
+binder 4216:4216 <> c:40
+R4235:4237 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4219:4221 chakra <> pts defax
+R4224:4227 chakra <> setp defax
+R4229:4229 chakra <> p:38 var
+R4231:4231 chakra <> v:39 var
+R4233:4233 chakra <> c:40 var
+R4238:4240 chakra <> pts defax
+R4242:4242 chakra <> c:40 var
+ax 4251:4258 <> geta_agg
+binder 4269:4269 <> a:42
+binder 4271:4272 <> ps:43
+R4290:4292 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4275:4278 chakra <> geta defax
+R4280:4280 chakra <> a:42 var
+R4283:4285 chakra <> agg defax
+R4287:4288 chakra <> ps:43 var
+R4293:4296 Coq.Init.Datatypes <> None constr
+ax 4305:4312 <> getp_agg
+binder 4323:4323 <> p:45
+binder 4325:4326 <> ps:46
+R4344:4346 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4329:4332 chakra <> getp defax
+R4334:4334 chakra <> p:45 var
+R4337:4339 chakra <> agg defax
+R4341:4342 chakra <> ps:46 var
+R4347:4350 Coq.Init.Datatypes <> None constr
+ax 4359:4372 <> geta_seta_same
+binder 4383:4383 <> a:48
+binder 4385:4386 <> a':49
+binder 4388:4388 <> v:50
+binder 4390:4390 <> c:51
+R4396:4398 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4395:4395 chakra <> a:48 var
+R4399:4400 chakra <> a':49 var
+binder 4393:4393 <> e:52
+R4424:4426 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4404:4407 chakra <> geta defax
+R4409:4410 chakra <> a':49 var
+R4413:4416 chakra <> seta defax
+R4418:4418 chakra <> a:48 var
+R4420:4420 chakra <> v:50 var
+R4422:4422 chakra <> c:51 var
+R4427:4430 Coq.Init.Datatypes <> Some constr
+R4433:4435 chakra <> :::'rw'_x_'in'_x not
+R4437:4440 chakra <> :::'rw'_x_'in'_x not
+R4441:4441 chakra <> v:50 var
+R4436:4436 chakra <> e:52 var
+ax 4452:4465 <> getp_setp_same
+binder 4476:4476 <> p:54
+binder 4478:4479 <> p':55
+binder 4481:4481 <> v:56
+binder 4483:4483 <> c:57
+R4489:4491 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4488:4488 chakra <> p:54 var
+R4492:4493 chakra <> p':55 var
+binder 4486:4486 <> e:58
+R4517:4519 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4497:4500 chakra <> getp defax
+R4502:4503 chakra <> p':55 var
+R4506:4509 chakra <> setp defax
+R4511:4511 chakra <> p:54 var
+R4513:4513 chakra <> v:56 var
+R4515:4515 chakra <> c:57 var
+R4520:4523 Coq.Init.Datatypes <> Some constr
+R4526:4528 chakra <> :::'rw'_x_'in'_x not
+R4530:4533 chakra <> :::'rw'_x_'in'_x not
+R4534:4534 chakra <> v:56 var
+R4529:4529 chakra <> e:58 var
+ax 4545:4559 <> geta_seta_other
+binder 4570:4570 <> a:60
+binder 4572:4573 <> a':61
+binder 4575:4575 <> v:62
+binder 4577:4577 <> c:63
+R4587:4590 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4581:4584 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R4580:4580 chakra <> a:60 var
+R4585:4586 chakra <> a':61 var
+R4611:4613 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4591:4594 chakra <> geta defax
+R4596:4597 chakra <> a':61 var
+R4600:4603 chakra <> seta defax
+R4605:4605 chakra <> a:60 var
+R4607:4607 chakra <> v:62 var
+R4609:4609 chakra <> c:63 var
+R4614:4617 chakra <> geta defax
+R4619:4620 chakra <> a':61 var
+R4622:4622 chakra <> c:63 var
+ax 4631:4645 <> getp_setp_other
+binder 4656:4656 <> p:65
+binder 4658:4659 <> p':66
+binder 4661:4661 <> v:67
+binder 4663:4663 <> c:68
+R4673:4676 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4667:4670 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R4666:4666 chakra <> p:65 var
+R4671:4672 chakra <> p':66 var
+R4697:4699 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4677:4680 chakra <> getp defax
+R4682:4683 chakra <> p':66 var
+R4686:4689 chakra <> setp defax
+R4691:4691 chakra <> p:65 var
+R4693:4693 chakra <> v:67 var
+R4695:4695 chakra <> c:68 var
+R4700:4703 chakra <> getp defax
+R4705:4706 chakra <> p':66 var
+R4708:4708 chakra <> c:68 var
+ax 4717:4723 <> fnd_emp
+binder 4734:4734 <> x:70
+R4746:4748 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4737:4739 chakra <> fnd defax
+R4741:4741 chakra <> x:70 var
+R4743:4745 chakra <> emp defax
+R4749:4752 Coq.Init.Datatypes <> None constr
+ax 4761:4772 <> fnd_ins_same
+binder 4783:4783 <> x:72
+binder 4785:4786 <> x':73
+binder 4788:4788 <> c:74
+binder 4790:4790 <> s:75
+R4799:4802 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4794:4796 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4793:4793 chakra <> x:72 var
+R4797:4798 chakra <> x':73 var
+R4821:4823 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4803:4805 chakra <> fnd defax
+R4807:4807 chakra <> x:72 var
+R4810:4812 chakra <> ins defax
+R4814:4815 chakra <> x':73 var
+R4817:4817 chakra <> c:74 var
+R4819:4819 chakra <> s:75 var
+R4824:4827 Coq.Init.Datatypes <> Some constr
+R4829:4829 chakra <> c:74 var
+ax 4838:4850 <> fnd_ins_other
+binder 4861:4861 <> x:77
+binder 4863:4864 <> x':78
+binder 4866:4866 <> c:79
+binder 4868:4868 <> s:80
+R4878:4881 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4872:4875 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R4871:4871 chakra <> x:77 var
+R4876:4877 chakra <> x':78 var
+R4900:4902 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4882:4884 chakra <> fnd defax
+R4886:4886 chakra <> x:77 var
+R4889:4891 chakra <> ins defax
+R4893:4894 chakra <> x':78 var
+R4896:4896 chakra <> c:79 var
+R4898:4898 chakra <> s:80 var
+R4903:4905 chakra <> fnd defax
+R4907:4907 chakra <> x:77 var
+R4909:4909 chakra <> s:80 var
+ax 4918:4924 <> dom_fnd
+binder 4935:4935 <> x:82
+binder 4937:4937 <> s:83
+R4952:4956 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R4940:4941 Coq.Lists.List <> In def
+R4946:4948 chakra <> dom defax
+R4950:4950 chakra <> s:83 var
+R4943:4943 chakra <> x:82 var
+R4964:4967 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R4957:4959 chakra <> fnd defax
+R4961:4961 chakra <> x:82 var
+R4963:4963 chakra <> s:83 var
+R4968:4971 Coq.Init.Datatypes <> None constr
+def 5005:5011 <> get_att
+R5016:5016 chakra <> A defax
+binder 5014:5014 <> a:85
+R5023:5026 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5021:5022 chakra <> ID defax
+R5027:5030 prechakra <> Read def
+R5032:5032 chakra <> H defax
+R5035:5036 chakra <> ty def
+R5038:5038 chakra <> a:85 var
+binder 5050:5050 <> x:86
+R5055:5055 prechakra <> :::x_';;'_x not
+R5061:5066 prechakra <> :::x_';;'_x not
+R5073:5073 prechakra <> :::x_';;'_x not
+R5056:5058 chakra <> fnd defax
+R5060:5060 chakra <> x:86 var
+R5067:5070 chakra <> geta defax
+R5072:5072 chakra <> a:85 var
+def 5088:5094 <> get_prp
+R5099:5099 chakra <> P ind
+binder 5097:5097 <> p:87
+R5106:5109 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5104:5105 chakra <> ID defax
+R5110:5113 prechakra <> Read def
+R5115:5115 chakra <> H defax
+R5118:5119 chakra <> ty def
+R5121:5121 chakra <> p:87 var
+binder 5133:5133 <> x:88
+R5138:5138 prechakra <> :::x_';;'_x not
+R5144:5149 prechakra <> :::x_';;'_x not
+R5156:5156 prechakra <> :::x_';;'_x not
+R5139:5141 chakra <> fnd defax
+R5143:5143 chakra <> x:88 var
+R5150:5153 chakra <> getp defax
+R5155:5155 chakra <> p:87 var
+def 5171:5179 <> get_parts
+R5185:5188 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5183:5184 chakra <> ID defax
+R5189:5192 prechakra <> Read def
+R5194:5194 chakra <> H defax
+R5197:5200 Coq.Init.Datatypes <> list ind
+R5202:5203 chakra <> ID defax
+binder 5215:5215 <> x:89
+binder 5217:5217 <> s:90
+R5223:5226 prechakra <> :::x_'<-'_x_';'_x not
+R5234:5236 prechakra <> :::x_'<-'_x_';'_x not
+R5227:5229 chakra <> fnd defax
+R5231:5231 chakra <> x:89 var
+R5233:5233 chakra <> s:90 var
+binder 5222:5222 <> o:91
+R5237:5239 prechakra <> ret def
+R5242:5244 chakra <> pts defax
+R5246:5246 chakra <> o:91 var
+def 5262:5267 <> domain
+R5271:5274 prechakra <> Read def
+R5276:5276 chakra <> H defax
+R5279:5282 Coq.Init.Datatypes <> list ind
+R5284:5285 chakra <> ID defax
+binder 5297:5297 <> s:92
+R5302:5304 prechakra <> ret def
+R5307:5309 chakra <> dom defax
+R5311:5311 chakra <> s:92 var
+def 5626:5630 <> HProp
+R5636:5639 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5635:5635 chakra <> H defax
+def 5657:5661 <> CProp
+R5668:5671 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5666:5667 chakra <> ID defax
+R5672:5676 chakra <> HProp def
+def 5690:5694 <> LProp
+R5706:5709 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5699:5702 Coq.Init.Datatypes <> list ind
+R5704:5705 chakra <> ID defax
+R5710:5714 chakra <> HProp def
+def 5728:5731 <> CRel
+R5738:5741 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5736:5737 chakra <> ID defax
+R5744:5747 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5742:5743 chakra <> ID defax
+R5748:5752 chakra <> HProp def
+def 5766:5769 <> LRel
+R5781:5784 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5774:5777 Coq.Init.Datatypes <> list ind
+R5779:5780 chakra <> ID defax
+R5792:5795 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5785:5788 Coq.Init.Datatypes <> list ind
+R5790:5791 chakra <> ID defax
+R5796:5800 chakra <> HProp def
+def 6249:6253 <> HLift
+binder 6256:6256 <> P:93
+R6266:6270 chakra <> HProp def
+R6286:6286 chakra <> P:93 var
+def 6301:6311 <> HEvalOption
+binder 6314:6314 <> T:94
+R6320:6325 Coq.Init.Datatypes <> option ind
+R6327:6327 chakra <> T:94 var
+binder 6318:6318 <> o:95
+R6333:6333 chakra <> T:94 var
+binder 6331:6331 <> v:96
+R6338:6342 chakra <> HProp def
+R6359:6361 prechakra <> :::x_'~'_x not
+R6358:6358 chakra <> o:95 var
+R6362:6362 chakra <> v:96 var
+def 6377:6385 <> HEvalRead
+binder 6388:6388 <> T:97
+R6395:6398 prechakra <> Read def
+R6400:6400 chakra <> H defax
+R6402:6402 chakra <> T:97 var
+binder 6392:6393 <> op:98
+R6408:6408 chakra <> T:97 var
+binder 6406:6406 <> v:99
+R6413:6417 chakra <> HProp def
+binder 6428:6428 <> s:100
+R6437:6439 prechakra <> :::x_'~'_x not
+R6433:6434 chakra <> op:98 var
+R6436:6436 chakra <> s:100 var
+R6440:6440 chakra <> v:99 var
+def 6455:6464 <> HEvalState
+binder 6467:6467 <> T:101
+R6474:6478 prechakra <> State def
+R6480:6480 chakra <> H defax
+R6482:6482 chakra <> T:101 var
+binder 6471:6472 <> op:102
+R6488:6488 chakra <> T:101 var
+binder 6486:6486 <> v:103
+R6493:6497 chakra <> HProp def
+binder 6508:6508 <> s:104
+R6523:6525 prechakra <> :::x_'~'_x not
+R6513:6515 Coq.Init.Datatypes <> snd def
+R6518:6519 chakra <> op:102 var
+R6521:6521 chakra <> s:104 var
+R6526:6526 chakra <> v:103 var
+def 6541:6545 <> HConj
+R6554:6558 chakra <> HProp def
+binder 6548:6549 <> h1:105
+binder 6551:6552 <> h2:106
+R6563:6567 chakra <> HProp def
+binder 6578:6578 <> s:107
+R6587:6590 prechakra <> ::type_scope:x_'/\'_x not
+R6583:6584 chakra <> h1:105 var
+R6586:6586 chakra <> s:107 var
+R6591:6592 chakra <> h2:106 var
+R6594:6594 chakra <> s:107 var
+def 6609:6615 <> HExists
+binder 6618:6618 <> T:108
+R6625:6626 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6624:6624 chakra <> T:108 var
+R6627:6631 chakra <> HProp def
+binder 6622:6622 <> p:109
+R6636:6640 chakra <> HProp def
+binder 6651:6651 <> s:110
+R6656:6662 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+R6664:6665 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+binder 6663:6663 <> t:111
+R6666:6666 chakra <> p:109 var
+R6670:6670 chakra <> s:110 var
+R6668:6668 chakra <> t:111 var
+inst 6693:6698 <> hliftp
+R6702:6705 prechakra <> LIFT class
+R6712:6716 chakra <> HProp def
+R6721:6725 chakra <> HLift def
+inst 6748:6758 <> hevaloption
+binder 6761:6761 <> T:112
+R6766:6769 prechakra <> EVAL class
+R6784:6788 chakra <> HProp def
+R6782:6782 chakra <> T:112 var
+R6772:6777 Coq.Init.Datatypes <> option ind
+R6779:6779 chakra <> T:112 var
+R6793:6803 chakra <> HEvalOption def
+inst 6826:6834 <> hevalread
+binder 6837:6837 <> T:113
+R6842:6845 prechakra <> EVAL class
+R6860:6864 chakra <> HProp def
+R6858:6858 chakra <> T:113 var
+R6848:6851 prechakra <> Read def
+R6853:6853 chakra <> H defax
+R6855:6855 chakra <> T:113 var
+R6869:6877 chakra <> HEvalRead def
+inst 6900:6909 <> hevalstate
+binder 6912:6912 <> T:114
+R6917:6920 prechakra <> EVAL class
+R6936:6940 chakra <> HProp def
+R6934:6934 chakra <> T:114 var
+R6923:6927 prechakra <> State def
+R6929:6929 chakra <> H defax
+R6931:6931 chakra <> T:114 var
+R6945:6954 chakra <> HEvalState def
+inst 6977:6981 <> hconj
+R6985:6988 prechakra <> CONJ class
+R6990:6994 chakra <> HProp def
+R6999:7003 chakra <> HConj def
+inst 7026:7032 <> hexists
+binder 7035:7035 <> T:115
+R7040:7041 prechakra <> EX class
+R7045:7049 chakra <> HProp def
+R7043:7043 chakra <> T:115 var
+R7054:7060 chakra <> HExists def
+def 7075:7079 <> HSpec
+R7084:7088 chakra <> LProp def
+binder 7082:7082 <> p:116
+R7093:7097 chakra <> HProp def
+R7102:7108 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+R7110:7111 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+binder 7109:7109 <> l:117
+R7122:7125 prechakra <> ::type_scope:x_'/\'_x not
+R7118:7120 prechakra <> :::x_'~'_x not
+R7112:7117 chakra <> domain def
+R7121:7121 chakra <> l:117 var
+R7126:7126 chakra <> p:116 var
+R7128:7128 chakra <> l:117 var
+def 7472:7477 <> HasAtt
+R7482:7482 chakra <> A defax
+binder 7480:7480 <> a:118
+R7488:7489 chakra <> ty def
+R7491:7491 chakra <> a:118 var
+binder 7486:7486 <> v:119
+R7496:7500 chakra <> CProp def
+binder 7511:7511 <> x:120
+R7516:7516 prechakra <> :::x_'~'_x not
+R7528:7531 prechakra <> :::x_'~'_x not
+R7517:7523 chakra <> get_att def
+R7525:7525 chakra <> a:118 var
+R7527:7527 chakra <> x:120 var
+R7532:7532 chakra <> v:119 var
+def 7547:7552 <> HasPrp
+R7557:7557 chakra <> P ind
+binder 7555:7555 <> p:121
+R7563:7564 chakra <> ty def
+R7566:7566 chakra <> p:121 var
+binder 7561:7561 <> v:122
+R7571:7575 chakra <> CProp def
+binder 7586:7586 <> x:123
+R7591:7591 prechakra <> :::x_'~'_x not
+R7603:7606 prechakra <> :::x_'~'_x not
+R7592:7598 chakra <> get_prp def
+R7600:7600 chakra <> p:121 var
+R7602:7602 chakra <> x:123 var
+R7607:7607 chakra <> v:122 var
+def 7663:7670 <> HasParts
+R7676:7679 Coq.Init.Datatypes <> list ind
+R7681:7682 chakra <> ID defax
+binder 7673:7673 <> l:124
+R7687:7691 chakra <> CProp def
+binder 7702:7702 <> x:125
+R7707:7707 prechakra <> :::x_'~'_x not
+R7719:7722 prechakra <> :::x_'~'_x not
+R7708:7716 chakra <> get_parts def
+R7718:7718 chakra <> x:125 var
+R7723:7723 chakra <> l:124 var
+def 7738:7743 <> CLiftP
+binder 7746:7746 <> P:126
+R7756:7760 chakra <> CProp def
+R7776:7776 prechakra <> :::'['_x_']' not
+R7778:7778 prechakra <> :::'['_x_']' not
+R7777:7777 chakra <> P:126 var
+def 7794:7799 <> CLiftH
+R7804:7808 chakra <> HProp def
+binder 7802:7802 <> H:127
+R7813:7817 chakra <> CProp def
+R7833:7833 chakra <> H:127 var
+def 7848:7852 <> CConj
+R7863:7867 chakra <> CProp def
+binder 7855:7856 <> c1:128
+binder 7858:7859 <> c2:129
+R7872:7876 chakra <> CProp def
+binder 7887:7887 <> x:130
+R7896:7899 prechakra <> ::type_scope:x_'/\'_x not
+R7892:7893 chakra <> c1:128 var
+R7895:7895 chakra <> x:130 var
+R7900:7901 chakra <> c2:129 var
+R7903:7903 chakra <> x:130 var
+def 7918:7924 <> CExists
+binder 7927:7927 <> T:131
+R7934:7935 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7933:7933 chakra <> T:131 var
+R7936:7940 chakra <> CProp def
+binder 7931:7931 <> p:132
+R7945:7949 chakra <> CProp def
+binder 7960:7960 <> x:133
+R7965:7971 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+R7973:7974 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+binder 7972:7972 <> t:134
+R7975:7975 chakra <> p:132 var
+R7979:7979 chakra <> x:133 var
+R7977:7977 chakra <> t:134 var
+inst 8002:8007 <> cliftp
+R8011:8014 prechakra <> LIFT class
+R8021:8025 chakra <> CProp def
+R8030:8035 chakra <> CLiftP def
+inst 8058:8063 <> clifth
+R8067:8070 prechakra <> LIFT class
+R8078:8082 chakra <> CProp def
+R8072:8076 chakra <> HProp def
+R8087:8092 chakra <> CLiftH def
+inst 8116:8120 <> cconj
+R8124:8127 prechakra <> CONJ class
+R8129:8133 chakra <> CProp def
+R8138:8142 chakra <> CConj def
+inst 8165:8171 <> cexists
+binder 8174:8174 <> T:135
+R8179:8180 prechakra <> EX class
+R8184:8188 chakra <> CProp def
+R8182:8182 chakra <> T:135 var
+R8193:8199 chakra <> CExists def
+def 9020:9023 <> LNil
+R9027:9031 chakra <> LProp def
+binder 9042:9042 <> l:136
+R9047:9047 prechakra <> :::'['_x_']' not
+R9055:9055 prechakra <> :::'['_x_']' not
+R9049:9051 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9048:9048 chakra <> l:136 var
+R9052:9054 Coq.Init.Datatypes <> nil constr
+def 9070:9074 <> LCons
+R9080:9083 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9078:9079 chakra <> ID defax
+R9089:9092 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9084:9088 chakra <> CProp def
+R9098:9101 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9093:9097 chakra <> LProp def
+R9102:9106 chakra <> LProp def
+binder 9117:9117 <> x:137
+binder 9119:9119 <> c:138
+binder 9121:9121 <> p:139
+binder 9123:9123 <> l:140
+R9144:9147 prechakra <> ::type_scope:x_'/\'_x not
+R9128:9128 prechakra <> :::x_'~'_x not
+R9139:9142 prechakra <> :::x_'~'_x not
+R9129:9136 Coq.Lists.List <> hd_error def
+R9138:9138 chakra <> l:140 var
+R9143:9143 chakra <> x:137 var
+R9151:9155 prechakra <> ::type_scope:x_'/\'_x not
+R9148:9148 chakra <> c:138 var
+R9150:9150 chakra <> x:137 var
+R9156:9156 chakra <> p:139 var
+R9159:9160 Coq.Lists.List <> tl def
+R9162:9162 chakra <> l:140 var
+ind 9177:9180 <> LAll
+constr 9204:9210 <> all_nil
+constr 9241:9248 <> all_cons
+R9189:9192 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9184:9188 chakra <> CProp def
+R9193:9197 chakra <> LProp def
+binder 9221:9221 <> c:143
+binder 9223:9223 <> s:144
+R9226:9229 chakra <> LAll:141 ind
+R9237:9237 chakra <> s:144 var
+R9233:9235 Coq.Init.Datatypes <> nil constr
+R9231:9231 chakra <> c:143 var
+R9262:9266 chakra <> CProp def
+binder 9260:9260 <> c:145
+binder 9269:9269 <> x:146
+binder 9271:9271 <> l:147
+binder 9273:9273 <> s:148
+R9281:9284 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9276:9276 chakra <> c:145 var
+R9278:9278 chakra <> x:146 var
+R9280:9280 chakra <> s:148 var
+R9295:9298 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9285:9288 chakra <> LAll:141 ind
+R9294:9294 chakra <> s:148 var
+R9292:9292 chakra <> l:147 var
+R9290:9290 chakra <> c:145 var
+R9299:9302 chakra <> LAll:141 ind
+R9317:9317 chakra <> s:148 var
+R9307:9310 Coq.Init.Datatypes <> cons constr
+R9314:9314 chakra <> l:147 var
+R9312:9312 chakra <> x:146 var
+R9304:9304 chakra <> c:145 var
+ind 9331:9335 <> LSome
+constr 9359:9367 <> some_head
+constr 9427:9435 <> some_tail
+R9344:9347 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9339:9343 chakra <> CProp def
+R9348:9352 chakra <> LProp def
+R9381:9385 chakra <> CProp def
+binder 9379:9379 <> c:151
+binder 9388:9388 <> x:152
+binder 9390:9390 <> l:153
+binder 9392:9392 <> s:154
+R9400:9403 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9395:9395 chakra <> c:151 var
+R9397:9397 chakra <> x:152 var
+R9399:9399 chakra <> s:154 var
+R9404:9408 chakra <> LSome:149 ind
+R9423:9423 chakra <> s:154 var
+R9413:9416 Coq.Init.Datatypes <> cons constr
+R9420:9420 chakra <> l:153 var
+R9418:9418 chakra <> x:152 var
+R9410:9410 chakra <> c:151 var
+R9449:9453 chakra <> CProp def
+binder 9447:9447 <> c:155
+binder 9456:9456 <> x:156
+binder 9458:9458 <> l:157
+binder 9460:9460 <> s:158
+R9474:9477 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9463:9467 chakra <> LSome:149 ind
+R9473:9473 chakra <> s:158 var
+R9471:9471 chakra <> l:157 var
+R9469:9469 chakra <> c:155 var
+R9478:9482 chakra <> LSome:149 ind
+R9497:9497 chakra <> s:158 var
+R9487:9490 Coq.Init.Datatypes <> cons constr
+R9494:9494 chakra <> l:157 var
+R9492:9492 chakra <> x:156 var
+R9484:9484 chakra <> c:155 var
+ind 9511:9522 <> LAllOrdPairs
+constr 9545:9554 <> all_op_nil
+constr 9600:9610 <> all_op_cons
+R9530:9533 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9526:9529 chakra <> CRel def
+R9534:9538 chakra <> LProp def
+R9568:9571 chakra <> CRel def
+binder 9566:9566 <> r:161
+binder 9574:9574 <> s:162
+R9577:9588 chakra <> LAllOrdPairs:159 ind
+R9596:9596 chakra <> s:162 var
+R9592:9594 Coq.Init.Datatypes <> nil constr
+R9590:9590 chakra <> r:161 var
+R9624:9627 chakra <> CRel def
+binder 9622:9622 <> r:163
+binder 9630:9630 <> x:164
+binder 9632:9632 <> l:165
+binder 9634:9634 <> s:166
+R9651:9654 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9637:9640 chakra <> LAll ind
+R9643:9643 chakra <> r:163 var
+R9645:9645 chakra <> x:164 var
+R9648:9648 chakra <> l:165 var
+R9650:9650 chakra <> s:166 var
+R9673:9676 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9655:9666 chakra <> LAllOrdPairs:159 ind
+R9672:9672 chakra <> s:166 var
+R9670:9670 chakra <> l:165 var
+R9668:9668 chakra <> r:163 var
+R9677:9688 chakra <> LAllOrdPairs:159 ind
+R9703:9703 chakra <> s:166 var
+R9693:9696 Coq.Init.Datatypes <> cons constr
+R9700:9700 chakra <> l:165 var
+R9698:9698 chakra <> x:164 var
+R9690:9690 chakra <> r:163 var
+def 9718:9723 <> LLiftP
+binder 9726:9726 <> P:167
+R9736:9740 chakra <> LProp def
+R9756:9756 prechakra <> :::'['_x_']' not
+R9758:9758 prechakra <> :::'['_x_']' not
+R9757:9757 chakra <> P:167 var
+def 9773:9778 <> LLiftH
+R9783:9787 chakra <> HProp def
+binder 9781:9781 <> H:168
+R9792:9796 chakra <> LProp def
+R9812:9812 chakra <> H:168 var
+def 9827:9831 <> LConj
+R9840:9844 chakra <> LProp def
+binder 9834:9835 <> s1:169
+binder 9837:9838 <> s2:170
+R9849:9853 chakra <> LProp def
+binder 9864:9864 <> l:171
+R9873:9876 prechakra <> ::type_scope:x_'/\'_x not
+R9869:9870 chakra <> s1:169 var
+R9872:9872 chakra <> l:171 var
+R9877:9878 chakra <> s2:170 var
+R9880:9880 chakra <> l:171 var
+def 9942:9948 <> LExists
+binder 9951:9951 <> T:172
+R9958:9959 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9957:9957 chakra <> T:172 var
+R9960:9964 chakra <> LProp def
+binder 9955:9955 <> s:173
+R9969:9973 chakra <> LProp def
+binder 9984:9984 <> l:174
+R9989:9995 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+R9997:9998 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+binder 9996:9996 <> t:175
+R9999:9999 chakra <> s:173 var
+R10003:10003 chakra <> l:174 var
+R10001:10001 chakra <> t:175 var
+inst 10026:10031 <> lliftp
+R10035:10038 prechakra <> LIFT class
+R10045:10049 chakra <> LProp def
+R10054:10059 chakra <> LLiftP def
+inst 10082:10087 <> llifth
+R10091:10094 prechakra <> LIFT class
+R10102:10106 chakra <> LProp def
+R10096:10100 chakra <> HProp def
+R10111:10116 chakra <> LLiftH def
+inst 10139:10143 <> lconj
+R10147:10150 prechakra <> CONJ class
+R10152:10156 chakra <> LProp def
+R10161:10165 chakra <> LConj def
+inst 10188:10194 <> lexists
+binder 10197:10197 <> T:176
+R10202:10203 prechakra <> EX class
+R10207:10211 chakra <> LProp def
+R10205:10205 chakra <> T:176 var
+R10216:10222 chakra <> LExists def
+def 10701:10706 <> AttRel
+R10715:10715 chakra <> A defax
+binder 10709:10710 <> a1:177
+binder 10712:10713 <> a2:178
+R10726:10729 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10721:10722 chakra <> ty def
+R10724:10725 chakra <> a1:177 var
+R10735:10738 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10730:10731 chakra <> ty def
+R10733:10734 chakra <> a2:178 var
+binder 10719:10719 <> p:179
+R10747:10750 chakra <> CRel def
+binder 10761:10761 <> x:180
+binder 10763:10763 <> y:181
+R10768:10774 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+R10777:10778 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+binder 10775:10776 <> v1:182
+R10793:10796 prechakra <> ::type_scope:x_'/\'_x not
+R10779:10784 chakra <> HasAtt def
+R10786:10787 chakra <> a1:177 var
+R10789:10790 chakra <> v1:182 var
+R10792:10792 chakra <> x:180 var
+R10797:10803 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+R10806:10807 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+binder 10804:10805 <> v2:183
+R10822:10825 prechakra <> ::type_scope:x_'/\'_x not
+R10808:10813 chakra <> HasAtt def
+R10815:10816 chakra <> a2:178 var
+R10818:10819 chakra <> v2:183 var
+R10821:10821 chakra <> y:181 var
+R10826:10826 prechakra <> :::'['_x_']' not
+R10834:10834 prechakra <> :::'['_x_']' not
+R10827:10827 chakra <> p:179 var
+R10832:10833 chakra <> v2:183 var
+R10829:10830 chakra <> v1:182 var
+def 10849:10855 <> PartRel
+R10863:10866 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10859:10862 chakra <> LRel def
+R10867:10870 chakra <> CRel def
+binder 10881:10881 <> m:184
+binder 10883:10883 <> x:185
+binder 10885:10885 <> y:186
+R10890:10896 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+R10899:10900 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+binder 10897:10898 <> l1:187
+R10914:10917 prechakra <> ::type_scope:x_'/\'_x not
+R10901:10908 chakra <> HasParts def
+R10910:10911 chakra <> l1:187 var
+R10913:10913 chakra <> x:185 var
+R10918:10924 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+R10927:10928 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+binder 10925:10926 <> l2:188
+R10942:10945 prechakra <> ::type_scope:x_'/\'_x not
+R10929:10936 chakra <> HasParts def
+R10938:10939 chakra <> l2:188 var
+R10941:10941 chakra <> y:186 var
+R10946:10946 chakra <> m:184 var
+R10948:10949 chakra <> l1:187 var
+R10951:10952 chakra <> l2:188 var
+def 10967:10973 <> CRLiftP
+binder 10976:10976 <> P:189
+R10986:10989 chakra <> CRel def
+R11007:11007 prechakra <> :::'['_x_']' not
+R11009:11009 prechakra <> :::'['_x_']' not
+R11008:11008 chakra <> P:189 var
+def 11024:11030 <> CRLiftH
+R11035:11039 chakra <> HProp def
+binder 11033:11033 <> H:190
+R11044:11047 chakra <> CRel def
+R11065:11065 chakra <> H:190 var
+def 11080:11085 <> CRConj
+R11094:11097 chakra <> CRel def
+binder 11088:11089 <> r1:191
+binder 11091:11092 <> r2:192
+R11102:11105 chakra <> CRel def
+binder 11116:11116 <> x:193
+binder 11118:11118 <> y:194
+R11129:11132 prechakra <> ::type_scope:x_'/\'_x not
+R11123:11124 chakra <> r1:191 var
+R11126:11126 chakra <> x:193 var
+R11128:11128 chakra <> y:194 var
+R11133:11134 chakra <> r2:192 var
+R11136:11136 chakra <> x:193 var
+R11138:11138 chakra <> y:194 var
+def 11153:11160 <> CRExists
+binder 11163:11163 <> T:195
+R11170:11171 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11169:11169 chakra <> T:195 var
+R11172:11175 chakra <> CRel def
+binder 11167:11167 <> p:196
+R11180:11183 chakra <> CRel def
+binder 11194:11194 <> x:197
+binder 11196:11196 <> y:198
+R11201:11207 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+R11209:11210 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+binder 11208:11208 <> t:199
+R11211:11211 chakra <> p:196 var
+R11215:11215 chakra <> x:197 var
+R11217:11217 chakra <> y:198 var
+R11213:11213 chakra <> t:199 var
+inst 11241:11247 <> crliftp
+R11251:11254 prechakra <> LIFT class
+R11261:11264 chakra <> CRel def
+R11269:11275 chakra <> CRLiftP def
+inst 11298:11304 <> crlifth
+R11308:11311 prechakra <> LIFT class
+R11319:11322 chakra <> CRel def
 R11313:11317 chakra <> HProp def
-binder 11328:11328 <> P:187
-R11335:11335 chakra <> P:187 var
-inst 11357:11365 <> hevalread
-binder 11368:11368 <> T:188
-R11373:11376 chakra <> EVAL class
-R11391:11395 chakra <> HProp def
-R11389:11389 chakra <> T:188 var
-R11379:11382 chakra <> Read def
-R11384:11384 chakra <> H prfax
-R11386:11386 chakra <> T:188 var
-binder 11406:11406 <> c:189
-binder 11408:11408 <> t:190
-binder 11410:11410 <> s:191
-R11418:11420 chakra <> :::x_'~'_x not
-R11415:11415 chakra <> c:189 var
-R11417:11417 chakra <> s:191 var
-R11421:11421 chakra <> t:190 var
-inst 11443:11452 <> hevalstate
-binder 11455:11455 <> T:192
-R11460:11463 chakra <> EVAL class
-R11479:11483 chakra <> HProp def
-R11477:11477 chakra <> T:192 var
-R11466:11470 chakra <> State def
-R11472:11472 chakra <> H prfax
-R11474:11474 chakra <> T:192 var
-binder 11494:11494 <> c:193
-binder 11496:11496 <> t:194
-binder 11498:11498 <> s:195
-R11512:11514 chakra <> :::x_'~'_x not
-R11503:11505 Coq.Init.Datatypes <> snd def
-R11508:11508 chakra <> c:193 var
-R11510:11510 chakra <> s:195 var
-R11515:11515 chakra <> t:194 var
-inst 11537:11547 <> hevaloption
-binder 11550:11550 <> T:196
-R11555:11558 chakra <> EVAL class
-R11573:11577 chakra <> HProp def
-R11571:11571 chakra <> T:196 var
-R11561:11566 Coq.Init.Datatypes <> option ind
-R11568:11568 chakra <> T:196 var
-binder 11588:11588 <> c:197
-binder 11590:11590 <> v:198
-binder 11592:11592 <> s:199
-R11598:11600 chakra <> :::x_'~'_x not
-R11597:11597 chakra <> c:197 var
-R11601:11601 chakra <> v:198 var
-inst 11623:11627 <> hconj
-R11631:11634 chakra <> CONJ class
-R11636:11640 chakra <> HProp def
-binder 11651:11652 <> h1:200
-binder 11654:11655 <> h2:201
-binder 11657:11657 <> s:202
-R11662:11662 chakra <> ::type_scope:x_'/\'_x not
-R11667:11672 chakra <> ::type_scope:x_'/\'_x not
-R11677:11677 chakra <> ::type_scope:x_'/\'_x not
-R11663:11664 chakra <> h1:200 var
-R11666:11666 chakra <> s:202 var
-R11673:11674 chakra <> h2:201 var
-R11676:11676 chakra <> s:202 var
-inst 11699:11701 <> hex
-binder 11704:11704 <> T:203
-R11709:11710 chakra <> EX class
-R11714:11718 chakra <> HProp def
-R11712:11712 chakra <> T:203 var
-binder 11729:11729 <> p:204
-binder 11731:11731 <> s:205
-R11736:11742 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-R11744:11745 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-binder 11743:11743 <> t:206
-R11746:11746 chakra <> p:204 var
-R11748:11748 chakra <> t:206 var
-R11750:11750 chakra <> s:205 var
-def 11775:11779 <> hspec
-R11788:11791 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R11783:11787 chakra <> LProp def
-R11792:11796 chakra <> HProp def
-binder 11807:11807 <> p:207
-R11812:11818 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-R11820:11821 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-binder 11819:11819 <> l:208
-R11832:11835 chakra <> ::type_scope:x_'/\'_x not
-R11828:11830 chakra <> :::x_'~'_x not
-R11822:11827 chakra <> domain def
-R11831:11831 chakra <> l:208 var
-R11836:11836 chakra <> p:207 var
-R11838:11838 chakra <> l:208 var
-def 12179:12184 <> HasAtt
-R12189:12189 chakra <> A prfax
-binder 12187:12187 <> a:209
-R12195:12197 chakra <> typ prfax
-R12199:12199 chakra <> a:209 var
-binder 12193:12193 <> v:210
-R12204:12208 chakra <> CProp def
-binder 12219:12219 <> x:211
-R12224:12224 chakra <> :::x_'~'_x not
-R12236:12239 chakra <> :::x_'~'_x not
-R12225:12231 chakra <> get_att def
-R12233:12233 chakra <> a:209 var
-R12235:12235 chakra <> x:211 var
-R12240:12240 chakra <> v:210 var
-def 12255:12262 <> HasParts
-R12268:12271 Coq.Init.Datatypes <> list ind
-R12273:12273 chakra <> U prfax
-binder 12265:12265 <> l:212
-R12278:12282 chakra <> CProp def
-binder 12293:12293 <> x:213
-R12298:12298 chakra <> :::x_'~'_x not
-R12310:12313 chakra <> :::x_'~'_x not
-R12299:12307 chakra <> get_parts def
-R12309:12309 chakra <> x:213 var
-R12314:12314 chakra <> l:212 var
-def 12329:12335 <> AtLevel
-R12340:12340 chakra <> L prfax
-binder 12338:12338 <> l:214
-R12345:12349 chakra <> CProp def
-binder 12360:12360 <> x:215
-R12365:12365 chakra <> :::x_'~'_x not
-R12375:12378 chakra <> :::x_'~'_x not
-R12366:12372 chakra <> get_lvl def
-R12374:12374 chakra <> x:215 var
-R12379:12379 chakra <> l:214 var
-def 12394:12401 <> InDomain
-R12406:12406 chakra <> D prfax
-binder 12404:12404 <> d:216
-R12411:12415 chakra <> CProp def
-binder 12426:12426 <> x:217
-R12431:12431 chakra <> :::x_'~'_x not
-R12441:12444 chakra <> :::x_'~'_x not
-R12432:12438 chakra <> get_dom def
-R12440:12440 chakra <> x:217 var
-R12445:12445 chakra <> d:216 var
-def 12460:12465 <> HasExt
-R12470:12470 chakra <> E prfax
-binder 12468:12468 <> e:218
-R12475:12479 chakra <> CProp def
-binder 12490:12490 <> x:219
-R12495:12495 chakra <> :::x_'~'_x not
-R12505:12508 chakra <> :::x_'~'_x not
-R12496:12502 chakra <> get_ext def
-R12504:12504 chakra <> x:219 var
-R12509:12509 chakra <> e:218 var
-inst 12532:12537 <> cliftp
-R12541:12544 chakra <> LIFT class
-R12551:12555 chakra <> CProp def
-binder 12566:12566 <> P:220
-R12573:12573 chakra <> :::'['_x_']' not
-R12575:12575 chakra <> :::'['_x_']' not
-R12574:12574 chakra <> P:220 var
-inst 12597:12602 <> clifth
-R12606:12609 chakra <> LIFT class
-R12617:12621 chakra <> CProp def
-R12611:12615 chakra <> HProp def
-binder 12632:12632 <> h:221
-R12639:12639 chakra <> h:221 var
-inst 12663:12667 <> cconj
-R12671:12674 chakra <> CONJ class
-R12676:12680 chakra <> CProp def
-binder 12691:12691 <> Q:222
-binder 12693:12693 <> R:223
-binder 12695:12695 <> x:224
-R12700:12700 chakra <> ::type_scope:x_'/\'_x not
-R12704:12709 chakra <> ::type_scope:x_'/\'_x not
-R12713:12713 chakra <> ::type_scope:x_'/\'_x not
-R12701:12701 chakra <> Q:222 var
-R12703:12703 chakra <> x:224 var
-R12710:12710 chakra <> R:223 var
-R12712:12712 chakra <> x:224 var
-inst 12735:12737 <> cex
-binder 12740:12740 <> T:225
-R12745:12746 chakra <> EX class
-R12750:12754 chakra <> CProp def
-R12748:12748 chakra <> T:225 var
-binder 12765:12765 <> p:226
-binder 12767:12767 <> x:227
-R12772:12778 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-R12780:12782 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-binder 12779:12779 <> t:228
-R12783:12783 chakra <> p:226 var
-R12785:12785 chakra <> t:228 var
-R12787:12787 chakra <> x:227 var
-def 13606:13609 <> LNil
-R13613:13617 chakra <> LProp def
-binder 13628:13628 <> l:229
-R13633:13633 chakra <> :::'['_x_']' not
-R13641:13641 chakra <> :::'['_x_']' not
-R13635:13637 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R13634:13634 chakra <> l:229 var
-R13638:13640 Coq.Init.Datatypes <> nil constr
-def 13656:13660 <> LCons
-R13665:13668 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R13664:13664 chakra <> U prfax
-R13674:13677 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R13669:13673 chakra <> CProp def
-R13683:13686 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R13678:13682 chakra <> LProp def
-R13687:13691 chakra <> LProp def
-binder 13702:13702 <> x:230
-binder 13704:13704 <> c:231
-binder 13706:13706 <> p:232
-binder 13708:13708 <> l:233
-R13729:13732 chakra <> ::type_scope:x_'/\'_x not
-R13713:13713 chakra <> :::x_'~'_x not
-R13724:13727 chakra <> :::x_'~'_x not
-R13714:13721 Coq.Lists.List <> hd_error def
-R13723:13723 chakra <> l:233 var
-R13728:13728 chakra <> x:230 var
-R13736:13740 chakra <> ::type_scope:x_'/\'_x not
-R13733:13733 chakra <> c:231 var
-R13735:13735 chakra <> x:230 var
-R13741:13741 chakra <> p:232 var
-R13744:13745 Coq.Lists.List <> tl def
-R13747:13747 chakra <> l:233 var
-ind 13762:13765 <> LAll
-constr 13789:13795 <> all_nil
-constr 13826:13833 <> all_cons
-R13774:13777 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R13769:13773 chakra <> CProp def
-R13778:13782 chakra <> LProp def
-binder 13806:13806 <> c:236
-binder 13808:13808 <> s:237
-R13811:13814 chakra <> LAll:234 ind
-R13822:13822 chakra <> s:237 var
-R13818:13820 Coq.Init.Datatypes <> nil constr
-R13816:13816 chakra <> c:236 var
-R13847:13851 chakra <> CProp def
-binder 13845:13845 <> c:238
-binder 13854:13854 <> x:239
-binder 13856:13856 <> l:240
-binder 13858:13858 <> s:241
-R13866:13869 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R13861:13861 chakra <> c:238 var
-R13863:13863 chakra <> x:239 var
-R13865:13865 chakra <> s:241 var
-R13880:13883 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R13870:13873 chakra <> LAll:234 ind
-R13879:13879 chakra <> s:241 var
-R13877:13877 chakra <> l:240 var
-R13875:13875 chakra <> c:238 var
-R13884:13887 chakra <> LAll:234 ind
-R13902:13902 chakra <> s:241 var
-R13892:13895 Coq.Init.Datatypes <> cons constr
-R13899:13899 chakra <> l:240 var
-R13897:13897 chakra <> x:239 var
-R13889:13889 chakra <> c:238 var
-ind 13916:13920 <> LSome
-constr 13944:13952 <> some_head
-constr 14012:14020 <> some_tail
-R13929:13932 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R13924:13928 chakra <> CProp def
-R13933:13937 chakra <> LProp def
-R13966:13970 chakra <> CProp def
-binder 13964:13964 <> c:244
-binder 13973:13973 <> x:245
-binder 13975:13975 <> l:246
-binder 13977:13977 <> s:247
-R13985:13988 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R13980:13980 chakra <> c:244 var
-R13982:13982 chakra <> x:245 var
-R13984:13984 chakra <> s:247 var
-R13989:13993 chakra <> LSome:242 ind
-R14008:14008 chakra <> s:247 var
-R13998:14001 Coq.Init.Datatypes <> cons constr
-R14005:14005 chakra <> l:246 var
-R14003:14003 chakra <> x:245 var
-R13995:13995 chakra <> c:244 var
-R14034:14038 chakra <> CProp def
-binder 14032:14032 <> c:248
-binder 14041:14041 <> x:249
-binder 14043:14043 <> l:250
-binder 14045:14045 <> s:251
-R14059:14062 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R14048:14052 chakra <> LSome:242 ind
-R14058:14058 chakra <> s:251 var
-R14056:14056 chakra <> l:250 var
-R14054:14054 chakra <> c:248 var
-R14063:14067 chakra <> LSome:242 ind
-R14082:14082 chakra <> s:251 var
-R14072:14075 Coq.Init.Datatypes <> cons constr
-R14079:14079 chakra <> l:250 var
-R14077:14077 chakra <> x:249 var
-R14069:14069 chakra <> c:248 var
-ind 14096:14107 <> LAllOrdPairs
-constr 14130:14139 <> all_op_nil
-constr 14185:14195 <> all_op_cons
-R14115:14118 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R14111:14114 chakra <> CRel def
-R14119:14123 chakra <> LProp def
-R14153:14156 chakra <> CRel def
-binder 14151:14151 <> r:254
-binder 14159:14159 <> s:255
-R14162:14173 chakra <> LAllOrdPairs:252 ind
-R14181:14181 chakra <> s:255 var
-R14177:14179 Coq.Init.Datatypes <> nil constr
-R14175:14175 chakra <> r:254 var
-R14209:14212 chakra <> CRel def
-binder 14207:14207 <> r:256
-binder 14215:14215 <> x:257
-binder 14217:14217 <> l:258
-binder 14219:14219 <> s:259
-R14236:14239 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R14222:14225 chakra <> LAll ind
-R14228:14228 chakra <> r:256 var
-R14230:14230 chakra <> x:257 var
-R14233:14233 chakra <> l:258 var
-R14235:14235 chakra <> s:259 var
-R14258:14261 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R14240:14251 chakra <> LAllOrdPairs:252 ind
-R14257:14257 chakra <> s:259 var
-R14255:14255 chakra <> l:258 var
-R14253:14253 chakra <> r:256 var
-R14262:14273 chakra <> LAllOrdPairs:252 ind
-R14288:14288 chakra <> s:259 var
-R14278:14281 Coq.Init.Datatypes <> cons constr
-R14285:14285 chakra <> l:258 var
-R14283:14283 chakra <> x:257 var
-R14275:14275 chakra <> r:256 var
-inst 14311:14316 <> lliftp
-R14320:14323 chakra <> LIFT class
-R14330:14334 chakra <> LProp def
-binder 14345:14345 <> P:260
-R14352:14352 chakra <> :::'['_x_']' not
-R14354:14354 chakra <> :::'['_x_']' not
-R14353:14353 chakra <> P:260 var
-inst 14377:14382 <> llifth
-R14386:14389 chakra <> LIFT class
-R14397:14401 chakra <> LProp def
-R14391:14395 chakra <> HProp def
-binder 14412:14412 <> h:261
-R14419:14419 chakra <> h:261 var
-inst 14442:14446 <> lconj
-R14450:14453 chakra <> CONJ class
-R14455:14459 chakra <> LProp def
-binder 14470:14470 <> p:262
-binder 14472:14472 <> q:263
-binder 14474:14474 <> l:264
-R14482:14485 chakra <> ::type_scope:x_'/\'_x not
-R14479:14479 chakra <> p:262 var
-R14481:14481 chakra <> l:264 var
-R14486:14486 chakra <> q:263 var
-R14488:14488 chakra <> l:264 var
-inst 14511:14513 <> lex
-binder 14516:14516 <> T:265
-R14521:14522 chakra <> EX class
-R14526:14530 chakra <> LProp def
-R14524:14524 chakra <> T:265 var
-binder 14541:14541 <> p:266
-binder 14543:14543 <> l:267
-R14548:14554 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-R14556:14557 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-binder 14555:14555 <> t:268
-R14558:14558 chakra <> p:266 var
-R14560:14560 chakra <> t:268 var
-R14562:14562 chakra <> l:267 var
-def 15041:15046 <> AttRel
-R15055:15055 chakra <> A prfax
-binder 15049:15050 <> a1:269
-binder 15052:15053 <> a2:270
-R15067:15070 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R15061:15063 chakra <> typ prfax
-R15065:15066 chakra <> a1:269 var
-R15077:15080 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R15071:15073 chakra <> typ prfax
-R15075:15076 chakra <> a2:270 var
-binder 15059:15059 <> p:271
-R15089:15092 chakra <> CRel def
-binder 15103:15103 <> x:272
-binder 15105:15105 <> y:273
-R15110:15116 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-R15119:15120 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-binder 15117:15118 <> v1:274
-R15135:15138 chakra <> ::type_scope:x_'/\'_x not
-R15121:15126 chakra <> HasAtt def
-R15128:15129 chakra <> a1:269 var
-R15131:15132 chakra <> v1:274 var
-R15134:15134 chakra <> x:272 var
-R15139:15145 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-R15148:15149 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-binder 15146:15147 <> v2:275
-R15164:15167 chakra <> ::type_scope:x_'/\'_x not
-R15150:15155 chakra <> HasAtt def
-R15157:15158 chakra <> a2:270 var
-R15160:15161 chakra <> v2:275 var
-R15163:15163 chakra <> y:273 var
-R15168:15168 chakra <> :::'['_x_']' not
-R15176:15176 chakra <> :::'['_x_']' not
-R15169:15169 chakra <> p:271 var
-R15174:15175 chakra <> v2:275 var
-R15171:15172 chakra <> v1:274 var
-def 15191:15197 <> PartRel
-R15205:15208 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R15201:15204 chakra <> LRel def
-R15209:15212 chakra <> CRel def
-binder 15223:15223 <> m:276
-binder 15225:15225 <> x:277
-binder 15227:15227 <> y:278
-R15232:15238 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-R15241:15242 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-binder 15239:15240 <> l1:279
-R15256:15259 chakra <> ::type_scope:x_'/\'_x not
-R15243:15250 chakra <> HasParts def
-R15252:15253 chakra <> l1:279 var
-R15255:15255 chakra <> x:277 var
-R15260:15266 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-R15269:15270 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-binder 15267:15268 <> l2:280
-R15284:15287 chakra <> ::type_scope:x_'/\'_x not
-R15271:15278 chakra <> HasParts def
-R15280:15281 chakra <> l2:280 var
-R15283:15283 chakra <> y:278 var
-R15288:15288 chakra <> m:276 var
-R15290:15291 chakra <> l1:279 var
-R15293:15294 chakra <> l2:280 var
-inst 15317:15323 <> crliftp
-R15327:15330 chakra <> LIFT class
-R15337:15340 chakra <> CRel def
-binder 15351:15351 <> P:281
-R15360:15360 chakra <> :::'['_x_']' not
-R15362:15362 chakra <> :::'['_x_']' not
-R15361:15361 chakra <> P:281 var
-inst 15385:15391 <> crlifth
-R15395:15398 chakra <> LIFT class
-R15406:15409 chakra <> CRel def
-R15400:15404 chakra <> HProp def
-binder 15420:15420 <> h:282
-R15429:15429 chakra <> h:282 var
-inst 15452:15457 <> crconj
-R15461:15464 chakra <> CONJ class
-R15466:15469 chakra <> CRel def
-binder 15480:15481 <> r1:283
-binder 15483:15484 <> r2:284
-binder 15486:15486 <> x:285
-binder 15488:15488 <> y:286
-R15499:15502 chakra <> ::type_scope:x_'/\'_x not
-R15493:15494 chakra <> r1:283 var
-R15496:15496 chakra <> x:285 var
-R15498:15498 chakra <> y:286 var
-R15503:15504 chakra <> r2:284 var
-R15506:15506 chakra <> x:285 var
-R15508:15508 chakra <> y:286 var
-inst 15531:15534 <> crex
-binder 15537:15537 <> T:287
-R15542:15543 chakra <> EX class
-R15547:15550 chakra <> CRel def
-R15545:15545 chakra <> T:287 var
-binder 15561:15561 <> p:288
-binder 15563:15563 <> x:289
-binder 15565:15565 <> y:290
-R15570:15576 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-R15578:15579 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-binder 15577:15577 <> t:291
-R15580:15580 chakra <> p:288 var
-R15582:15582 chakra <> t:291 var
-R15584:15584 chakra <> x:289 var
-R15586:15586 chakra <> y:290 var
-ind 15910:15917 <> Pairwise
-constr 15939:15944 <> pw_nil
-constr 15983:15989 <> pw_cons
-R15925:15928 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R15921:15924 chakra <> CRel def
-R15929:15932 chakra <> LRel def
-binder 15955:15955 <> r:294
-binder 15957:15957 <> s:295
-R15960:15967 chakra <> Pairwise:292 ind
-R15979:15979 chakra <> s:295 var
-R15975:15977 Coq.Init.Datatypes <> nil constr
-R15971:15973 Coq.Init.Datatypes <> nil constr
-R15969:15969 chakra <> r:294 var
-R16003:16006 chakra <> CRel def
-binder 16001:16001 <> r:296
-binder 16009:16009 <> x:297
-binder 16011:16011 <> l:298
-binder 16013:16013 <> y:299
-binder 16015:16016 <> l':300
-binder 16018:16018 <> s:301
-R16028:16031 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16021:16021 chakra <> r:296 var
-R16023:16023 chakra <> x:297 var
-R16025:16025 chakra <> y:299 var
-R16027:16027 chakra <> s:301 var
-R16049:16052 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16032:16039 chakra <> Pairwise:292 ind
-R16048:16048 chakra <> s:301 var
-R16045:16046 chakra <> l':300 var
-R16043:16043 chakra <> l:298 var
-R16041:16041 chakra <> r:296 var
-R16053:16060 chakra <> Pairwise:292 ind
-R16087:16087 chakra <> s:301 var
-R16076:16079 Coq.Init.Datatypes <> cons constr
-R16083:16084 chakra <> l':300 var
-R16081:16081 chakra <> y:299 var
-R16065:16068 Coq.Init.Datatypes <> cons constr
-R16072:16072 chakra <> l:298 var
-R16070:16070 chakra <> x:297 var
-R16062:16062 chakra <> r:296 var
-inst 16110:16116 <> lrliftp
-R16120:16123 chakra <> LIFT class
-R16130:16133 chakra <> LRel def
-binder 16144:16144 <> P:302
-R16153:16153 chakra <> :::'['_x_']' not
-R16155:16155 chakra <> :::'['_x_']' not
-R16154:16154 chakra <> P:302 var
-inst 16178:16184 <> lrlifth
-R16188:16191 chakra <> LIFT class
-R16199:16202 chakra <> LRel def
-R16193:16197 chakra <> HProp def
-binder 16213:16213 <> h:303
-R16222:16222 chakra <> h:303 var
-inst 16245:16250 <> lrconj
-R16254:16257 chakra <> CONJ class
-R16259:16262 chakra <> LRel def
-binder 16273:16274 <> r1:304
-binder 16276:16277 <> r2:305
-binder 16279:16280 <> l1:306
-binder 16282:16283 <> l2:307
-R16296:16299 chakra <> ::type_scope:x_'/\'_x not
-R16288:16289 chakra <> r1:304 var
-R16291:16292 chakra <> l1:306 var
-R16294:16295 chakra <> l2:307 var
-R16300:16301 chakra <> r2:305 var
-R16303:16304 chakra <> l1:306 var
-R16306:16307 chakra <> l2:307 var
-inst 16330:16333 <> lrex
-binder 16336:16336 <> T:308
-R16341:16342 chakra <> EX class
-R16346:16349 chakra <> LRel def
-R16344:16344 chakra <> T:308 var
-binder 16360:16360 <> p:309
-binder 16362:16363 <> l1:310
-binder 16365:16366 <> l2:311
-R16371:16377 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-R16379:16380 chakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
-binder 16378:16378 <> t:312
-R16381:16381 chakra <> p:309 var
-R16383:16383 chakra <> t:312 var
-R16385:16386 chakra <> l1:310 var
-R16388:16389 chakra <> l2:311 var
-ind 16569:16573 <> HPROP
-constr 16580:16584 <> HLIFT
-constr 16604:16608 <> EVALS
-constr 16639:16643 <> HCONJ
-constr 16673:16679 <> HEXISTS
-constr 16711:16715 <> HSPEC
-ind 16739:16743 <> CPROP
-constr 16750:16754 <> CLIFT
-constr 16774:16776 <> ATT
-constr 16826:16828 <> PRT
-constr 16859:16863 <> CCONJ
-constr 16893:16899 <> CEXISTS
-ind 16934:16938 <> LPROP
-constr 16945:16947 <> NIL
-constr 16959:16962 <> CONS
-constr 16997:16999 <> ALL
-constr 17020:17023 <> SOME
-constr 17044:17048 <> ALLOP
-ind 17071:17074 <> CREL
-constr 17081:17086 <> ATTREL
-constr 17143:17148 <> PRTREL
-ind 17170:17173 <> LREL
-constr 17180:17187 <> PAIRWISE
-ind 17209:17212 <> READ
-constr 17234:17239 <> GETATT
-R17220:17223 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16592:16595 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16596:16600 chakra <> HPROP:313 ind
-binder 16611:16611 <> A:325
-R16622:16625 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16616:16619 chakra <> READ:318 ind
-R16621:16621 chakra <> A:325 var
-R16627:16630 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16626:16626 chakra <> A:325 var
-R16631:16635 chakra <> HPROP:313 ind
-R16652:16655 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16647:16651 chakra <> HPROP:313 ind
-R16661:16664 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16656:16660 chakra <> HPROP:313 ind
-R16665:16669 chakra <> HPROP:313 ind
-binder 16682:16682 <> T:326
-R16687:16687 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16698:16702 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16689:16692 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16688:16688 chakra <> T:326 var
-R16693:16697 chakra <> HPROP:313 ind
-R16703:16707 chakra <> HPROP:313 ind
-R16724:16727 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16719:16723 chakra <> LPROP:315 ind
-R16728:16732 chakra <> HPROP:313 ind
-R16762:16765 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16766:16770 chakra <> CPROP:314 ind
-binder 16787:16787 <> a:327
-R16795:16798 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16790:16792 chakra <> typ prfax
-R16794:16794 chakra <> a:327 var
-R16799:16799 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16813:16817 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16805:16808 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16800:16802 chakra <> typ prfax
-R16804:16804 chakra <> a:327 var
-R16818:16822 chakra <> CPROP:314 ind
-R16838:16841 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16832:16835 Coq.Init.Datatypes <> list ind
-R16837:16837 chakra <> U prfax
-R16847:16850 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16842:16846 chakra <> LPROP:315 ind
-R16851:16855 chakra <> CPROP:314 ind
-R16872:16875 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16867:16871 chakra <> CPROP:314 ind
-R16881:16884 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16876:16880 chakra <> CPROP:314 ind
-R16885:16889 chakra <> CPROP:314 ind
-binder 16902:16902 <> T:328
-R16907:16907 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16918:16922 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16909:16912 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16908:16908 chakra <> T:328 var
-R16913:16917 chakra <> CPROP:314 ind
-R16923:16927 chakra <> CPROP:314 ind
-R16951:16955 chakra <> LPROP:315 ind
-R16967:16970 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16966:16966 chakra <> U prfax
-R16976:16979 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16971:16975 chakra <> CPROP:314 ind
-R16985:16988 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R16980:16984 chakra <> LPROP:315 ind
-R16989:16993 chakra <> LPROP:315 ind
-R17008:17011 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R17003:17007 chakra <> CPROP:314 ind
-R17012:17016 chakra <> LPROP:315 ind
-R17032:17035 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R17027:17031 chakra <> CPROP:314 ind
-R17036:17040 chakra <> LPROP:315 ind
-R17056:17059 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R17052:17055 chakra <> CREL:316 ind
-R17060:17064 chakra <> LPROP:315 ind
-R17103:17103 chakra <> A prfax
-binder 17097:17098 <> a1:329
-binder 17100:17101 <> a2:330
-R17106:17106 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R17131:17135 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R17113:17116 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R17107:17109 chakra <> typ prfax
-R17111:17112 chakra <> a1:329 var
-R17123:17126 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R17117:17119 chakra <> typ prfax
-R17121:17122 chakra <> a2:330 var
-R17136:17139 chakra <> CREL:316 ind
-R17156:17159 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R17152:17155 chakra <> LREL:317 ind
-R17160:17163 chakra <> CREL:316 ind
-R17195:17198 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R17191:17194 chakra <> CREL:316 ind
-R17199:17202 chakra <> LREL:317 ind
-binder 17250:17250 <> a:331
-R17254:17257 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R17253:17253 chakra <> U prfax
-R17258:17261 chakra <> READ:318 ind
-R17264:17266 chakra <> typ prfax
-R17268:17268 chakra <> a:331 var
-ind 17398:17407 <> HDecidable
-constr 17422:17425 <> hdec
-rec 17398:17407 <> HDecidable
-proj 17422:17425 <> hdec
-R17412:17416 chakra <> HProp def
-binder 17410:17410 <> h:332
-R17437:17437 chakra <> H prfax
-binder 17435:17435 <> s:334
-R17440:17448 chakra <> Decidable class
-R17451:17451 chakra <> h:332 var
-R17453:17453 chakra <> s:334 var
-ind 17463:17472 <> CDecidable
-constr 17487:17490 <> cdec
-rec 17463:17472 <> CDecidable
-proj 17487:17490 <> cdec
-R17477:17481 chakra <> CProp def
-binder 17475:17475 <> c:336
-R17502:17502 chakra <> U prfax
-binder 17500:17500 <> x:338
-R17505:17514 chakra <> HDecidable class
-R17517:17517 chakra <> c:336 var
-R17519:17519 chakra <> x:338 var
-ind 17529:17538 <> LDecidable
-constr 17553:17556 <> ldec
-rec 17529:17538 <> LDecidable
-proj 17553:17556 <> ldec
-R17543:17547 chakra <> LProp def
-binder 17541:17541 <> r:340
-R17568:17571 Coq.Init.Datatypes <> list ind
-R17573:17573 chakra <> U prfax
-binder 17566:17566 <> l:342
-R17576:17585 chakra <> HDecidable class
-R17588:17588 chakra <> r:340 var
-R17590:17590 chakra <> l:342 var
-ind 17600:17609 <> RDecidable
-constr 17623:17626 <> rdec
-rec 17600:17609 <> RDecidable
-proj 17623:17626 <> rdec
-R17614:17617 chakra <> CRel def
-binder 17612:17612 <> r:344
-binder 17636:17636 <> x:346
-binder 17638:17638 <> y:347
-R17641:17650 chakra <> HDecidable class
-R17653:17653 chakra <> r:344 var
-R17655:17655 chakra <> x:346 var
-R17657:17657 chakra <> y:347 var
-ind 17667:17676 <> MDecidable
-constr 17690:17693 <> mdec
-rec 17667:17676 <> MDecidable
-proj 17690:17693 <> mdec
-R17681:17684 chakra <> LRel def
-binder 17679:17679 <> m:349
-binder 17703:17704 <> l1:351
-binder 17706:17707 <> l2:352
-R17710:17719 chakra <> HDecidable class
-R17722:17722 chakra <> m:349 var
-R17724:17725 chakra <> l1:351 var
-R17727:17728 chakra <> l2:352 var
-inst 17742:17749 <> lift_dec
-binder 17752:17752 <> P:354
-R17757:17765 chakra <> Decidable class
-R17767:17767 chakra <> P:354 var
-binder 17757:17767 <> H0:355
-R17772:17781 chakra <> HDecidable class
-R17784:17784 chakra <> :::'['_x_']' not
-R17786:17786 chakra <> :::'['_x_']' not
-R17785:17785 chakra <> P:354 var
-inst 17821:17829 <> hconj_dec
-binder 17832:17833 <> H1:356
-binder 17835:17836 <> H2:357
-R17841:17850 chakra <> HDecidable class
-R17852:17853 chakra <> H1:356 var
-binder 17841:17853 <> H0:358
-R17858:17867 chakra <> HDecidable class
-R17869:17870 chakra <> H2:357 var
-binder 17858:17870 <> H3:359
-R17875:17884 chakra <> HDecidable class
-R17889:17892 chakra <> ::type_scope:x_'/\'_x not
-R17887:17888 chakra <> H1:356 var
-R17893:17894 chakra <> H2:357 var
-inst 17929:17943 <> hevaloption_dec
-binder 17945:17945 <> A:360
-R17964:17964 chakra <> A:360 var
-binder 17960:17960 <> x:361
-binder 17962:17962 <> y:362
-R17967:17975 chakra <> Decidable class
-R17978:17978 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R17977:17977 chakra <> x:361 var
-R17979:17979 chakra <> y:362 var
-binder 17948:17950 <> eqd:363
-binder 17992:17992 <> c:364
-binder 17994:17994 <> a:365
-R17997:18006 chakra <> HDecidable class
-R18010:18020 chakra <> hevaloption inst
-R18022:18022 chakra <> A:360 var
-R18024:18024 chakra <> c:364 var
-R18026:18026 chakra <> a:365 var
-R18037:18046 chakra <> HDecidable class
-R18056:18064 chakra <> Decidable class
-R18074:18084 chakra <> hevaloption inst
-R18094:18097 chakra <> eval def
-R18107:18117 chakra <> pevaloption inst
-R18213:18215 Coq.Init.Logic <> not def
-inst 18325:18337 <> hevalread_dec
-binder 18339:18339 <> A:366
-R18358:18358 chakra <> A:366 var
-binder 18354:18354 <> x:367
-binder 18356:18356 <> y:368
-R18361:18369 chakra <> Decidable class
-R18372:18372 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R18371:18371 chakra <> x:367 var
-R18373:18373 chakra <> y:368 var
-binder 18342:18344 <> eqd:369
-binder 18386:18386 <> c:370
-binder 18388:18388 <> a:371
-R18391:18400 chakra <> HDecidable class
-R18404:18412 chakra <> hevalread inst
-R18414:18414 chakra <> A:366 var
-R18416:18416 chakra <> c:370 var
-R18418:18418 chakra <> a:371 var
-R18429:18438 chakra <> HDecidable class
-R18441:18449 chakra <> Decidable class
-R18452:18460 chakra <> hevalread inst
-R18565:18567 Coq.Init.Logic <> not def
-R18582:18585 chakra <> eval def
-R18588:18598 chakra <> pevaloption inst
-R18668:18671 chakra <> eval def
-R18674:18684 chakra <> pevaloption inst
-inst 18734:18747 <> hevalstate_dec
-binder 18749:18749 <> A:372
-R18768:18768 chakra <> A:372 var
-binder 18764:18764 <> x:373
-binder 18766:18766 <> y:374
-R18771:18779 chakra <> Decidable class
-R18782:18782 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R18781:18781 chakra <> x:373 var
-R18783:18783 chakra <> y:374 var
-binder 18752:18754 <> eqd:375
-binder 18796:18796 <> c:376
-binder 18798:18798 <> a:377
-R18801:18810 chakra <> HDecidable class
-R18814:18823 chakra <> hevalstate inst
-R18825:18825 chakra <> A:372 var
-R18827:18827 chakra <> c:376 var
-R18829:18829 chakra <> a:377 var
-R18840:18849 chakra <> HDecidable class
-R18852:18860 chakra <> Decidable class
-R18863:18872 chakra <> hevalstate inst
-R18899:18901 Coq.Init.Datatypes <> snd def
-R18899:18901 Coq.Init.Datatypes <> snd def
-R18983:18985 Coq.Init.Logic <> not def
-R19000:19003 chakra <> eval def
-R19006:19016 chakra <> pevaloption inst
-R19086:19089 chakra <> eval def
-R19092:19102 chakra <> pevaloption inst
+R11327:11333 chakra <> CRLiftH def
+inst 11356:11361 <> crconj
+R11365:11368 prechakra <> CONJ class
+R11370:11373 chakra <> CRel def
+R11378:11383 chakra <> CRConj def
+inst 11406:11413 <> crexists
+binder 11416:11416 <> T:200
+R11421:11422 prechakra <> EX class
+R11426:11429 chakra <> CRel def
+R11424:11424 chakra <> T:200 var
+R11434:11441 chakra <> CRExists def
+ind 11765:11772 <> Pairwise
+constr 11794:11799 <> pw_nil
+constr 11838:11844 <> pw_cons
+R11780:11783 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11776:11779 chakra <> CRel def
+R11784:11787 chakra <> LRel def
+binder 11810:11810 <> r:203
+binder 11812:11812 <> s:204
+R11815:11822 chakra <> Pairwise:201 ind
+R11834:11834 chakra <> s:204 var
+R11830:11832 Coq.Init.Datatypes <> nil constr
+R11826:11828 Coq.Init.Datatypes <> nil constr
+R11824:11824 chakra <> r:203 var
+R11858:11861 chakra <> CRel def
+binder 11856:11856 <> r:205
+binder 11864:11864 <> x:206
+binder 11866:11866 <> l:207
+binder 11868:11868 <> y:208
+binder 11870:11871 <> l':209
+binder 11873:11873 <> s:210
+R11883:11886 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11876:11876 chakra <> r:205 var
+R11878:11878 chakra <> x:206 var
+R11880:11880 chakra <> y:208 var
+R11882:11882 chakra <> s:210 var
+R11904:11907 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R11887:11894 chakra <> Pairwise:201 ind
+R11903:11903 chakra <> s:210 var
+R11900:11901 chakra <> l':209 var
+R11898:11898 chakra <> l:207 var
+R11896:11896 chakra <> r:205 var
+R11908:11915 chakra <> Pairwise:201 ind
+R11942:11942 chakra <> s:210 var
+R11931:11934 Coq.Init.Datatypes <> cons constr
+R11938:11939 chakra <> l':209 var
+R11936:11936 chakra <> y:208 var
+R11920:11923 Coq.Init.Datatypes <> cons constr
+R11927:11927 chakra <> l:207 var
+R11925:11925 chakra <> x:206 var
+R11917:11917 chakra <> r:205 var
+def 11957:11963 <> LRLiftP
+binder 11966:11966 <> P:211
+R11976:11979 chakra <> LRel def
+R11997:11997 prechakra <> :::'['_x_']' not
+R11999:11999 prechakra <> :::'['_x_']' not
+R11998:11998 chakra <> P:211 var
+def 12014:12020 <> LRLiftH
+R12025:12029 chakra <> HProp def
+binder 12023:12023 <> H:212
+R12034:12037 chakra <> LRel def
+R12055:12055 chakra <> H:212 var
+def 12070:12075 <> LRConj
+R12084:12087 chakra <> LRel def
+binder 12078:12079 <> r1:213
+binder 12081:12082 <> r2:214
+R12092:12095 chakra <> LRel def
+binder 12106:12107 <> l1:215
+binder 12109:12110 <> l2:216
+R12123:12126 prechakra <> ::type_scope:x_'/\'_x not
+R12115:12116 chakra <> r1:213 var
+R12118:12119 chakra <> l1:215 var
+R12121:12122 chakra <> l2:216 var
+R12127:12128 chakra <> r2:214 var
+R12130:12131 chakra <> l1:215 var
+R12133:12134 chakra <> l2:216 var
+def 12149:12156 <> LRExists
+binder 12159:12159 <> T:217
+R12166:12169 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12165:12165 chakra <> T:217 var
+R12170:12173 chakra <> LRel def
+binder 12163:12163 <> p:218
+R12178:12181 chakra <> LRel def
+binder 12192:12193 <> l1:219
+binder 12195:12196 <> l2:220
+R12201:12207 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+R12209:12210 prechakra <> ::type_scope:'Exists'_x_'..'_x_','_x not
+binder 12208:12208 <> t:221
+R12211:12211 chakra <> p:218 var
+R12215:12216 chakra <> l1:219 var
+R12218:12219 chakra <> l2:220 var
+R12213:12213 chakra <> t:221 var
+inst 12242:12248 <> lrliftp
+R12252:12255 prechakra <> LIFT class
+R12262:12265 chakra <> LRel def
+R12270:12276 chakra <> LRLiftP def
+inst 12299:12305 <> lrlifth
+R12309:12312 prechakra <> LIFT class
+R12320:12323 chakra <> LRel def
+R12314:12318 chakra <> HProp def
+R12328:12334 chakra <> LRLiftH def
+inst 12357:12362 <> lrconj
+R12366:12369 prechakra <> CONJ class
+R12371:12374 chakra <> LRel def
+R12379:12384 chakra <> LRConj def
+inst 12407:12414 <> lrexists
+binder 12417:12417 <> T:222
+R12422:12423 prechakra <> EX class
+R12427:12430 chakra <> LRel def
+R12425:12425 chakra <> T:222 var
+R12435:12442 chakra <> LRExists def
+ind 12622:12626 <> HPROP
+constr 12633:12637 <> HLIFT
+constr 12657:12661 <> EVALS
+constr 12690:12694 <> HCONJ
+constr 12724:12730 <> HEXISTS
+constr 12762:12766 <> HSPEC
+constr 12787:12790 <> CAPP
+constr 12817:12821 <> CRAPP
+constr 12853:12856 <> LAPP
+constr 12888:12892 <> LRAPP
+ind 12938:12942 <> CPROP
+constr 12949:12954 <> CLIFTP
+constr 12974:12979 <> CLIFTH
+constr 13000:13004 <> CCONJ
+constr 13034:13040 <> CEXISTS
+constr 13072:13074 <> ATT
+constr 13122:13124 <> PRT
+ind 13159:13163 <> LPROP
+constr 13170:13172 <> NIL
+constr 13184:13187 <> CONS
+constr 13223:13225 <> ALL
+constr 13246:13249 <> SOME
+constr 13270:13274 <> ALLOP
+ind 13297:13300 <> CREL
+constr 13307:13312 <> ATTREL
+constr 13367:13372 <> PRTREL
+ind 13394:13397 <> LREL
+constr 13404:13411 <> PAIRWISE
+ind 13433:13434 <> OP
+constr 13456:13461 <> READOP
+constr 13486:13493 <> OPTIONOP
+ind 13523:13526 <> READ
+constr 13548:13553 <> GETATT
+constr 13587:13591 <> GETPS
+ind 13621:13626 <> OPTION
+constr 13649:13660 <> SIMPLEOPTION
+R13442:13445 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13534:13537 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13634:13637 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12645:12648 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12649:12653 chakra <> HPROP:223 ind
+binder 12664:12664 <> A:239
+R12673:12676 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12669:12670 chakra <> OP:228 ind
+R12672:12672 chakra <> A:239 var
+R12678:12681 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12677:12677 chakra <> A:239 var
+R12682:12686 chakra <> HPROP:223 ind
+R12703:12706 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12698:12702 chakra <> HPROP:223 ind
+R12712:12715 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12707:12711 chakra <> HPROP:223 ind
+R12716:12720 chakra <> HPROP:223 ind
+binder 12733:12733 <> T:240
+R12738:12738 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12749:12753 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12740:12743 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12739:12739 chakra <> T:240 var
+R12744:12748 chakra <> HPROP:223 ind
+R12754:12758 chakra <> HPROP:223 ind
+R12775:12778 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12770:12774 chakra <> LPROP:225 ind
+R12779:12783 chakra <> HPROP:223 ind
+R12799:12802 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12794:12798 chakra <> CPROP:224 ind
+R12805:12808 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12803:12804 chakra <> ID defax
+R12809:12813 chakra <> HPROP:223 ind
+R12829:12832 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12825:12828 chakra <> CREL:226 ind
+R12835:12838 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12833:12834 chakra <> ID defax
+R12841:12844 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12839:12840 chakra <> ID defax
+R12845:12849 chakra <> HPROP:223 ind
+R12865:12868 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12860:12864 chakra <> LPROP:225 ind
+R12876:12879 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12869:12872 Coq.Init.Datatypes <> list ind
+R12874:12875 chakra <> ID defax
+R12880:12884 chakra <> HPROP:223 ind
+R12900:12903 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12896:12899 chakra <> LREL:227 ind
+R12911:12914 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12904:12907 Coq.Init.Datatypes <> list ind
+R12909:12910 chakra <> ID defax
+R12922:12925 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12915:12918 Coq.Init.Datatypes <> list ind
+R12920:12921 chakra <> ID defax
+R12926:12930 chakra <> HPROP:223 ind
+R12962:12965 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12966:12970 chakra <> CPROP:224 ind
+R12988:12991 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R12983:12987 chakra <> HPROP:223 ind
+R12992:12996 chakra <> CPROP:224 ind
+R13013:13016 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13008:13012 chakra <> CPROP:224 ind
+R13022:13025 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13017:13021 chakra <> CPROP:224 ind
+R13026:13030 chakra <> CPROP:224 ind
+binder 13043:13043 <> T:241
+R13048:13048 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13059:13063 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13050:13053 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13049:13049 chakra <> T:241 var
+R13054:13058 chakra <> CPROP:224 ind
+R13064:13068 chakra <> CPROP:224 ind
+binder 13085:13085 <> a:242
+R13092:13095 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13088:13089 chakra <> ty def
+R13091:13091 chakra <> a:242 var
+R13096:13096 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13109:13113 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13101:13104 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13097:13098 chakra <> ty def
+R13100:13100 chakra <> a:242 var
+R13114:13118 chakra <> CPROP:224 ind
+R13135:13138 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13128:13131 Coq.Init.Datatypes <> list ind
+R13133:13134 chakra <> ID defax
+R13144:13147 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13139:13143 chakra <> LPROP:225 ind
+R13148:13152 chakra <> CPROP:224 ind
+R13176:13180 chakra <> LPROP:225 ind
+R13193:13196 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13191:13192 chakra <> ID defax
+R13202:13205 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13197:13201 chakra <> CPROP:224 ind
+R13211:13214 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13206:13210 chakra <> LPROP:225 ind
+R13215:13219 chakra <> LPROP:225 ind
+R13234:13237 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13229:13233 chakra <> CPROP:224 ind
+R13238:13242 chakra <> LPROP:225 ind
+R13258:13261 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13253:13257 chakra <> CPROP:224 ind
+R13262:13266 chakra <> LPROP:225 ind
+R13282:13285 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13278:13281 chakra <> CREL:226 ind
+R13286:13290 chakra <> LPROP:225 ind
+R13329:13329 chakra <> A defax
+binder 13323:13324 <> a1:243
+binder 13326:13327 <> a2:244
+R13332:13332 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13355:13359 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13338:13341 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13333:13334 chakra <> ty def
+R13336:13337 chakra <> a1:243 var
+R13347:13350 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13342:13343 chakra <> ty def
+R13345:13346 chakra <> a2:244 var
+R13360:13363 chakra <> CREL:226 ind
+R13380:13383 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13376:13379 chakra <> LREL:227 ind
+R13384:13387 chakra <> CREL:226 ind
+R13419:13422 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13415:13418 chakra <> CREL:226 ind
+R13423:13426 chakra <> LREL:227 ind
+binder 13464:13464 <> A:245
+R13475:13478 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13469:13472 chakra <> READ:229 ind
+R13474:13474 chakra <> A:245 var
+R13479:13480 chakra <> OP:228 ind
+R13482:13482 chakra <> A:245 var
+binder 13496:13496 <> A:246
+R13509:13512 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13501:13506 chakra <> OPTION:230 ind
+R13508:13508 chakra <> A:246 var
+R13513:13514 chakra <> OP:228 ind
+R13516:13516 chakra <> A:246 var
+binder 13564:13564 <> a:247
+R13569:13572 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13567:13568 chakra <> ID defax
+R13573:13576 chakra <> READ:229 ind
+R13579:13580 chakra <> ty def
+R13582:13582 chakra <> a:247 var
+R13597:13600 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13595:13596 chakra <> ID defax
+R13601:13604 chakra <> READ:229 ind
+R13607:13610 Coq.Init.Datatypes <> list ind
+R13612:13613 chakra <> ID defax
+binder 13663:13663 <> A:248
+R13676:13679 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R13668:13673 Coq.Init.Datatypes <> option ind
+R13675:13675 chakra <> A:248 var
+R13680:13685 chakra <> OPTION:230 ind
+R13687:13687 chakra <> A:248 var
+ind 13817:13826 <> HDecidable
+constr 13841:13844 <> hdec
+rec 13817:13826 <> HDecidable
+proj 13841:13844 <> hdec
+R13831:13835 chakra <> HProp def
+binder 13829:13829 <> h:249
+R13856:13856 chakra <> H defax
+binder 13854:13854 <> s:251
+R13859:13867 prechakra <> Decidable class
+R13870:13870 chakra <> h:249 var
+R13872:13872 chakra <> s:251 var
+ind 13882:13891 <> CDecidable
+constr 13906:13909 <> cdec
+rec 13882:13891 <> CDecidable
+proj 13906:13909 <> cdec
+R13896:13900 chakra <> CProp def
+binder 13894:13894 <> c:253
+R13921:13922 chakra <> ID defax
+binder 13919:13919 <> x:255
+R13925:13934 chakra <> HDecidable class
+R13937:13937 chakra <> c:253 var
+R13939:13939 chakra <> x:255 var
+ind 13949:13958 <> LDecidable
+constr 13973:13976 <> ldec
+rec 13949:13958 <> LDecidable
+proj 13973:13976 <> ldec
+R13963:13967 chakra <> LProp def
+binder 13961:13961 <> r:257
+R13988:13991 Coq.Init.Datatypes <> list ind
+R13993:13994 chakra <> ID defax
+binder 13986:13986 <> l:259
+R13997:14006 chakra <> HDecidable class
+R14009:14009 chakra <> r:257 var
+R14011:14011 chakra <> l:259 var
+ind 14021:14030 <> RDecidable
+constr 14044:14047 <> rdec
+rec 14021:14030 <> RDecidable
+proj 14044:14047 <> rdec
+R14035:14038 chakra <> CRel def
+binder 14033:14033 <> r:261
+binder 14057:14057 <> x:263
+binder 14059:14059 <> y:264
+R14062:14071 chakra <> HDecidable class
+R14074:14074 chakra <> r:261 var
+R14076:14076 chakra <> x:263 var
+R14078:14078 chakra <> y:264 var
+ind 14088:14097 <> MDecidable
+constr 14111:14114 <> mdec
+rec 14088:14097 <> MDecidable
+proj 14111:14114 <> mdec
+R14102:14105 chakra <> LRel def
+binder 14100:14100 <> m:266
+binder 14124:14125 <> l1:268
+binder 14127:14128 <> l2:269
+R14131:14140 chakra <> HDecidable class
+R14143:14143 chakra <> m:266 var
+R14145:14146 chakra <> l1:268 var
+R14148:14149 chakra <> l2:269 var
+inst 14163:14170 <> lift_dec
+binder 14173:14173 <> P:271
+R14178:14186 prechakra <> Decidable class
+R14188:14188 chakra <> P:271 var
+binder 14178:14188 <> H0:272
+R14193:14202 chakra <> HDecidable class
+R14205:14205 prechakra <> :::'['_x_']' not
+R14207:14207 prechakra <> :::'['_x_']' not
+R14206:14206 chakra <> P:271 var
+inst 14242:14250 <> hconj_dec
+binder 14253:14254 <> H1:273
+binder 14256:14257 <> H2:274
+R14262:14271 chakra <> HDecidable class
+R14273:14274 chakra <> H1:273 var
+binder 14262:14274 <> H0:275
+R14279:14288 chakra <> HDecidable class
+R14290:14291 chakra <> H2:274 var
+binder 14279:14291 <> H3:276
+R14296:14305 chakra <> HDecidable class
+R14310:14313 prechakra <> ::type_scope:x_'/\'_x not
+R14308:14309 chakra <> H1:273 var
+R14314:14315 chakra <> H2:274 var
+R14353:14362 chakra <> HDecidable class
+R14377:14385 prechakra <> Decidable class
+R14400:14407 prechakra <> Decision def
+R14422:14432 chakra <> hevaloption inst
+R14447:14455 chakra <> hevalread inst
+R14470:14479 chakra <> hevalstate inst
+R14494:14503 chakra <> HEvalState def
+R14519:14527 chakra <> HEvalRead def
+R14542:14552 chakra <> HEvalOption def
+R14567:14570 prechakra <> eval def
+R14585:14594 prechakra <> evaloption inst
+inst 14607:14621 <> hevaloption_dec
+binder 14623:14623 <> A:277
+R14642:14642 chakra <> A:277 var
+binder 14638:14638 <> x:278
+binder 14640:14640 <> y:279
+R14645:14653 prechakra <> Decidable class
+R14656:14656 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14655:14655 chakra <> x:278 var
+R14657:14657 chakra <> y:279 var
+binder 14626:14628 <> eqd:280
+binder 14670:14670 <> c:281
+binder 14672:14672 <> a:282
+R14675:14684 chakra <> HDecidable class
+R14688:14698 chakra <> hevaloption inst
+R14700:14700 chakra <> A:277 var
+R14702:14702 chakra <> c:281 var
+R14704:14704 chakra <> a:282 var
+inst 14890:14902 <> hevalread_dec
+binder 14904:14904 <> A:283
+R14923:14923 chakra <> A:283 var
+binder 14919:14919 <> x:284
+binder 14921:14921 <> y:285
+R14926:14934 prechakra <> Decidable class
+R14937:14937 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14936:14936 chakra <> x:284 var
+R14938:14938 chakra <> y:285 var
+binder 14907:14909 <> eqd:286
+binder 14951:14951 <> c:287
+binder 14953:14953 <> a:288
+R14956:14965 chakra <> HDecidable class
+R14969:14977 chakra <> hevalread inst
+R14979:14979 chakra <> A:283 var
+R14981:14981 chakra <> c:287 var
+R14983:14983 chakra <> a:288 var
+inst 15168:15181 <> hevalstate_dec
+binder 15183:15183 <> A:289
+R15202:15202 chakra <> A:289 var
+binder 15198:15198 <> x:290
+binder 15200:15200 <> y:291
+R15205:15213 prechakra <> Decidable class
+R15216:15216 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15215:15215 chakra <> x:290 var
+R15217:15217 chakra <> y:291 var
+binder 15186:15188 <> eqd:292
+binder 15230:15230 <> c:293
+binder 15232:15232 <> a:294
+R15235:15244 chakra <> HDecidable class
+R15248:15257 chakra <> hevalstate inst
+R15259:15259 chakra <> A:289 var
+R15261:15261 chakra <> c:293 var
+R15263:15263 chakra <> a:294 var
+R15303:15305 Coq.Init.Datatypes <> snd def
+R15303:15305 Coq.Init.Datatypes <> snd def
