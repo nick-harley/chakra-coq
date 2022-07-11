@@ -11,7 +11,9 @@ The CHAKRA processing and query language (CHPQL) is a simple programming languag
 Require Import Coq.Init.Datatypes.
 Require Import Coq.Lists.List.
 
-(** * PreChakra *)
+(** * Boilerplate *)
+
+(** Type classes: *)
 
 Class Functor (F:Type -> Type) :=
   { fmap {A B}: (A -> B) -> F A -> F B }.
@@ -29,6 +31,9 @@ Definition bind {F:Type->Type} `{Monad F} {A B} : F A -> (A -> F B) -> F B :=
 Definition fish {F:Type->Type} `{Monad F} {A B C} : (A -> F B) -> (B -> F C) -> A -> F C :=
   fun f g a => bind (f a) g.
 
+Class Flippable (F G:Type->Type) := mflip : forall {A}, F (G A) -> G (F A).
+  
+(** List Monad: *)
 
 Instance list_funtor : Functor list :=
   { fmap := map }.
@@ -39,15 +44,18 @@ Instance list_monad : Monad list :=
     mjoin {A} := fix MJOIN (lla:list (list A)) := match lla with
                                                 | nil => nil
                                                 | cons la lla' => app la (MJOIN lla')
-                                                end }.
+                                                  end }.
 
+Definition mmap {F G} `{Monad F} `{Monad G} `{Flippable G F} {A B} (f:A->F B) (t: F (G A)) : F (G B) :=
+  bind t (fun g => mflip (fmap f g)).
+
+(** Option Monad: *)
 
 Instance op_functor : Functor option :=
   { fmap {A B}:= fun f oa => match oa with
                              | None => None
                              | Some a => Some (f a)
                              end }.
-
 
 Instance op_monad : Monad option :=
   { munit {A} := Some;
@@ -56,49 +64,21 @@ Instance op_monad : Monad option :=
                            | Some oa => oa
                            end }.
 
-Class MFLIP (F G:Type -> Type) := mflip : forall {A}, F (G A) -> G (F A).
-
-Fixpoint lo_to_ol {T} (lo: list (option T)) : option (list T) :=
-  match lo with
-  | nil => Some nil
-  | cons x l => match x, (lo_to_ol l) with
-                | Some x', Some l' => Some (cons x' l')
-                | _,_ => None
-                end
-  end.
-
-
-Instance flip_list_option : MFLIP list option := @lo_to_ol.
+(** Read and State Monads *)
 
 Definition Read (D A:Type) := D -> option A.
 
-Definition State (D A:Type) := D -> prod D (option A).
-
-
 Instance read_functor {D} : Functor (Read D) :=
   { fmap {A B} := fun f ra s => fmap f (ra s) }.
-
 
 Instance read_monad {D} : Monad (Read D) :=
   { munit {A} := fun a s => ret a;
     mjoin {A} := fun rra s => match rra s with
                | None => None
                | Some f => f s
-               end }.
+                              end }.
 
-Definition appto {A B} (a:A) (f:A->B) : B :=
-  f a.
-
-Definition apptoall {A B} (l:list (A->B)) (a:A) : list B :=
-  map (appto a) l.
-
-
-Instance flip_list_read {D} : MFLIP list (Read D) :=
-  fun U (l:list (Read D U)) s => mflip (apptoall l s).
-
-Definition rmap {D A B} (f:A->Read D B) (op:Read D (list A)) : Read D (list B) :=
-  bind op (fun l => mflip (fmap f l)).
-
+Definition State (D A:Type) := D -> prod D (option A).
 
 Instance state_functor {D} : Functor (State D) :=
   { fmap {A B} := fun f sa s => match sa s with
@@ -106,13 +86,52 @@ Instance state_functor {D} : Functor (State D) :=
                                 | (s', Some a) => (s', Some (f a))
                                 end }.
 
-
 Instance state_monad {D} : Monad (State D) :=
   { munit {A} := fun a s => (s,Some a);
     mjoin {A} := fun ssa s => match ssa s with
                              | (s', None) => (s', None)
                              | (s', Some sa) => sa s'
                               end }.
+
+(** Flip list option: *)
+
+Instance flip_list_option : Flippable list option :=
+  fix FLO T (l:list (option T)) := match l with
+                                   | nil => Some nil
+                                   | cons h t => match h, FLO T t with
+                                                 | Some x, Some l' => Some (cons x l')
+                                                 | _ , _ => None
+                                                 end
+                                   end.
+
+(** Flip list and Read: *)
+
+Instance flip_list_read {D} : Flippable list (Read D) :=
+  fix FLR U (l:list (Read D U)) s := match l with
+                                     | nil => Some nil
+                                     | cons r rs => let ol := FLR U rs s in
+                                                    match r s, ol with
+                                                    | Some u, Some l' => Some (cons u l')
+                                                    | _ , _ => None
+                                                    end
+                                     end.
+
+(** Flip list and state: *)
+
+Instance flip_list_state {D} : Flippable list (State D) :=
+  fix FLS U (l:list (State D U)) s := match l with
+                                      | nil => (s, Some nil)
+                                      | cons h ss => let (s', ol) := FLS U ss s in
+                                                     match h s, ol with
+                                                     | (_,Some u), Some l => (s',Some (cons u l))
+                                                     | _ , _ => (s',None)
+                                                     end
+                                      end.
+
+(** Useful functions: *)
+
+Definition rmap {D A B} := @mmap (Read D) list A B.
+Definition smap {D A B} := @mmap (State D) list A B.
 
 (** Abstract logical constructs *)
 
@@ -136,31 +155,14 @@ Hint Unfold Decision Decidable : core.
 
 (** Instances: *)
 
-
-Instance liftoptiontoread {D A} : LIFT (option A) (Read D A) := fun o s => o.
-
-
-Instance liftreadtostate {D A} : LIFT (Read D A) (State D A) := fun r s => (s, r s).
-
-
-Instance liftoptiontostate {D A} : LIFT (option A) (State D A) := fun o s => (s, o).
-
-
+Instance liftoptionread {D A} : LIFT (option A) (Read D A) := fun o s => o.
+Instance liftreadstate {D A} : LIFT (Read D A) (State D A) := fun r s => (s, r s).
+Instance liftoptionstate {D A} : LIFT (option A) (State D A) := fun o s => (s, o).
 Instance evaloption {A} : EVAL (option A) A Prop := fun oa a => Some a = oa.
-
-
 Instance conjprop : CONJ Prop := and.
-
-
 Instance disjprop : DISJ Prop := or.
-
-
 Instance negprop : NEG Prop := not.
-
-
 Instance impprop : IMP Prop := fun P Q => P -> Q.
-
-
 Instance exprop {A} : EX A Prop := fun p => exists t, p t.
 
 Hint Unfold evaloption conjprop disjprop negprop impprop exprop : core.
@@ -187,7 +189,6 @@ Notation "'Exists' x .. y , p" := (ex (fun x => .. (ex (fun y => p)) ..))
   (at level 200, x binder, right associativity,
    format "'[' 'Exists' '/ ' x .. y , '/ ' p ']'")
     : type_scope.
-
 
 Notation "'rw' H 'in' H'" := (eq_rect _ _ H' _ H)(at level 10, H' at level 10, format "'[' 'rw' H in '/' H' ']'").
 
@@ -339,6 +340,7 @@ Axiom tl_cts : forall s, tl (cts s) = cts (pop s).
 Axiom cts_fnd : forall x c s, In (x,c) (cts s) <-> fnd x s = Some c.
 
 (** Spec for [dom] *)
+
 Axiom dom_fst_cts : forall s, dom s = map fst (cts s).
 
 (** Decidable equality relations: *)
@@ -1095,5 +1097,3 @@ with READ : Type -> Type :=
 | GETPS : ID -> READ (list ID)
 with OPTION : Type -> Type := 
 | SIMPLEOPTION {A} : option A -> OPTION A.
-
-
