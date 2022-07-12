@@ -928,18 +928,47 @@ Defined.
 
 (** Disjunction *)
 
+Instance LDisj : DISJ LProp :=
+  fun lp lp' s => lp s \/ lp' s.
+
+Hint Unfold LDisj.
+
+Instance ldisj_dec : forall lp lp' `{DecidableLProp lp} `{DecidableLProp lp'}, DecidableLProp (lp \/ lp').
+(* begin details *)
+autounfold in *. refine (fun p q dp dq l s => match dp l s, dq l s with
+                                                | right _ , right _ => right _
+                                                | _ , _ => left _
+                                                end); firstorder.
+Defined. 
+(* end details *)
+
 (** Negation *)
+
+Instance LNeg : NEG LProp := fun p l => ~ (p l). 
+
+Hint Unfold LNeg.
+
+Instance LNeg_dec : forall p `{DecidableLProp p}, DecidableLProp (LNeg p).
+(* begin details *)
+autounfold in *. refine (fun p d l s => match d l s with
+                                        | left _ => right _
+                                        | right _ => left _
+                                        end); firstorder.
+Defined.
+(* end define *)
 
 (** Implication *)
 
+Instance LImp : IMP LProp := fun p q l => HImp (p l) (q l).
+
+Hint Unfold LImp.
+
 (** Existential quantification: *)
 
-Definition LExists {T} (s:T->LProp) : LProp :=
-  fun l => Exists t, s t l.
+Instance LEx {T} : EX T LProp :=
+  fun p l => Exists t, p t l.
 
-Instance lexists {T} : EX T LProp := LExists.
-
-Hint Unfold LExists lexists : core.
+Hint Unfold LEx.
 
 (** ** Constituent Relations *)
 
@@ -1017,14 +1046,35 @@ Defined.
 
 (** TODO: Disjunction *)
 
-(** TODO: Negation *)
+Instance CRDisj : DISJ CRel := fun p q x y => p x y \/ q x y.
 
-(** TODO: Implication *)
+Hint Unfold CRDisj.
+
+Instance CRDisj_dec : forall p q `{DecidableCRel p} `{DecidableCRel q}, DecidableCRel (p \/ q).
+autounfold in *. refine (fun p q d1 d2 x y s => match d1 x y s, d2 x y s with
+                                                | right _, right _ => right _
+                                                | _ , _ => left _
+                                                end); firstorder. 
+Defined.
+
+(** Negation *)
+
+Instance CRNeg : NEG CRel := fun p x y => ~ (p x y).
+
+Hint Unfold CRNeg.
+
+Instance CRNeg_dec : forall r `{DecidableCRel r}, DecidableCRel (~ r). firstorder. Defined. 
+
+(** Implication *)
+
+Instance CRImp : IMP CRel := fun r r' x y => HImp (r x y) (r' x y). 
+
+Hint Unfold CRImp.
 
 (** Existential quantification: *)
 
 Definition CRExists {T} (p:T->CRel) : CRel :=
-  fun x y => Exists t, p t x y. 
+  fun x y => Exists t, p t x y.
 
 Instance crexists {T} : EX T CRel := CRExists.
 
@@ -1080,9 +1130,30 @@ Instance lrconj : CONJ LRel := LRConj.
 
 (** Disjunction: *)
 
+Instance LRDisj : DISJ LRel := fun p q l l' => p l l' \/ q l l'.
+
+Hint Unfold LRDisj.
+
+Instance LRDisj_dec : forall p q `{DecidableLRel p} `{DecidableLRel q}, DecidableLRel (p \/ q).
+autounfold in *. refine (fun p q d1 d2 l l' s => match d1 l l' s, d2 l l' s with
+                                                 | right _, right _ => right _
+                                                 | _ , _ => left _
+                                                 end); firstorder.
+Defined. 
+
 (** Negation *)
 
+Instance LRNeg : NEG LRel := fun p l => ~ (p l).
+
+Hint Unfold LRNeg.
+
+Instance LRNeg_dec : forall p `{DecidableLRel p}, DecidableLRel (~ p). firstorder. Defined. 
+
 (** Implication *)
+
+Instance LRImp : IMP LRel:= fun p q l l' => HImp (p l l') (q l l').
+
+Hint Unfold LRImp.
 
 (** Existential quantification: *)
 
@@ -1183,7 +1254,7 @@ with csem (c:CPROP) :=
 with lsem (l:LPROP) :=
        match  l with
        | NIL => LNil
-       | CONS x c r => LCons x (csem x) (lsem r) 
+       | CONS x c r => LCons x (csem c) (lsem r) 
        | ALL c => LAll (csem c)
        | SOME c => LSome (csem c)
        | ALLOP cr => LAllOrdPairs (crsem cr)
@@ -1201,7 +1272,7 @@ with crsem (cr:CREL) :=
        | CRDISJ r r' => crsem r \/ crsem r'
        | CRNEG r => ~ (crsem r)
        | CRIMP r r' => CRImp (crsem r) (crsem r')
-       | CREX p => Exists t, crsem (r t)
+       | CREX p => Exists t, crsem (p t)
        end
 with lrsem (lr:LREL) :=
        match lr with
@@ -1214,5 +1285,5 @@ with lrsem (lr:LREL) :=
        end
 with opsem {T} (o:OP T) :=
        match o with
-       | GETATT a x => get_att a x
+       | GETATT a x => fun s => (s, get_att a x s)
        end.
