@@ -32,7 +32,10 @@ Definition fish {F:Type->Type} `{Monad F} {A B C} : (A -> F B) -> (B -> F C) -> 
   fun f g a => bind (f a) g.
 
 Class Flippable (F G:Type->Type) := mflip : forall {A}, F (G A) -> G (F A).
-  
+
+Definition mmap {F G} `{Monad F} `{Monad G} `{Flippable G F} {A B} (f:A->F B) (t: F (G A)) : F (G B) :=
+  bind t (fun g => mflip (fmap f g)).
+
 (** List Monad: *)
 
 Instance list_funtor : Functor list :=
@@ -45,9 +48,6 @@ Instance list_monad : Monad list :=
                                                 | nil => nil
                                                 | cons la lla' => app la (MJOIN lla')
                                                   end }.
-
-Definition mmap {F G} `{Monad F} `{Monad G} `{Flippable G F} {A B} (f:A->F B) (t: F (G A)) : F (G B) :=
-  bind t (fun g => mflip (fmap f g)).
 
 (** Option Monad: *)
 
@@ -64,7 +64,7 @@ Instance op_monad : Monad option :=
                            | Some oa => oa
                            end }.
 
-(** Read and State Monads *)
+(** Read monad: *)
 
 Definition Read (D A:Type) := D -> option A.
 
@@ -77,6 +77,10 @@ Instance read_monad {D} : Monad (Read D) :=
                | None => None
                | Some f => f s
                               end }.
+
+Definition rmap {D A B} := @mmap (Read D) list A B.
+
+(** State monad: *)
 
 Definition State (D A:Type) := D -> prod D (option A).
 
@@ -92,6 +96,8 @@ Instance state_monad {D} : Monad (State D) :=
                              | (s', None) => (s', None)
                              | (s', Some sa) => sa s'
                               end }.
+
+Definition smap {D A B} := @mmap (State D) list A B.
 
 (** Flip list option: *)
 
@@ -128,12 +134,7 @@ Instance flip_list_state {D} : Flippable list (State D) :=
                                                      end
                                       end.
 
-(** Useful functions: *)
-
-Definition rmap {D A B} := @mmap (Read D) list A B.
-Definition smap {D A B} := @mmap (State D) list A B.
-
-(** Abstract logical constructs *)
+(** Abstract logical constructs: *)
 
 Class LIFT A B := lift : A -> B.
 Class EVAL A B C := eval : A -> B -> C.
@@ -279,13 +280,13 @@ Parameter dom : H -> list ID.
 Axiom ideq_spec : forall x y, true = ideq x y <-> x = y.
 Axiom aeq_spec : forall a b, true = aeq a b <-> a = b.
   
-(** Spec for [pts] *)
+(** Spec for [pts]: *)
 
 Axiom pts_agg : forall ps, pts (agg ps) = ps.
 Axiom pts_seta : forall a v c, pts (seta a v c) = pts c.
 Axiom pts_setp : forall p u c, pts (setp p u c) = pts c.
 
-(** Spec for [geta] *)
+(** Spec for [geta]: *)
 
 Axiom geta_agg : forall a ps, geta a (agg ps) = None.
 Axiom geta_seta_same : forall a b v c (e:a = b), geta b (seta a v c) = Some (rw e in v). 
@@ -297,7 +298,7 @@ Axiom getp_agg : forall p ps, getp p (agg ps) = None.
 Axiom getp_setp_same : forall p q u c (e:p = q), getp q (setp p u c) = Some (rw e in u). 
 Axiom getp_setp_other : forall p q u c, p <> q -> getp q (setp p u c) = getp q c.
 
-(** Spec for [emp] *)
+(** Spec for [emp]: *)
 
 Axiom fnd_emp : forall x, fnd x emp = None.
 
@@ -339,12 +340,11 @@ Axiom hd_cts : forall s, hd_error (cts s) = peek s.
 Axiom tl_cts : forall s, tl (cts s) = cts (pop s).
 Axiom cts_fnd : forall x c s, In (x,c) (cts s) <-> fnd x s = Some c.
 
-(** Spec for [dom] *)
+(** Spec for [dom]: *)
 
 Axiom dom_fst_cts : forall s, dom s = map fst (cts s).
 
 (** Decidable equality relations: *)
-
 
 Instance id_dec : forall (x y: ID), Decidable (x=y).
 (* begin details *)
@@ -493,7 +493,6 @@ Instance hevalread {T} : EVAL (Read H T) T HProp := HEvalRead.
 
 Hint Unfold HEvalRead hevalread : core.
 
-
 Instance hevalread_dec A {eqd:forall (x y:A),Decidable(x=y)} : forall c a, DecidableHProp (@hevalread A c a).
 (* begin details *)
 autounfold in *. intros.
@@ -510,11 +509,9 @@ Defined.
 Definition HEvalState T (op:State H T) (v:T) : HProp :=
   fun s => snd (op s) ~~ v.
 
-
 Instance hevalstate T : EVAL (State H T) T HProp := HEvalState T.
 
 Hint Unfold HEvalState hevalstate : core.
-
 
 Instance hevalstate_dec A {eqd:forall (x y:A),Decidable(x=y)} : forall c a, DecidableHProp (@hevalstate A c a).
 (* begin details *)
@@ -532,11 +529,9 @@ Defined.
 Definition HConj (h1 h2:HProp) : HProp :=
   fun s => h1 s /\ h2 s.
 
-
 Instance hconj : CONJ HProp := HConj.
 
 Hint Unfold HConj hconj : core.
-
 
 Instance hconj_dec H1 H2 `{DecidableHProp H1} `{DecidableHProp H2} : DecidableHProp (H1 /\ H2). firstorder. Defined.
 
@@ -545,11 +540,9 @@ Instance hconj_dec H1 H2 `{DecidableHProp H1} `{DecidableHProp H2} : DecidableHP
 Definition HDisj (hp1 hp2:HProp) : HProp :=
   fun s => hp1 s \/ hp2 s.
 
-
 Instance hdisj : DISJ HProp := HDisj.
 
 Hint Unfold HDisj hdisj : core.
-
 
 Instance hdisj_dec : forall hp1 hp2 `{DecidableHProp hp1} `{DecidableHProp hp2}, DecidableHProp (hp1 \/ hp2). firstorder. Defined.
 
@@ -558,19 +551,25 @@ Instance hdisj_dec : forall hp1 hp2 `{DecidableHProp hp1} `{DecidableHProp hp2},
 Definition HNeg (hp:HProp) : HProp :=
   fun s => ~ hp s.
 
-
 Instance hneg : NEG HProp := HNeg.
 
 Hint Unfold HNeg hneg : core.
 
-
 Instance hneg_dec : forall hp `{DecidableHProp hp}, DecidableHProp (~ hp). firstorder. Defined. 
+
+(** Implementation *)
+
+Definition HImp (hp1 hp2:HProp) : HProp :=
+  fun s => hp1 s -> hp2 s.
+
+Instance himp : IMP HProp := HImp.
+
+Hint Unfold HImp himp : core.
 
 (** Existential quantification: *)
 
 Definition HExists {T} (p:T->HProp) : HProp :=
   fun s => Exists t, p t s.
-
 
 Instance hexists {T} : EX T HProp := HExists.
 
@@ -581,7 +580,6 @@ Hint Unfold HExists hexists : core.
 Definition HSpec (p:LProp) : HProp := Exists l, domain ~~ l /\ p l.
 
 Hint Unfold HSpec : core.
-
 
 Instance HSpec_dec {LP} `{DecidableLProp LP} : DecidableHProp (HSpec LP).
 (* begin details *)
@@ -602,7 +600,6 @@ Definition HasAtt (a:A) (v:AT a) : CProp :=
 
 Hint Unfold HasAtt : core.
 
-
 Instance hasatt_dec {a:A} `{d:forall v v':AT a, Decidable (v=v')} (v:AT a) : DecidableCProp (HasAtt a v).
 (* begin details *)
 autounfold in *. intros. 
@@ -620,7 +617,6 @@ Definition HasPrp (p:P) (v:PT p) : CProp :=
   fun x => (get_prp p x) ~~ v.
 
 Hint Unfold HasPrp : core.
-
 
 Instance hasprp_dec {p:P} `{d:forall v v':PT p, Decidable (v=v')} (v:PT p) : DecidableCProp (HasPrp p v).
 (* begin details *)
@@ -640,7 +636,6 @@ Definition HasParts (l: list ID) : CProp :=
 
 Hint Unfold HasParts : core.
 
-
 Instance hasparts_dec : forall (l:list ID), DecidableCProp (HasParts l).
 (* begin details *)
 autounfold in *. intros. 
@@ -657,25 +652,21 @@ Defined.
 Definition CLiftP (P:Prop) : CProp :=
   fun _ => [P]. 
 
-
 Instance cliftp : LIFT Prop CProp := CLiftP.
 
 Hint Unfold CLiftP cliftp : core.
 
-
 Instance cliftp_dec : forall {P:Prop} `{Decidable P},  DecidableCProp (CLiftP P).
 firstorder. Defined. 
 
-(** Lifted HProps *)
+(** Lifted HProps: *)
 
 Definition CLiftH (H:HProp) : CProp :=
   fun _ => H.
 
-
 Instance clifth : LIFT HProp CProp := CLiftH. 
 
 Hint Unfold CLiftH clifth : core.
-
 
 Instance clift_dec : forall {X:HProp} `{DecidableHProp X}, DecidableCProp (CLiftH X).
 firstorder. Defined. 
@@ -685,11 +676,9 @@ firstorder. Defined.
 Definition CConj (c1 c2 : CProp) : CProp :=
   fun x => c1 x /\ c2 x.
 
-
 Instance cconj : CONJ CProp := CConj.
 
 Hint Unfold CConj cconj : core.
-
 
 Instance cconj_dec : forall (C1 C2:CProp) `{DecidableCProp C1} `{DecidableCProp C2}, DecidableCProp (CConj C1 C2).
 (* begin details *)
@@ -703,11 +692,56 @@ induction (d1 x s).
 Defined. 
 (* end details *)
 
+(** Disjunction: *)
+
+Definition CDisj (c1 c2 : CProp) : CProp :=
+  fun x => c1 x \/ c2 x.
+
+Instance cdisj : DISJ CProp := CDisj.
+
+Hint Unfold CDisj cdisj : core.
+
+Instance cdisj_dec_left : forall (C1 C2:CProp) `{DecidableCProp C1} `{DecidableCProp C2}, DecidableCProp (C1 \/ C2).
+(* begin details *)
+autounfold in *. refine (fun c1 c2 d1 d2 x s => match d1 x s, d2 x s with
+                                                | right nc1, right nc2 => right _
+                                                | _ , _ => left _
+                                                end); firstorder.
+Defined.
+(* end details *)
+
+(** Negation *)
+
+Definition CNeg (cp : CProp) : CProp :=
+  fun x => ~ cp x.
+
+Instance cneg : NEG CProp := CNeg.
+
+Hint Unfold CNeg cneg : core.
+
+Instance cneg_dec : forall cp `{DecidableCProp cp}, DecidableCProp (~ cp).
+(* begin details *)
+autounfold in *.
+refine (fun c d x s => match d x s with
+                       | left _ => right _
+                       | right _ => left _
+                       end); firstorder.
+Defined.
+(* end details *)
+
+(** Implication: *)
+
+Definition CImp (c1 c2 : CProp) : CProp :=
+  fun x s => c1 x s -> c2 x s.
+
+Instance cimp : IMP CProp := CImp.
+
+Hint Unfold CImp cimp : core.
+
 (** Existential quantification: *)
 
 Definition CExists {T} (p:T->CProp) : CProp :=
   fun x => Exists t, p t x.
-
 
 Instance cexists {T} : EX T CProp := CExists.
 
@@ -721,7 +755,6 @@ Definition LNil : LProp :=
   fun l => [l = nil].
 
 Hint Unfold LNil : core.
-
 
 Instance lnil_dec : DecidableLProp (LNil).
 (* begin details *)
@@ -771,7 +804,6 @@ Inductive LAll : CProp -> LProp :=
 
 Hint Constructors LAll : core.
 
-
 Instance lall_dec : forall (cp:CProp) `{DecidableCProp cp}, DecidableLProp (LAll cp).
 (* begin details *)
 autounfold in *.
@@ -797,7 +829,6 @@ Inductive LSome : CProp -> LProp :=
 | some_tail : forall (c:CProp) x l s, LSome c l s -> LSome c (cons x l) s.
 
 Hint Constructors LSome : core. 
-
 
 Instance lsome_dec : forall (cp:CProp) `{DecidableCProp cp}, DecidableLProp (LSome cp).
 (* begin details *)
@@ -829,7 +860,6 @@ Inductive LAllOrdPairs : CRel -> LProp :=
 
 Hint Constructors LAllOrdPairs : core.
 
-
 Instance lallordpairs_dec : forall (cr:CRel) `{DecidableCRel cr}, DecidableLProp (LAllOrdPairs cr).
 (* begin details *)
 autounfold in *.
@@ -855,11 +885,9 @@ Defined.
 Definition LLiftP (P:Prop) : LProp :=
   fun _ => [P].
 
-
 Instance lliftp : LIFT Prop LProp := LLiftP.
 
 Hint Unfold LLiftP lliftp : core.
-
 
 Instance lliftp_dec : forall (P:Prop) `{Decidable P}, DecidableLProp ([P]).
 firstorder. Defined. 
@@ -869,25 +897,21 @@ firstorder. Defined.
 Definition LLiftH (H:HProp) : LProp :=
   fun _ => H. 
 
-
 Instance llifth : LIFT HProp LProp := LLiftH.
 
 Hint Unfold LLiftH llifth : core.
 
-
 Instance llifth_dec : forall (hp:HProp) `{DecidableHProp hp}, DecidableLProp ([hp]).
 firstorder. Defined. 
 
-(** *** Conjunction *)
+(** Conjunction *)
 
 Definition LConj (s1 s2:LProp) : LProp :=
   fun l => s1 l /\ s2 l.                                               
 
-
 Instance lconj : CONJ LProp := LConj.
 
 Hint Unfold LConj lconj : core.
-
 
 Instance lconj_dec : forall (r1 r2 : LProp) `{DecidableLProp r1} `{DecidableLProp r2}, DecidableLProp (r1 /\ r2).
 (* begin details *)
@@ -902,11 +926,16 @@ refine (fun r1 r2 rd1 rd2 l s => match rd1 l s, rd2 l s with
 Defined. 
 (* end details *)
 
-(** *** Existential quantification: *)
+(** Disjunction *)
+
+(** Negation *)
+
+(** Implication *)
+
+(** Existential quantification: *)
 
 Definition LExists {T} (s:T->LProp) : LProp :=
   fun l => Exists t, s t l.
-
 
 Instance lexists {T} : EX T LProp := LExists.
 
@@ -914,13 +943,12 @@ Hint Unfold LExists lexists : core.
 
 (** ** Constituent Relations *)
 
-(** Attribtue relations *)
+(** Attribtue relations: *)
 
 Definition AttRel (a1 a2:A) (p:AT a1 -> AT a2 -> Prop) : CRel :=
   fun x y => Exists v1, HasAtt a1 v1 x /\ Exists v2, HasAtt a2 v2 y /\ [p v1 v2].
 
 Hint Unfold AttRel : core.
-
 
 Instance attrel_dec : forall (a1 a2:A) (p:AT a1 -> AT a2 -> Prop) `{forall v v', Decidable (p v v')}, DecidableCRel (AttRel a1 a2 p).
 (* begin details *)
@@ -952,11 +980,9 @@ Hint Unfold PartRel : core.
 Definition CRLiftP (P:Prop) : CRel :=
   fun _ _ => [P].
 
-
 Instance crliftp : LIFT Prop CRel := CRLiftP.
 
 Hint Unfold CRLiftP crliftp : core.
-
 
 Instance crliftp_dec : forall P `{Decidable P}, DecidableCProp ([P]). firstorder. Defined. 
 
@@ -965,11 +991,9 @@ Instance crliftp_dec : forall P `{Decidable P}, DecidableCProp ([P]). firstorder
 Definition CRLiftH (H:HProp) : CRel :=
   fun _ _ => H.
 
-
 Instance crlifth : LIFT HProp CRel := CRLiftH.
 
 Hint Unfold CRLiftH crlifth : core.
-
 
 Instance crlifth_dec : forall hp `{DecidableHProp hp}, DecidableCProp ([hp]). firstorder. Defined. 
 
@@ -978,11 +1002,9 @@ Instance crlifth_dec : forall hp `{DecidableHProp hp}, DecidableCProp ([hp]). fi
 Definition CRConj (r1 r2:CRel) : CRel :=
   fun x y => r1 x y /\ r2 x y.
 
-
 Instance crconj : CONJ CRel := CRConj.
 
 Hint Unfold CRConj crconj : core.
-
 
 Instance crconj_dec : forall cr1 cr2 `{DecidableCRel cr1} `{DecidableCRel cr2}, DecidableCRel (cr1 /\ cr2).
 (* begin details *)
@@ -993,13 +1015,20 @@ autounfold in *. refine (fun r1 r2 d1 d2 x y s => match d1 x y s, d2 x y s with
 Defined. 
 (* end details *)
 
+(** TODO: Disjunction *)
+
+(** TODO: Negation *)
+
+(** TODO: Implication *)
+
 (** Existential quantification: *)
 
 Definition CRExists {T} (p:T->CRel) : CRel :=
   fun x y => Exists t, p t x y. 
 
-
 Instance crexists {T} : EX T CRel := CRExists.
+
+Hint Unfold CRExists crexists : core.
 
 (** ** List Relations *)
 
@@ -1009,6 +1038,7 @@ Inductive Pairwise (r:CRel) : LRel :=
 | pw_nil : forall s, Pairwise r nil nil s
 | pw_cons : forall x y l l' s, r x y s -> Pairwise r l l' s -> Pairwise r (cons x l) (cons y l') s.
 
+Hint Constructors Pairwise.
 
 Instance pairwise_dec {r:CRel} `{DecidableCRel r} : DecidableLRel (Pairwise r).
 (* begin details *)
@@ -1032,7 +1062,6 @@ Defined.
 Definition LRLiftP (P:Prop) : LRel :=
   fun _ _ => [P].
 
-
 Instance lrliftp : LIFT Prop LRel := LRLiftP.
 
 (** Lifted HProps *)
@@ -1040,22 +1069,25 @@ Instance lrliftp : LIFT Prop LRel := LRLiftP.
 Definition LRLiftH (H:HProp) : LRel :=
   fun _ _ => H.
 
-
 Instance lrlifth : LIFT HProp LRel := LRLiftH.
 
-(** Conjunction *)
+(** Conjunction: *)
 
 Definition LRConj (r1 r2:LRel) : LRel :=
   fun l1 l2 => r1 l1 l2 /\ r2 l1 l2.
 
-
 Instance lrconj : CONJ LRel := LRConj.
 
-(** Existential quantification *)
+(** Disjunction: *)
+
+(** Negation *)
+
+(** Implication *)
+
+(** Existential quantification: *)
 
 Definition LRExists {T} (p:T -> LRel) : LRel :=
   fun l1 l2 => Exists t, p t l1 l2.
-
 
 Instance lrexists {T} : EX T LRel := LRExists.
 
@@ -1065,35 +1097,122 @@ Inductive HPROP :=
 | HLIFT : Prop -> HPROP
 | EVALS {A} : OP A -> A -> HPROP
 | HCONJ : HPROP -> HPROP -> HPROP
-| HEXISTS {T} : (T -> HPROP) -> HPROP
+| HDISJ : HPROP -> HPROP -> HPROP
+| HNEG : HPROP -> HPROP
+| HIMP : HPROP -> HPROP -> HPROP
+| HEX {T} : (T -> HPROP) -> HPROP
 | HSPEC : LPROP -> HPROP
 | CAPP : CPROP -> ID -> HPROP
 | CRAPP : CREL -> ID -> ID -> HPROP
 | LAPP : LPROP -> list ID -> HPROP
 | LRAPP : LREL -> list ID -> list ID -> HPROP 
 with CPROP :=
+| ATT : forall a, AT a -> CPROP
+| PRT : list ID -> CPROP
 | CLIFTP : Prop -> CPROP
 | CLIFTH : HPROP -> CPROP
 | CCONJ : CPROP -> CPROP -> CPROP
-| CEXISTS {T} : (T -> CPROP) -> CPROP
-| ATT : forall a, AT a -> (AT a -> Prop) -> CPROP
-| PRT : list ID -> LPROP -> CPROP
+| CDISJ : CPROP -> CPROP -> CPROP
+| CNEG : CPROP -> CPROP
+| CIMP : CPROP -> CPROP -> CPROP
+| CEX {T} : (T -> CPROP) -> CPROP
 with LPROP :=
 | NIL : LPROP
 | CONS : ID -> CPROP -> LPROP -> LPROP
 | ALL : CPROP -> LPROP
 | SOME : CPROP -> LPROP
 | ALLOP : CREL -> LPROP
+| LCONJ : LPROP -> LPROP -> LPROP
+| LDISJ : LPROP -> LPROP -> LPROP
+| LNEG : LPROP -> LPROP
+| LIMP : LPROP -> LPROP -> LPROP
+| LEX {T} : (T->LPROP) -> LPROP
 with CREL :=
 | ATTREL : forall a1 a2:A, (AT a1 -> AT a2 -> Prop) -> CREL
 | PRTREL : LREL -> CREL
+| CRCONJ : CREL -> CREL -> CREL
+| CRDISJ : CREL -> CREL -> CREL
+| CRNEG : CREL -> CREL
+| CRIMP : CREL -> CREL -> CREL
+| CREX {T} : (T->CREL) -> CREL
 with LREL :=
 | PAIRWISE : CREL -> LREL
+| LRCONJ : LREL -> LREL -> LREL
+| LRDISJ : LREL -> LREL -> LREL
+| LRNEG : LREL -> LREL
+| LRIMP : LREL -> LREL -> LREL
+| LREX {T} : (T->LREL) -> LREL
 with OP : Type -> Type :=
-| READOP {A} : READ A -> OP A
-| OPTIONOP {A} : OPTION A -> OP A
+| GETATT : forall a, ID -> OP (AT a).
+(*
+| OPTIONOP {A} : option A -> OP A
 with READ : Type -> Type :=
-| GETATT : forall a, ID -> READ (AT a)
-| GETPS : ID -> READ (list ID)
-with OPTION : Type -> Type := 
-| SIMPLEOPTION {A} : option A -> OPTION A.
+| GETATT : forall a, ID -> READ (AT a).
+| GETPRP : forall p, ID -> READ (PT p)
+| GETPS : ID -> READ (list ID). *)
+
+(** Semantic function: *)
+
+Fixpoint hsem (h:HPROP) :=
+  match h with
+  | HLIFT P => HLift P
+  | EVALS op v => (opsem op) ~~ v
+  | HCONJ a b => hsem a /\ hsem b
+  | HDISJ a b => hsem a \/ hsem b
+  | HNEG a => ~ (hsem a)
+  | HIMP a b => HImp (hsem a) (hsem b)
+  | HEX p => Exists t, hsem (p t)
+  | HSPEC p => HSpec (lsem p)
+  | CAPP c x => csem c x 
+  | LAPP p l => lsem p l
+  | CRAPP r x y => crsem r x y 
+  | LRAPP r l l' => lrsem r l l'
+  end
+with csem (c:CPROP) :=
+       match c with
+       | ATT a v => HasAtt a v
+       | PRT l => HasParts l
+       | CLIFTP P => CLiftP P
+       | CLIFTH h => CLiftH (hsem h)
+       | CCONJ a b => csem a /\ csem b
+       | CDISJ a b => csem a \/ csem b
+       | CNEG a => ~ (csem a)
+       | CIMP a b => CImp (csem a) (csem b)
+       | CEX p => Exists t, csem (p t)
+       end
+with lsem (l:LPROP) :=
+       match  l with
+       | NIL => LNil
+       | CONS x c r => LCons x (csem x) (lsem r) 
+       | ALL c => LAll (csem c)
+       | SOME c => LSome (csem c)
+       | ALLOP cr => LAllOrdPairs (crsem cr)
+       | LCONJ l l' => (lsem l) /\ (lsem l')
+       | LDISJ l l' => (lsem l) \/ (lsem l')
+       | LNEG l => ~ (lsem l)
+       | LIMP l l' => LImp (lsem l) (lsem l')
+       | LEX p => Exists t, lsem (p t)
+       end
+with crsem (cr:CREL) :=
+       match cr with
+       | ATTREL a1 a2 p => AttRel a1 a2 p
+       | PRTREL m => PartRel (lrsem m)
+       | CRCONJ r r' => crsem r /\ crsem r'
+       | CRDISJ r r' => crsem r \/ crsem r'
+       | CRNEG r => ~ (crsem r)
+       | CRIMP r r' => CRImp (crsem r) (crsem r')
+       | CREX p => Exists t, crsem (r t)
+       end
+with lrsem (lr:LREL) :=
+       match lr with
+       | PAIRWISE r => Pairwise (crsem r)
+       | LRCONJ x y => lrsem y /\ lrsem y
+       | LRDISJ x y => lrsem x \/ lrsem y
+       | LRNEG x => ~ (lrsem x)
+       | LRIMP x y => LRImp (lrsem x) (lrsem y)
+       | LREX p => Exists t, lrsem (p t)
+       end
+with opsem {T} (o:OP T) :=
+       match o with
+       | GETATT a x => get_att a x
+       end.
