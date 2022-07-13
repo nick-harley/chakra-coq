@@ -1219,12 +1219,6 @@ with LREL :=
 | LREX {T} : (T->LREL) -> LREL
 with OP : Type -> Type :=
 | GETATT : forall a, ID -> OP (AT a).
-(*
-| OPTIONOP {A} : option A -> OP A
-with READ : Type -> Type :=
-| GETATT : forall a, ID -> READ (AT a).
-| GETPRP : forall p, ID -> READ (PT p)
-| GETPS : ID -> READ (list ID). *)
 
 (** Semantic function: *)
 
