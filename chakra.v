@@ -2,16 +2,20 @@
 
 CHAKRA (Common Hierarchical Abstract Knowledge Representation for Anything) is a general-purpose framework for hierarchical knowledge representation. This file contains the formal specification of CHAKRA in Coq. It defines:
 
-- The CHAKRA Data Model: functional signature of CHAKRA knowledge structures.
-- The CHAKRA Description Language: syntax and semantics for describing CHAKRA knowledge structures.
-- The CHAKRA Processing and Query Language: syntax and semantics for construction, retrieval and processing of CHARKA knowledge structures.
+- The CHARKA Model
+- The CHAKRA Description Language
+- The CHAKRA Query Language
 
-The CHAKRA processing and query language (CHPQL) is a simple programming language for working with CHAKRA knowledge structures. The syntax of expressions is defined by a formal grammar.  The semantics is defined by mapping expressions to native Coq programs with computational effects encapsulated by a continuation parsing monad.*) 
+The CHAKRA model captures multiple-hierarchical knowledge structures. Nodes in the hierarchy are called constituents and have unique identifiers. A constituent is formed from an ordered list of other constituents called its particles. Constituents are fitted with key-value pairs representing attributes and properties. The CHAKRA model is defined as a signature; a collection of abstract types and operations. The specification for the signature is a collection of universally quantified equations between operations. 
+
+The CHAKRA Description Language (CHAKDL) is a logical language for describing knowledge structures and their constituents. Expressions in the language capture intrinsic properties of represented entities and their mutual structural relationships. The language is defined semantics first: atomic expressions and connectives are defined as Coq terms, and the syntax is defined by a formal grammar, encoded as a mutually inductive type.
+
+The CHAKRA Query Language (CHAKQL) is a simple programming language for accessing and manipulating CHAKRA knowledge structures. The syntax of expressions is defined by a formal grammar. The semantics is defined by mapping expressions to native Coq programs with computational effects encapsulated by a continuation parsing monad.*) 
+
+(** * Boilerplate *)
 
 Require Import Coq.Init.Datatypes.
 Require Import Coq.Lists.List.
-
-(** * Boilerplate *)
 
 (** Type classes: *)
 
@@ -348,6 +352,7 @@ Axiom dom_fst_cts : forall s, dom s = map fst (cts s).
 
 Instance id_dec : forall (x y: ID), Decidable (x=y).
 (* begin details *)
+autounfold in *.
 intros.
 remember (ideq x y). remember (ideq_spec x y). induction b.
 - left. induction  i. exact (H0 Heqb).
@@ -389,7 +394,7 @@ Theorem dom_emp : dom emp = nil.
 Qed.
 (* end details *)
 
-(** * CHAKRA Standard Prelude
+(** ** CHAKRA Standard Prelude
 
 The core operations are used to define a set of more general operations for accessing and manipulating CHAKRA hierarchies. *)
 
@@ -408,6 +413,7 @@ Definition domain : Read H (list ID) :=
   fun s => ret (dom s).
 
 (** State Operations *)
+
 Definition insert (x:ID) (c:C) : State H unit :=
   fun s => let s' := ins x c s in (s', ret tt).
 
@@ -428,9 +434,7 @@ Definition set_prp (p:P) (v:PT p) (x:ID) : State H unit :=
 
 Hint Unfold domain get_att get_prp get_parts insert aggregate set_att set_prp.
 
-(** * The CHAKRA Description Language
-
-The CHARKA description language (CHDL) is a simple logical language for expressing formal properties about knowledge structures and their constituents. The syntax of expressions is defined by a formal grammar. The semantics of expressions is defined in terms of Coq's underlying constructive logic.*)
+(** * The CHAKRA Description Language *)
 
 Definition HProp := H -> Prop.
 Definition CProp := ID -> HProp.
@@ -580,7 +584,7 @@ Instance HExists {T} : EX T HProp :=
 
 Hint Unfold HExists. 
 
-(** Total description *)
+(** Full specifications of hierararchies: *)
 
 Definition HSpec (p:LProp) : HProp := Exists l, domain ~~ l /\ p l.
 
@@ -713,7 +717,7 @@ autounfold in *. refine (fun c1 c2 d1 d2 x s => match d1 x s, d2 x s with
 Defined.
 (* end details *)
 
-(** Negation *)
+(** Negation: *)
 
 Instance CNeg : NEG CProp :=
   fun cp x => ~ cp x.
@@ -746,7 +750,7 @@ Hint Unfold CExists.
 
 (** ** List Descriptions *)
 
-(** Nil *)
+(** Nil: *)
 
 Definition LNil : LProp :=
   fun l => [l = nil].
@@ -765,7 +769,7 @@ refine (fun l s => match l with
 Defined.
 (* end details *)
 
-(** Cons *)
+(** Cons: *)
 
 Definition LCons : ID -> CProp -> LProp -> LProp :=
   fun x c p l => (hd_error l) ~~ x /\ c x /\  p (tl l).
@@ -848,7 +852,7 @@ refine (fix LSOMED cp cd l s := match l with
 Defined. 
 (* end details *)
 
-(** All ordered pairs *)
+(** All ordered pairs: *)
 
 Inductive LAllOrdPairs : CRel -> LProp :=
 | all_op_nil : forall (r:CRel) s, LAllOrdPairs r nil s
@@ -902,7 +906,7 @@ firstorder.
 Defined. 
 (* end details *)
 
-(** Conjunction *)
+(** Conjunction: *)
 
 Instance LConj : CONJ LProp :=
   fun lp1 lp2 l => lp1 l /\ lp2 l.                                               
@@ -922,7 +926,7 @@ refine (fun r1 r2 rd1 rd2 l s => match rd1 l s, rd2 l s with
 Defined. 
 (* end details *)
 
-(** Disjunction *)
+(** Disjunction: *)
 
 Instance LDisj : DISJ LProp :=
   fun lp lp' s => lp s \/ lp' s.
@@ -938,7 +942,7 @@ autounfold in *. refine (fun p q dp dq l s => match dp l s, dq l s with
 Defined. 
 (* end details *)
 
-(** Negation *)
+(** Negation: *)
 
 Instance LNeg : NEG LProp := fun p l => ~ (p l). 
 
@@ -953,7 +957,7 @@ autounfold in *. refine (fun p d l s => match d l s with
 Defined.
 (* end details *)
 
-(** Implication *)
+(** Implication: *)
 
 Instance LImp : IMP LProp := fun p q l => HImp (p l) (q l).
 
@@ -993,7 +997,7 @@ induction ((fnd x ;; geta a1) s).
 Defined. 
 (* end details *)
 
-(** Particle relations *)
+(** Particle relations: *)
 
 Definition PartRel : LRel -> CRel :=
   fun m x y => Exists l1, HasParts l1 x /\ Exists l2, HasParts l2 y /\ m l1 l2.
@@ -1042,7 +1046,7 @@ autounfold in *. refine (fun r1 r2 d1 d2 x y s => match d1 x y s, d2 x y s with
 Defined. 
 (* end details *)
 
-(** Disjunction *)
+(** Disjunction: *)
 
 Instance CRDisj : DISJ CRel := fun p q x y => p x y \/ q x y.
 
@@ -1057,7 +1061,7 @@ autounfold in *. refine (fun p q d1 d2 x y s => match d1 x y s, d2 x y s with
 Defined.
 (* end details *)
 
-(** Negation *)
+(** Negation: *)
 
 Instance CRNeg : NEG CRel := fun p x y => ~ (p x y).
 
@@ -1069,7 +1073,7 @@ firstorder.
 Defined.
 (* end details *) 
 
-(** Implication *)
+(** Implication: *)
 
 Instance CRImp : IMP CRel := fun r r' x y => HImp (r x y) (r' x y). 
 
@@ -1084,7 +1088,7 @@ Hint Unfold CRExists.
 
 (** ** List Relations *)
 
-(** Pairwise relations *)
+(** Pairwise relations: *)
 
 Inductive Pairwise (r:CRel) : LRel :=
 | pw_nil : forall s, Pairwise r nil nil s
@@ -1122,7 +1126,7 @@ firstorder.
 Defined. 
 (* end details *)
 
-(** Lifted HProps *)
+(** Lifted HProps: *)
 
 Instance LRLiftH : LIFT HProp LRel :=
   fun H _ _ => H.
@@ -1167,7 +1171,7 @@ autounfold in *. refine (fun p q d1 d2 l l' s => match d1 l l' s, d2 l l' s with
 Defined. 
 (* end details *)
 
-(** Negation *)
+(** Negation: *)
 
 Instance LRNeg : NEG LRel :=
   fun p l => ~ (p l).
@@ -1180,7 +1184,7 @@ firstorder.
 Defined.
 (* end details *) 
 
-(** Implication *)
+(** Implication: *)
 
 Instance LRImp : IMP LRel:=
   fun p q l l' => HImp (p l l') (q l l').

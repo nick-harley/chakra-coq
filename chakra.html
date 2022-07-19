@@ -32,20 +32,32 @@ CHAKRA (Common Hierarchical Abstract Knowledge Representation for Anything) is a
 <div class="paragraph"> </div>
 
 <ul class="doclist">
-<li> The CHAKRA Data Model: functional signature of CHAKRA knowledge structures.
+<li> The CHARKA Model
 
 </li>
-<li> The CHAKRA Description Language: syntax and semantics for describing CHAKRA knowledge structures.
+<li> The CHAKRA Description Language
 
 </li>
-<li> The CHAKRA Processing and Query Language: syntax and semantics for construction, retrieval and processing of CHARKA knowledge structures.
+<li> The CHAKRA Query Language
 
 </li>
 </ul>
 
 <div class="paragraph"> </div>
 
-The CHAKRA processing and query language (CHPQL) is a simple programming language for working with CHAKRA knowledge structures. The syntax of expressions is defined by a formal grammar.  The semantics is defined by mapping expressions to native Coq programs with computational effects encapsulated by a continuation parsing monad.
+The CHAKRA model captures multiple-hierarchical knowledge structures. Nodes in the hierarchy are called constituents and have unique identifiers. A constituent is formed from an ordered list of other constituents called its particles. Constituents are fitted with key-value pairs representing attributes and properties. The CHAKRA model is defined as a signature; a collection of abstract types and operations. The specification for the signature is a collection of universally quantified equations between operations. 
+
+<div class="paragraph"> </div>
+
+The CHAKRA Description Language (CHAKDL) is a logical language for describing knowledge structures and their constituents. Expressions in the language capture intrinsic properties of represented entities and their mutual structural relationships. The language is defined semantics first: atomic expressions and connectives are defined as Coq terms, and the syntax is defined by a formal grammar, encoded as a mutually inductive type.
+
+<div class="paragraph"> </div>
+
+The CHAKRA Query Language (CHAKQL) is a simple programming language for accessing and manipulating CHAKRA knowledge structures. The syntax of expressions is defined by a formal grammar. The semantics is defined by mapping expressions to native Coq programs with computational effects encapsulated by a continuation parsing monad.
+<div class="paragraph"> </div>
+
+<a id="lab2"></a><h1 class="section">Boilerplate</h1>
+
 </div>
 <div class="code">
 
@@ -57,11 +69,7 @@ The CHAKRA processing and query language (CHPQL) is a simple programming languag
 </div>
 
 <div class="doc">
-<a id="lab2"></a><h1 class="section">Boilerplate</h1>
-
-<div class="paragraph"> </div>
-
- Type classes: 
+Type classes: 
 </div>
 <div class="code">
 
@@ -700,6 +708,7 @@ Decidable equality relations:
 <span class="id" title="keyword">Instance</span> <a id="id_dec" class="idref" href="#id_dec"><span class="id" title="instance">id_dec</span></a> : <span class="id" title="keyword">forall</span> (<a id="x:307" class="idref" href="#x:307"><span class="id" title="binder">x</span></a> <a id="y:308" class="idref" href="#y:308"><span class="id" title="binder">y</span></a>: <a class="idref" href="chakra.html#ID"><span class="id" title="axiom">ID</span></a>), <a class="idref" href="chakra.html#Decidable"><span class="id" title="class">Decidable</span></a> (<a class="idref" href="chakra.html#x:307"><span class="id" title="variable">x</span></a><a class="idref" href="http://coq.inria.fr/distrib/V8.15.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a><a class="idref" href="chakra.html#y:308"><span class="id" title="variable">y</span></a>).<br/>
 </div>
 <details><div class="code">
+<span class="id" title="var">autounfold</span> <span class="id" title="tactic">in</span> *.<br/>
 <span class="id" title="tactic">intros</span>.<br/>
 <span class="id" title="var">remember</span> (<a class="idref" href="chakra.html#ideq"><span class="id" title="axiom">ideq</span></a> <span class="id" title="var">x</span> <span class="id" title="var">y</span>). <span class="id" title="var">remember</span> (<a class="idref" href="chakra.html#ideq_spec"><span class="id" title="axiom">ideq_spec</span></a> <span class="id" title="var">x</span> <span class="id" title="var">y</span>). <span class="id" title="tactic">induction</span> <span class="id" title="var">b</span>.<br/>
 - <span class="id" title="tactic">left</span>. <span class="id" title="tactic">induction</span>  <span class="id" title="var">i</span>. <span class="id" title="tactic">exact</span> (<span class="id" title="var">H0</span> <span class="id" title="var">Heqb</span>).<br/>
@@ -757,7 +766,7 @@ Derivable facts:
 </div>
 
 <div class="doc">
-<a id="lab8"></a><h1 class="section">CHAKRA Standard Prelude</h1>
+<a id="lab8"></a><h2 class="section">CHAKRA Standard Prelude</h2>
 
 
 <div class="paragraph"> </div>
@@ -792,6 +801,8 @@ The core operations are used to define a set of more general operations for acce
 State Operations 
 </div>
 <div class="code">
+
+<br/>
 <span class="id" title="keyword">Definition</span> <a id="insert" class="idref" href="#insert"><span class="id" title="definition">insert</span></a> (<a id="x:329" class="idref" href="#x:329"><span class="id" title="binder">x</span></a>:<a class="idref" href="chakra.html#ID"><span class="id" title="axiom">ID</span></a>) (<a id="c:330" class="idref" href="#c:330"><span class="id" title="binder">c</span></a>:<a class="idref" href="chakra.html#C"><span class="id" title="axiom">C</span></a>) : <a class="idref" href="chakra.html#State"><span class="id" title="definition">State</span></a> <a class="idref" href="chakra.html#H"><span class="id" title="axiom">H</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.15.0/stdlib//Coq.Init.Datatypes.html#unit"><span class="id" title="inductive">unit</span></a> :=<br/>
 &nbsp;&nbsp;<span class="id" title="keyword">fun</span> <a id="s:331" class="idref" href="#s:331"><span class="id" title="binder">s</span></a> =&gt; <span class="id" title="keyword">let</span> <a id="s':332" class="idref" href="#s':332"><span class="id" title="binder">s'</span></a> := <a class="idref" href="chakra.html#ins"><span class="id" title="axiom">ins</span></a> <a class="idref" href="chakra.html#x:329"><span class="id" title="variable">x</span></a> <a class="idref" href="chakra.html#c:330"><span class="id" title="variable">c</span></a> <a class="idref" href="chakra.html#s:331"><span class="id" title="variable">s</span></a> <span class="id" title="tactic">in</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.15.0/stdlib//Coq.Init.Datatypes.html#e6756e10c36f149b18b4a8741ed83079"><span class="id" title="notation">(</span></a><a class="idref" href="chakra.html#s':332"><span class="id" title="variable">s'</span></a><a class="idref" href="http://coq.inria.fr/distrib/V8.15.0/stdlib//Coq.Init.Datatypes.html#e6756e10c36f149b18b4a8741ed83079"><span class="id" title="notation">,</span></a> <a class="idref" href="chakra.html#ret"><span class="id" title="definition">ret</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.15.0/stdlib//Coq.Init.Datatypes.html#tt"><span class="id" title="constructor">tt</span></a><a class="idref" href="http://coq.inria.fr/distrib/V8.15.0/stdlib//Coq.Init.Datatypes.html#e6756e10c36f149b18b4a8741ed83079"><span class="id" title="notation">)</span></a>.<br/>
 
@@ -822,10 +833,6 @@ State Operations
 <div class="doc">
 <a id="lab9"></a><h1 class="section">The CHAKRA Description Language</h1>
 
-
-<div class="paragraph"> </div>
-
-The CHARKA description language (CHDL) is a simple logical language for expressing formal properties about knowledge structures and their constituents. The syntax of expressions is defined by a formal grammar. The semantics of expressions is defined in terms of Coq's underlying constructive logic.
 </div>
 <div class="code">
 
@@ -1079,7 +1086,7 @@ Existential quantification:
 </div>
 
 <div class="doc">
-Total description 
+Full specifications of hierararchies: 
 </div>
 <div class="code">
 
@@ -1302,7 +1309,7 @@ Disjunction:
 </div>
 
 <div class="doc">
-Negation 
+Negation: 
 </div>
 <div class="code">
 
@@ -1364,7 +1371,7 @@ Existential quantification:
 
 <div class="paragraph"> </div>
 
- Nil 
+ Nil: 
 </div>
 <div class="code">
 
@@ -1394,7 +1401,7 @@ Existential quantification:
 </div>
 
 <div class="doc">
-Cons 
+Cons: 
 </div>
 <div class="code">
 
@@ -1510,7 +1517,7 @@ Some element:
 </div>
 
 <div class="doc">
-All ordered pairs 
+All ordered pairs: 
 </div>
 <div class="code">
 
@@ -1597,7 +1604,7 @@ Lifting HProps:
 </div>
 
 <div class="doc">
-Conjunction 
+Conjunction: 
 </div>
 <div class="code">
 
@@ -1628,7 +1635,7 @@ Conjunction
 </div>
 
 <div class="doc">
-Disjunction 
+Disjunction: 
 </div>
 <div class="code">
 
@@ -1655,7 +1662,7 @@ Disjunction
 </div>
 
 <div class="doc">
-Negation 
+Negation: 
 </div>
 <div class="code">
 
@@ -1681,7 +1688,7 @@ Negation
 </div>
 
 <div class="doc">
-Implication 
+Implication: 
 </div>
 <div class="code">
 
@@ -1750,7 +1757,7 @@ Existential quantification:
 </div>
 
 <div class="doc">
-Particle relations 
+Particle relations: 
 </div>
 <div class="code">
 
@@ -1840,7 +1847,7 @@ Conjunction:
 </div>
 
 <div class="doc">
-Disjunction 
+Disjunction: 
 </div>
 <div class="code">
 
@@ -1866,7 +1873,7 @@ Disjunction
 </div>
 
 <div class="doc">
-Negation 
+Negation: 
 </div>
 <div class="code">
 
@@ -1889,7 +1896,7 @@ Negation
 </div>
 
 <div class="doc">
-Implication 
+Implication: 
 </div>
 <div class="code">
 
@@ -1922,7 +1929,7 @@ Existential quantification:
 
 <div class="paragraph"> </div>
 
- Pairwise relations 
+ Pairwise relations: 
 </div>
 <div class="code">
 
@@ -1982,7 +1989,7 @@ Lifted Props:
 </div>
 
 <div class="doc">
-Lifted HProps 
+Lifted HProps: 
 </div>
 <div class="code">
 
@@ -2060,7 +2067,7 @@ Disjunction:
 </div>
 
 <div class="doc">
-Negation 
+Negation: 
 </div>
 <div class="code">
 
@@ -2084,7 +2091,7 @@ Negation
 </div>
 
 <div class="doc">
-Implication 
+Implication: 
 </div>
 <div class="code">
 
